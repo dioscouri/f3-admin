@@ -34,13 +34,15 @@ class System extends BaseAuth
                 ,json_decode(json_encode(array( 'title'=>'Rebuild Menu', 'route'=>'/admin/system/rebuildMenu', 'icon'=>'fa fa-retweet' )))
                 ,json_decode(json_encode(array( 'title'=>'Logs', 'route'=>'/admin/logs', 'icon'=>'fa fa-list' )))
                 ,json_decode(json_encode(array( 'title'=>'Log Detail', 'route'=>'/admin/log', 'hidden'=>true )))
+                ,json_decode(json_encode(array( 'title'=>'Queue', 'route'=>'/admin/queue', 'icon'=>'fa fa-refresh' )))
+                ,json_decode(json_encode(array( 'title'=>'Queue Detail', 'route'=>'/admin/queueitem', 'hidden'=>true )))
         );
         $mapper->save();
         
         \Dsc\System::instance()->addMessage('Menu rebuilt', 'notice');
         
-        \Base::instance()->set('pagetitle', 'Testing');
-        \Base::instance()->set('subtitle', 'Repopulate Menu');
+        \Base::instance()->set('pagetitle', 'System');
+        \Base::instance()->set('subtitle', 'Rebuild Menu');
         
         $view = new \Dsc\Template;
         echo $view->render('home/default.php');

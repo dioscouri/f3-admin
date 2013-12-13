@@ -8,7 +8,7 @@ class Logs extends BaseAuth
         \Base::instance()->set('pagetitle', 'Logs');
         \Base::instance()->set('subtitle', '');
 
-        $model = new \Common\Models\Logs;
+        $model = new \Admin\Models\Logs;
         $state = $model->populateState()->getState();
         \Base::instance()->set('state', $state );
     

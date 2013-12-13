@@ -8,7 +8,7 @@ class Queue extends BaseAuth
         \Base::instance()->set('pagetitle', 'Logs');
         \Base::instance()->set('subtitle', '');
 
-        $model = new \Common\Models\Queue;
+        $model = new \Admin\Models\Queue;
         $state = $model->populateState()->getState();
         \Base::instance()->set('state', $state );
     
