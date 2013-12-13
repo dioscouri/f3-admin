@@ -1,0 +1,25 @@
+{
+    "name": "dioscouri/f3-admin",
+    "type": "component",
+    "description": "Admin component for the F3-framework",
+    "keywords": ["F3","RAD", "Admin", "CMS"],
+    "homepage": "https://github.com/dioscouri/f3-admin",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Rafael Diaz-Tushman",
+            "email": "rdiaztushman@dioscouri.com",
+            "homepage": "http://dioscouri.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "dioscouri/f3-lib": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Admin": "src/"
+        }
+    }    
+}
