@@ -13,12 +13,12 @@ switch ($global_app_name)
         
         // TODO set some app-specific settings, if desired
         
-        // append this app's UI folder to the path, e.g. UI=../apps/blog/admin/views/
+        // append this app's UI folder to the path
         $ui = $f3->get('UI');
         $ui .= ";" . $f3->get('PATH_ROOT') . "vendor/dioscouri/f3-admin/src/Admin/Views/";
         $f3->set('UI', $ui);
         
-        // append this app's UI folder to the path, e.g. UI=../apps/blog/admin/views/
+        // append this app's template folder to the path
         $templates = $f3->get('TEMPLATES');
         $templates .= ";" . $f3->get('PATH_ROOT') . "vendor/dioscouri/f3-admin/src/Admin/Templates/";
         $f3->set('TEMPLATES', $templates);

@@ -15,7 +15,8 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "dioscouri/f3-lib": "dev-master"
+        "dioscouri/f3-lib": "dev-master",
+        "dioscouri/f3-users": "dev-master"
     },
     "autoload": {
         "psr-0": {
