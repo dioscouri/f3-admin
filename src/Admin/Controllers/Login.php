@@ -34,7 +34,7 @@ class Login extends Base
         {
             if ($simple->verify($password_input, $safemode_password)) 
             {
-                $user = new \Admin\Objects\User;
+                $user = new \Users\Objects\SafemodeUser;
                 $user->id = 'safemode';
                 $user->name = $safemode_user;
                 $user->username = $safemode_user;

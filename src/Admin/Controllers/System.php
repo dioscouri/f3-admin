@@ -14,16 +14,6 @@ class System extends BaseAuth
         $event->addArgument('model', $model);
         $event->addArgument('mapper', $mapper);
         \Dsc\System::instance()->getDispatcher()->triggerEvent($event); 
-        
-        $mapper->reset();
-        $mapper->title = 'Users';
-        $mapper->route = '';
-        $mapper->icon = 'fa fa-user';
-        $mapper->children = array(
-                json_decode(json_encode(array( 'title'=>'List', 'route'=>'/admin/users', 'icon'=>'fa fa-list' )))
-                ,json_decode(json_encode(array( 'title'=>'Detail', 'route'=>'/admin/user', 'hidden'=>true )))
-        );
-        $mapper->save();
 
         $mapper->reset();
         $mapper->title = 'System';

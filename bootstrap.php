@@ -5,7 +5,14 @@ $global_app_name = $f3->get('APP_NAME');
 switch ($global_app_name) 
 {
     case "admin":
-        // TODO register all the routes
+        // register all the routes
+    	$f3->route('GET /admin', '\Admin\Controllers\Home->display');
+    	$f3->route('GET /admin/login', '\Admin\Controllers\Login->login');
+    	$f3->route('POST /admin/login', '\Admin\Controllers\Login->auth');
+    	$f3->route('GET /admin/logout', '\Admin\Controllers\Login->logout');
+    	$f3->route('GET /admin/system/@task', '\Admin\Controllers\System->@task');
+    	$f3->route('GET /admin/settings', '\Admin\Controllers\Settings->display');
+    	$f3->route('POST /admin/settings', '\Admin\Controllers\Settings->save');
         $f3->route('GET|POST /admin/logs', '\Admin\Controllers\Logs->display');
         $f3->route('GET|POST /admin/logs/@page', '\Admin\Controllers\Logs->display');
         $f3->route('GET|POST /admin/queue', '\Admin\Controllers\Queue->display');
