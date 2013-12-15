@@ -1,0 +1,1 @@
+Would loop through the $result object and display the results property (which holds an array of $messages).  $messages have $message->status and $message->message.   

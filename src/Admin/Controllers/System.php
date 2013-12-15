@@ -22,6 +22,7 @@ class System extends BaseAuth
         $mapper->children = array(
                 json_decode(json_encode(array( 'title'=>'Settings', 'route'=>'/admin/settings', 'icon'=>'fa fa-cogs' )))
                 ,json_decode(json_encode(array( 'title'=>'Rebuild Menu', 'route'=>'/admin/system/rebuildMenu', 'icon'=>'fa fa-retweet' )))
+        		,json_decode(json_encode(array( 'title'=>'Diagnostics', 'route'=>'/admin/system/diagnostics', 'icon'=>'fa fa-heart' )))
                 ,json_decode(json_encode(array( 'title'=>'Logs', 'route'=>'/admin/logs', 'icon'=>'fa fa-list' )))
                 ,json_decode(json_encode(array( 'title'=>'Log Detail', 'route'=>'/admin/log', 'hidden'=>true )))
                 ,json_decode(json_encode(array( 'title'=>'Queue', 'route'=>'/admin/queue', 'icon'=>'fa fa-refresh' )))
@@ -36,5 +37,18 @@ class System extends BaseAuth
         
         $view = new \Dsc\Template;
         echo $view->render('home/default.php');
+    }
+    
+    public function diagnostics()
+    {
+    	$event = new \Joomla\Event\Event( 'onSystemDiagnostics' );
+    	$result = \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
+
+    	\Base::instance()->set('pagetitle', 'System');
+    	\Base::instance()->set('subtitle', 'Diagnostics');
+    	\Base::instance()->set('result', $result);
+    	
+    	$view = new \Dsc\Template;
+    	echo $view->render('Admin/Views::system/diagnostics.php');
     }
 }
