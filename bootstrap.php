@@ -29,14 +29,6 @@ switch ($global_app_name)
         $f3->route('POST /admin/menu/@id', '\Admin\Controllers\Menu->update');
         $f3->route('DELETE /admin/menu/@id', '\Admin\Controllers\Menu->delete');
         $f3->route('GET /admin/menu/@id/delete', '\Admin\Controllers\Menu->delete');
-
-        $f3->route('GET /admin/menuitem', '\Admin\Controllers\MenuItem->create');
-        $f3->route('POST /admin/menuitem', '\Admin\Controllers\MenuItem->add');
-        $f3->route('GET /admin/menuitem/@id', '\Admin\Controllers\MenuItem->read');
-        $f3->route('GET /admin/menuitem/@id/edit', '\Admin\Controllers\MenuItem->edit');
-        $f3->route('POST /admin/menuitem/@id', '\Admin\Controllers\MenuItem->update');
-        $f3->route('DELETE /admin/menuitem/@id', '\Admin\Controllers\MenuItem->delete');
-        $f3->route('GET /admin/menuitem/@id/delete', '\Admin\Controllers\MenuItem->delete');
         
         // TODO set some app-specific settings, if desired
         

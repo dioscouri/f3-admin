@@ -8,6 +8,19 @@
             </div>
             <!-- /.form-group -->
             
+            <div class="form-group">
+                <?php if (!empty($parents) && !$flash->old('is_root')) { ?>
+                <select name="tree" class="form-control">
+                <?php foreach ($parents as $one) { ?>
+                    <option value="<?php echo $one->id; ?>" <?php if ($one->id == $flash->old('tree')) { echo "selected='selected'"; } ?>><?php echo $one->title; ?></option>                    
+                <?php } ?> 
+                </select>
+                <?php } elseif ($flash->old('is_root')) { ?>
+                    <input name="tree" value="<?php echo $flash->old('tree'); ?>" type="hidden">
+                <?php } ?>
+            </div>
+            <!-- /.form-group -->
+            
             <div class="form-actions">
 
                 <div>
@@ -19,13 +32,13 @@
                         </button>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a onclick="document.getElementById('primarySubmit').value='save_new'; document.getElementById('detail-form').submit();" href="javascript:void(0);">Save & Create Another</a>
+                                <a onclick="document.getElementById('primarySubmit').value='save_close'; document.getElementById('detail-form').submit();" href="javascript:void(0);">Save & Close</a>
                             </li>
                         </ul>
                     </div>
                         
                     &nbsp;
-                    <a class="btn btn-default" href="./admin/menus/<?php echo $item->get( $model->getItemKey() ); ?>">Cancel</a>
+                    <a class="btn btn-default" href="./admin/menus/<?php echo $item->tree; ?>">Cancel</a>
                 </div>
 
             </div>

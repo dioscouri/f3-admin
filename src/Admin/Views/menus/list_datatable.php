@@ -52,23 +52,23 @@
             </td>
             
             <td class="">
-                <a href="./admin/menuitem/<?php echo $item->_id; ?>/edit">
+                <a href="./admin/menu/<?php echo $item->_id; ?>/edit">
                 <?php echo @str_repeat( "&ndash;", substr_count( @$item->path, "/" ) - 2 ) . " " . $item->title; ?>
                 </a>
             </td>
             
             <td class="">
-                <a href="./admin/menuitem/<?php echo $item->_id; ?>/edit">
+                <a href="./admin/menu/<?php echo $item->_id; ?>/edit">
                 <?php echo $item->path; ?>
                 </a>
             </td>
                             
             <td class="text-center">
-                <a class="btn btn-xs btn-secondary" href="./admin/menuitem/<?php echo $item->_id; ?>/edit">
+                <a class="btn btn-xs btn-secondary" href="./admin/menu/<?php echo $item->_id; ?>/edit">
                     <i class="fa fa-pencil"></i>
                 </a>
                 &nbsp;
-                <a class="btn btn-xs btn-danger" data-bootbox="confirm" href="./admin/menuitem/<?php echo $item->_id; ?>/delete">
+                <a class="btn btn-xs btn-danger" data-bootbox="confirm" href="./admin/menu/<?php echo $item->_id; ?>/delete">
                     <i class="fa fa-times"></i>
                 </a>
             </td>

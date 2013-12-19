@@ -17,4 +17,4 @@ jQuery(document).ready(function(){
     <option value="<?php echo $one->id; ?>" <?php if ($one->_id == $selected) { echo "selected='selected'"; } ?>><?php echo $one->title; ?></option>                    
 <?php } ?> 
 </select>
-<?php } ?>                    
+<?php } ?>

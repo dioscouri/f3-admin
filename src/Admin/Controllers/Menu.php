@@ -3,12 +3,80 @@ namespace Admin\Controllers;
 
 class Menu extends BaseAuth 
 {
-    use \Dsc\Traits\Controllers\CrudItem;
-
-    protected $list_route = '/admin/menus';
-    protected $create_item_route = '/admin/menu';
-    protected $get_item_route = '/admin/menu/{id}';    
+    use \Dsc\Traits\Controllers\CrudItem {
+        doAdd as doAddCrudItem;
+        doUpdate as doUpdateCrudItem;
+        doDelete as doDeleteCrudItem;
+    }
+    
+    protected $list_route = '/admin/menus/{menu}';
+    protected $create_item_route = '/admin/menus/{menu}';
+    protected $get_item_route = '/admin/menu/{id}';
     protected $edit_item_route = '/admin/menu/{id}/edit';
+        
+    protected function doAdd($data)
+    {
+        $tree = !empty($data['tree']) ? $data['tree'] : null;
+        
+        if (!empty($data['is_root'])) 
+        {
+            $data['is_root'] = true;
+            $data['tree'] = $data['title'];
+        }
+        
+        if ($return = $this->doAddCrudItem($data))
+        {
+            if (!empty($data['is_root']))
+            {
+                $tree = (string) $this->item->id;
+                                
+                $this->item->tree = $tree;
+                $this->item->save();
+            }
+        }
+        
+        $route = str_replace('{menu}', $tree, $this->create_item_route );
+        $this->setRedirect( $route );
+        
+        return $return;
+    }
+    
+    protected function doUpdate(array $data, $key=null)
+    {
+        $tree = !empty($data['tree']) ? $data['tree'] : null;
+        
+        if ($return = $this->doUpdateCrudItem($data))
+        {
+            $tree = (string) $this->item->tree;
+        }
+                
+        switch ($data['submitType'])
+        {
+        	case "save_close":
+                $route = str_replace('{menu}', $tree, $this->create_item_route );
+                $this->setRedirect( $route );
+        	    break;
+        }
+        
+        return $return;
+    }
+    
+    protected function doDelete(array $data, $key=null)
+    {
+        $tree = !empty($data['tree']) ? $data['tree'] : null;
+        
+        if ($return = $this->doDeleteCrudItem($data, $key))
+        {
+            if (!empty($this->item->is_root)) {} else {
+                $tree = (string) $this->item->tree;
+            }
+        }
+    
+        $route = str_replace('{menu}', $tree, $this->create_item_route );
+        $this->setRedirect( $route );
+    
+        return $return;
+    }
     
     protected function getModel() 
     {
@@ -37,7 +105,7 @@ class Menu extends BaseAuth
     protected function displayCreate() 
     {
         $f3 = \Base::instance();
-        $f3->set('pagetitle', 'Edit Menu');
+        $f3->set('pagetitle', 'Create Menu');
         
         $view = new \Dsc\Template;
         echo $view->render('Admin/Views::menus/create.php');        
@@ -47,6 +115,10 @@ class Menu extends BaseAuth
     {
         $f3 = \Base::instance();
         $f3->set('pagetitle', 'Edit Menu');
+        
+        $model = $this->getModel();
+        $parents = $model->getParents();
+        $f3->set('parents', $parents );
         
         $view = new \Dsc\Template;
         echo $view->render('Admin/Views::menus/edit.php');

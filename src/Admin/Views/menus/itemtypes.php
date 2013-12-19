@@ -11,7 +11,7 @@
 
         <div id="collapse-links" class="panel-collapse in">
             <div class="panel-body">
-                <form class="form-horizontal" action="./admin/menuitem" method="post">
+                <form class="form-horizontal" action="./admin/menu" method="post">
                     <div class="form-group">
                         <label for="link-url" class="col-sm-4 control-label">URL</label>
                         <div class="col-sm-8">

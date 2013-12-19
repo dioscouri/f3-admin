@@ -3,16 +3,9 @@ namespace Admin\Controllers;
 
 class Menus extends BaseAuth 
 {
-
     protected function getModel()
     {
         $model = new \Admin\Models\Menus;
-        return $model;
-    }
-    
-    protected function getItemsModel()
-    {
-        $model = new \Admin\Models\MenuItems;
         return $model;
     }
     
@@ -22,7 +15,7 @@ class Menus extends BaseAuth
         $f3->set('pagetitle', 'Edit Menus');
         
         $model = $this->getModel();
-        $parents = $model->getList();
+        $parents = $model->getParents();
         $f3->set('parents', $parents );
         
         $id = $this->inputfilter->clean( $f3->get('PARAMS.id'), 'alnum' );
@@ -31,12 +24,11 @@ class Menus extends BaseAuth
         $list = array();
         if ($id) {
             
-            $item = $model->emptyState()->setState('filter.id', $id)->getItem();
+            $item = $model->emptyState()->setState('filter.root', true)->setState('filter.id', $id)->getItem();
             $f3->set('item', $item );
 
-            $itemsModel = $this->getItemsModel();
-            $list = $itemsModel->emptyState()->populateState()->setState('filter.tree', $id)->paginate();
-            $f3->set('state', $itemsModel->getState() );
+            $list = $model->emptyState()->populateState()->setState('filter.root', false)->setState('filter.tree', $id)->paginate();
+            $f3->set('state', $model->getState() );
             
             $pagination = new \Dsc\Pagination($list['total'], $list['limit']);
             $f3->set('pagination', $pagination );

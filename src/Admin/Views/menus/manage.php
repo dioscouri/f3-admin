@@ -1,10 +1,4 @@
 <?php //echo \Dsc\Debug::dump( $quickadd, false ); ?>
-<script>
-AdminRedirectToSelectedMenu = function(response) {
-    var url = './admin/menus/' + response.result._id.$id;
-    window.location = url;
-}
-</script>
 
 <div class="row">
     <div class="col-md-12">
@@ -20,15 +14,13 @@ AdminRedirectToSelectedMenu = function(response) {
                 <?php } ?>
             </div>
             <div class="col-sm-6">
-                <form class="pull-right form-inline dsc-ajax-form" action="./admin/menu" method="post" data-callback="AdminRedirectToSelectedMenu" data-message_container="quick-form-response-container">
-                    <div class="form-group">
-                        <div id="quick-form-response-container"></div>
-                    </div>
+                <form class="pull-right form-inline" action="./admin/menu" method="post">
                     <div class="form-group">Create a new menu:</div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="new_menu_title" placeholder="New Menu Title" name="title">
                     </div>
                     <div class="form-group form-actions">
+                        <input type="hidden" name="is_root" value="1">
                         <button type="submit" class="btn btn-default">Create</button>
                     </div>
                     <!-- /.form-group -->
