@@ -54,12 +54,22 @@
             </td>
             
             <td class="">
-                <a href="./admin/menu/<?php echo $item->_id; ?>/edit">
-                <?php echo @str_repeat( "&ndash;", substr_count( @$item->path, "/" ) - 2 ) . " " . $item->title; ?>
-                </a>
-                <p class="help-block">
-                <?php echo $item->path; ?>
-                </p>
+                <ul class="list-unstyled list-inline">
+                    <?php if ((substr_count( $item->path, "/" ) - 2) > 0) { ?>
+                    <li>
+                        <?php echo str_repeat( "<small><span class='text-muted'>|&mdash;</span></small>", substr_count( $item->path, "/" ) - 2 ); ?>
+                        <p class="help-block">&nbsp;</p>                        
+                    </li>
+                    <?php } ?>
+                    <li>
+                        <a href="./admin/menu/<?php echo $item->_id; ?>/edit">
+                        <?php echo $item->title; ?>
+                        </a>
+                        <p class="help-block">
+                        <?php echo $item->path; ?>
+                        </p>
+                    </li>
+                </ul>
             </td>
             
             <td class="">

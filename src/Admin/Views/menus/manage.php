@@ -54,7 +54,9 @@
         <div class="portlet portlet-plain">
             <div class="portlet-header">
                 <h3 class="pull-left">Quick-Add to Menu</h3>
+                <?php /* ?>
                 <span class="pull-right"> <a class="label label-default" href="javascript:void(0);">Advanced Add</a>
+                */ ?>
                 </span>
             </div>
             <!-- /.portlet-header -->
