@@ -16,8 +16,20 @@ jQuery(document).ready(function(){
         <div class="col-md-12">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" name="title" placeholder="Title" value="<?php echo $flash->old('title'); ?>" class="form-control" />
-                <input id="tree" name="tree" value="<?php echo $flash->old('tree'); ?>" type="hidden">
+                <input type="text" name="title" placeholder="Title" value="<?php echo $flash->old('title'); ?>" class="form-control" /> <input id="tree" name="tree" value="<?php echo $flash->old('tree'); ?>" type="hidden">
+            </div>
+            <!-- /.form-group -->
+
+            <div class="form-group">
+                <label>Published</label>
+                <div class="form-group">
+                <label class="radio-inline">
+                    <input type="radio" name="published" value="1" <?php if ($flash->old('published') == true) { echo 'checked'; } ?>> Yes
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="published" value="0" <?php if ($flash->old('published') != true) { echo 'checked'; } ?>> No
+                </label>
+                </div>
             </div>
             <!-- /.form-group -->
             
@@ -76,15 +88,15 @@ jQuery(document).ready(function(){
                             </li>
                         </ul>
                     </div>
-                        
+
                     &nbsp;
                     <a class="btn btn-default" href="./admin/menus/<?php echo $item->tree; ?>">Cancel</a>
                 </div>
 
             </div>
             <!-- /.form-group -->
-    
+
         </div>
-        
+
     </div>
 </form>

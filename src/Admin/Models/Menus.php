@@ -113,6 +113,13 @@ class Menus extends \Dsc\Models\Nested
         {
             $values['path'] = $this->generatePath($values);
         }
+        
+        // if published is not set, set it
+        if (!isset($values['published'])) {
+            $values['published'] = false;
+        } else {
+            $values['published'] = (bool) $values['published'];
+        }
     
         $options['skip_validation'] = true; // we've already done it above, so stop the parent from doing it
     

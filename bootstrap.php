@@ -29,6 +29,8 @@ switch ($global_app_name)
         $f3->route('POST /admin/menu/@id', '\Admin\Controllers\Menu->update');
         $f3->route('DELETE /admin/menu/@id', '\Admin\Controllers\Menu->delete');
         $f3->route('GET /admin/menu/@id/delete', '\Admin\Controllers\Menu->delete');
+        $f3->route('GET /admin/menu/@id/moveup', '\Admin\Controllers\Menu->moveUp');
+        $f3->route('GET /admin/menu/@id/movedown', '\Admin\Controllers\Menu->moveDown');
         
         // TODO set some app-specific settings, if desired
         

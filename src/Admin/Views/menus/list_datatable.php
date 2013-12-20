@@ -36,10 +36,10 @@
 	<thead>
 		<tr>
 		    <th class="checkbox-column"><input type="checkbox" class="icheck-input"></th>
-			<th>Title</th>
+			<th>Title + Path</th>
 			<th>URL</th>
-			<th>Published</th>
-			<th>Ordering</th>			
+			<th class="text-center">Published</th>
+			<th class="text-center">Ordering</th>			
 			<th class="col-md-1"></th>
 		</tr>
 	</thead>
@@ -79,9 +79,23 @@
             </td>
             
             <td class="text-center">
+                <?php if (!isset($item->published)) { ?>
+                <span class="label label-default">Undefined</span>
+                <?php } elseif ($item->published) { ?>
+                <span class="label label-success">Published</span>
+                <?php } else { ?>
+                <span class="label label-secondary">Unpublished</span>
+                <?php } ?>
             </td>
             
             <td class="text-center">
+                <a class="btn btn-xs btn-tertiary" href="./admin/menu/<?php echo $item->id; ?>/moveup">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                &nbsp;
+                <a class="btn btn-xs btn-tertiary" href="./admin/menu/<?php echo $item->id; ?>/movedown">
+                    <i class="fa fa-chevron-down"></i>
+                </a>
             </td>
                             
             <td class="text-center">

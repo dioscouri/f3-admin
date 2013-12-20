@@ -3,10 +3,12 @@ namespace Admin\Controllers;
 
 class Menu extends BaseAuth 
 {
-    use \Dsc\Traits\Controllers\CrudItem {
+    use \Dsc\Traits\Controllers\OrderableItem {
         doAdd as doAddCrudItem;
         doUpdate as doUpdateCrudItem;
         doDelete as doDeleteCrudItem;
+        doMoveUp as doMoveUpCrudItem;
+        doMoveDown as doMoveDownCrudItem;
     }
     
     protected $list_route = '/admin/menus/{menu}';
@@ -66,6 +68,40 @@ class Menu extends BaseAuth
         $tree = !empty($data['tree']) ? $data['tree'] : null;
         
         if ($return = $this->doDeleteCrudItem($data, $key))
+        {
+            if (!empty($this->item->is_root)) {} else {
+                $tree = (string) $this->item->tree;
+            }
+        }
+    
+        $route = str_replace('{menu}', $tree, $this->create_item_route );
+        $this->setRedirect( $route );
+    
+        return $return;
+    }
+    
+    protected function doMoveUp(array $data, $key=null)
+    {
+        $tree = !empty($data['tree']) ? $data['tree'] : null;
+    
+        if ($return = $this->doMoveUpCrudItem($data, $key))
+        {
+            if (!empty($this->item->is_root)) {} else {
+                $tree = (string) $this->item->tree;
+            }
+        }
+    
+        $route = str_replace('{menu}', $tree, $this->create_item_route );
+        $this->setRedirect( $route );
+    
+        return $return;
+    }
+    
+    protected function doMoveDown(array $data, $key=null)
+    {
+        $tree = !empty($data['tree']) ? $data['tree'] : null;
+    
+        if ($return = $this->doMoveDownCrudItem($data, $key))
         {
             if (!empty($this->item->is_root)) {} else {
                 $tree = (string) $this->item->tree;
