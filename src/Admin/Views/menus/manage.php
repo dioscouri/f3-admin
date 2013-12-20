@@ -1,6 +1,6 @@
 <?php //echo \Dsc\Debug::dump( $quickadd, false ); ?>
 
-<?php if (empty($parents)) { ?>
+<?php if (empty($roots)) { ?>
     <div class="alert alert-warning">Please create a menu to begin</div>
 <?php } ?>
 
@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="well clearfix">
             <div class="col-sm-6">
-                <?php if (!empty($parents)) { ?>
+                <?php if (!empty($roots)) { ?>
                 <form class="form-inline" role="form" action="./admin/menus" method="get">
                     <div class="form-group">Select a menu to edit:</div>
                     <div class="form-group" id="parents">

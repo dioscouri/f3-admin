@@ -16,26 +16,11 @@ class Menus extends \Dsc\Models\Nested
         );
     }
     
-    public function createRoot( $menus_mapper )
-    {
-        $mapper = $this->getMapper();
-        $mapper->reset();
-        $mapper->tree = (string) $menus_mapper->id;
-        $mapper->title = $menus_mapper->title;
-        $mapper->is_root = true;
-        $mapper->lft = 1;
-        $mapper->rgt = 2;
-        $mapper->slug = $menus_mapper->slug;
-        $mapper->path = "/" . $mapper->slug;
-    
-        return $mapper->save();
-    }
-    
     /**
      *
      * @return array
      */
-    public function getParents()
+    public function getRoots()
     {
         $return = array();
         $return = $this->emptyState()->setState('filter.root', true)->getList();
@@ -132,6 +117,35 @@ class Menus extends \Dsc\Models\Nested
         $options['skip_validation'] = true; // we've already done it above, so stop the parent from doing it
     
         return parent::save( $values, $options, $mapper );
+    }
+    
+    public function update( $mapper, $values, $options=array() )
+    {
+        $update_children = isset($options['update_children']) ? $options['update_children'] : false;
+        
+        // if the mapper's parent is different from the $values['parent'], then we also need to update all the children
+        if ($mapper->parent != @$values['parent']) {
+            // update children after save
+            $update_children = true;
+        }
+    
+        if ($updated = $this->save( $values, $options, $mapper ))
+        {
+            if ($update_children)
+            {
+                if ($children = $this->emptyState()->setState('filter.parent', (string) $updated->id)->getList())
+                {
+                    foreach ($children as $child)
+                    {
+                        $child_values = $child->cast();
+                        unset($child_values['path']);
+                        $this->update( $child, $child_values, array('update_children' => true) );
+                    }
+                }
+            }
+        }
+    
+        return $updated;
     }
     
     public function generatePath( $values )

@@ -8,12 +8,12 @@ jQuery(document).ready(function(){
 });
 </script>
 
-<?php if (!empty($parents)) { ?>
+<?php if (!empty($roots)) { ?>
 <select name="selected-menu" id="selected-menu" class="form-control">
 <?php if (empty($selected)) { ?>
     <option>-Please select a menu-</option>
 <?php } ?>    
-<?php foreach ($parents as $one) { ?>
+<?php foreach ($roots as $one) { ?>
     <option value="<?php echo $one->id; ?>" <?php if ($one->_id == $selected) { echo "selected='selected'"; } ?>><?php echo $one->title; ?></option>                    
 <?php } ?> 
 </select>

@@ -37,7 +37,9 @@
 		<tr>
 		    <th class="checkbox-column"><input type="checkbox" class="icheck-input"></th>
 			<th>Title</th>
-			<th>Path</th>
+			<th>URL</th>
+			<th>Published</th>
+			<th>Ordering</th>			
 			<th class="col-md-1"></th>
 		</tr>
 	</thead>
@@ -55,12 +57,21 @@
                 <a href="./admin/menu/<?php echo $item->_id; ?>/edit">
                 <?php echo @str_repeat( "&ndash;", substr_count( @$item->path, "/" ) - 2 ) . " " . $item->title; ?>
                 </a>
+                <p class="help-block">
+                <?php echo $item->path; ?>
+                </p>
             </td>
             
             <td class="">
                 <a href="./admin/menu/<?php echo $item->_id; ?>/edit">
-                <?php echo $item->path; ?>
+                <?php echo $item->{'details.url'}; ?>
                 </a>
+            </td>
+            
+            <td class="text-center">
+            </td>
+            
+            <td class="text-center">
             </td>
                             
             <td class="text-center">

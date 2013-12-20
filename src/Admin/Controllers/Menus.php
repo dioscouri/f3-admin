@@ -15,8 +15,8 @@ class Menus extends BaseAuth
         $f3->set('pagetitle', 'Edit Menus');
         
         $model = $this->getModel();
-        $parents = $model->getParents();
-        $f3->set('parents', $parents );
+        $roots = $model->getRoots();
+        $f3->set('roots', $roots );
         
         $id = $this->inputfilter->clean( $f3->get('PARAMS.id'), 'alnum' );
         $f3->set('selected', $id );
@@ -27,7 +27,7 @@ class Menus extends BaseAuth
             $item = $model->emptyState()->setState('filter.root', true)->setState('filter.id', $id)->getItem();
             $f3->set('item', $item );
 
-            $list = $model->emptyState()->populateState()->setState('filter.root', false)->setState('filter.tree', $id)->paginate();
+            $list = $model->emptyState()->populateState()->setState('filter.root', false)->setState('filter.tree', $id)->setState('order_clause', array( 'tree'=> 1, 'lft' => 1 ))->paginate();
             $f3->set('state', $model->getState() );
             
             $pagination = new \Dsc\Pagination($list['total'], $list['limit']);
@@ -47,8 +47,8 @@ class Menus extends BaseAuth
     public function getAll()
     {
         $model = $this->getModel();
-        $parents = $model->getParents();
-        \Base::instance()->set('parents', $parents );
+        $roots = $model->getRoots();
+        \Base::instance()->set('roots', $roots );
     
         \Base::instance()->set('selected', 'null' );
     

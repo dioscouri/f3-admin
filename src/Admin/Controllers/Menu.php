@@ -117,8 +117,11 @@ class Menu extends BaseAuth
         $f3->set('pagetitle', 'Edit Menu');
         
         $model = $this->getModel();
-        $parents = $model->getParents();
-        $f3->set('parents', $parents );
+        $roots = $model->getRoots();
+        $f3->set('roots', $roots );
+        
+        $all = $model->emptyState()->setState('order_clause', array( 'tree'=> 1, 'lft' => 1 ))->getList();
+        $f3->set('all', $all );
         
         $view = new \Dsc\Template;
         echo $view->render('Admin/Views::menus/edit.php');
