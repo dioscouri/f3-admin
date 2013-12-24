@@ -40,13 +40,13 @@ class Menus extends \Dsc\Models\Nested
         }
     
         $filter_tree = $this->getState('filter.tree');
-        if (strlen($filter_tree)) {
-            $this->filters['tree'] = (string) $filter_tree;
+        if (!empty($filter_tree)) {
+            $this->filters['tree'] = new \MongoId((string) $filter_tree );
         }
     
         $filter_parent = $this->getState('filter.parent');
-        if (strlen($filter_parent)) {
-            $this->filters['parent'] = $filter_parent;
+        if (!empty($filter_parent)) {
+            $this->filters['parent'] = new \MongoId((string) $filter_parent );
         }
     
         return $this->filters;
@@ -71,6 +71,8 @@ class Menus extends \Dsc\Models\Nested
         if (!isset($values['parent']) || $values['parent'] == "null")
         {
             $values['parent'] = null;
+        } else {
+        	$values['parent'] = new \MongoId((string) $values['parent']);
         }
     
         if (empty($values['path']))
@@ -95,6 +97,8 @@ class Menus extends \Dsc\Models\Nested
         {
             $this->validate( $values, $options, $mapper );
         }
+        
+        $values['tree'] = new \MongoId( (string) $values['tree'] );
     
         // if no slug exists, generate it and make sure it's unique
         if (empty($values['slug']))
@@ -106,6 +110,8 @@ class Menus extends \Dsc\Models\Nested
         if (!isset($values['parent']) || $values['parent'] == "null")
         {
             $values['parent'] = null;
+        } else {
+        	$values['parent'] = new \MongoId((string) $values['parent']);
         }
     
         // if no path exists, set it
@@ -147,11 +153,11 @@ class Menus extends \Dsc\Models\Nested
         
         if ($mapper->tree != @$values['tree']) 
         {
-        	// update the tree for this node and all descendants
+        	// update the tree value for this node and all descendants
         	$result = $this->getCollection()->update(
         			array(
         					'lft' => array('$gte' => $mapper->lft, '$lte' => $mapper->rgt ),
-        					'tree' => (string) $mapper->tree
+        					'tree' => $mapper->tree
         			),
         			array(
         					'$set' => array( 'tree' => $values['tree'] )
@@ -166,7 +172,7 @@ class Menus extends \Dsc\Models\Nested
         {
             if ($update_children)
             {
-                if ($children = $this->emptyState()->setState('filter.parent', (string) $updated->id)->getList())
+                if ($children = $this->emptyState()->setState('filter.parent', $updated->id)->getList())
                 {
                     foreach ($children as $child)
                     {
@@ -218,18 +224,4 @@ class Menus extends \Dsc\Models\Nested
     
         return false;
     }
-    
-    /*
-    public function delete( $mapper, $options=array() )
-    {
-        $tree = (string) $mapper->id;
-        
-        if ($return = parent::delete($mapper, $options)) 
-        {
-            // delete all menu items in this tree
-            $collection = $this->getItemsModel()->getCollection();
-            $collection->remove(array('tree' => $tree));
-        }
-    }
-    */
 }

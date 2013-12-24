@@ -23,21 +23,21 @@ class Menu extends BaseAuth
         if (!empty($data['is_root'])) 
         {
             $data['is_root'] = true;
-            $data['tree'] = $data['title'];
+            $data['tree'] = new \MongoId();
         }
         
         if ($return = $this->doAddCrudItem($data))
         {
             if (!empty($data['is_root']))
             {
-                $tree = (string) $this->item->id;
+                $tree = $this->item->id;
                                 
                 $this->item->tree = $tree;
                 $this->item->save();
             }
         }
         
-        $route = str_replace('{menu}', $tree, $this->create_item_route );
+        $route = str_replace('{menu}', (string) $tree, $this->create_item_route );
         $this->setRedirect( $route );
         
         return $return;
