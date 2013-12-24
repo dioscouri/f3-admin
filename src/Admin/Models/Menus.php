@@ -128,12 +128,38 @@ class Menus extends \Dsc\Models\Nested
     
     public function update( $mapper, $values, $options=array() )
     {
-        $update_children = isset($options['update_children']) ? $options['update_children'] : false;
-        
+    	$update_children = isset($options['update_children']) ? $options['update_children'] : false;
+    	
+    	if (empty($values['parent']) || $values['parent'] == 'null') {
+    		$values['is_root'] = true;
+    	} else {
+    		$values['is_root'] = false;
+    	}
+
+    	// rebuild the path
+    	$values['path'] = $this->generatePath($values);
+    	
         // if the mapper's parent is different from the $values['parent'], then we also need to update all the children
-        if ($mapper->parent != @$values['parent']) {
+        if ($mapper->tree != @$values['tree'] || $mapper->parent != @$values['parent'] || $mapper->title != @$values['title'] || $mapper->path != @$values['path']) {
             // update children after save
             $update_children = true;
+        }
+        
+        if ($mapper->tree != @$values['tree']) 
+        {
+        	// update the tree for this node and all descendants
+        	$result = $this->getCollection()->update(
+        			array(
+        					'lft' => array('$gte' => $mapper->lft, '$lte' => $mapper->rgt ),
+        					'tree' => (string) $mapper->tree
+        			),
+        			array(
+        					'$set' => array( 'tree' => $values['tree'] )
+        			),
+        			array(
+        					'multiple'=> true
+        			)
+        	);
         }
     
         if ($updated = $this->save( $values, $options, $mapper ))
@@ -145,6 +171,7 @@ class Menus extends \Dsc\Models\Nested
                     foreach ($children as $child)
                     {
                         $child_values = $child->cast();
+                        $child_values['tree'] = $updated->tree; // in case the tree changed in the parent
                         unset($child_values['path']);
                         $this->update( $child, $child_values, array('update_children' => true) );
                     }
@@ -159,16 +186,10 @@ class Menus extends \Dsc\Models\Nested
     {
         $path = null;
     
-        $root = $this->getMapper()->getRoot( $values['tree'] );
-    
-        if (empty($values['parent'])) {
-            if (!empty($values['is_root'])) {
-                $path = "/" . $values['slug'];
-            }
-            elseif(!empty($root->slug)) {
-                $path = "/" . $root->slug . "/" . $values['slug'];
-            }
-            
+        //$root = $this->getMapper()->getRoot( $values['tree'] );
+        
+        if (empty($values['parent']) || $values['parent'] == 'null') {
+            $path = "/" . $values['slug'];            
             return $path;
         }
     

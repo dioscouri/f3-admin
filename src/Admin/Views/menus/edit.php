@@ -16,7 +16,14 @@ jQuery(document).ready(function(){
         <div class="col-md-12">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" name="title" placeholder="Title" value="<?php echo $flash->old('title'); ?>" class="form-control" /> <input id="tree" name="tree" value="<?php echo $flash->old('tree'); ?>" type="hidden">
+                <input type="text" name="title" placeholder="Title" value="<?php echo $flash->old('title'); ?>" class="form-control" /> 
+                <input id="tree" name="tree" value="<?php echo $flash->old('tree'); ?>" type="hidden">
+            </div>
+            <!-- /.form-group -->
+            
+            <div class="form-group">
+                <label for="slug">Slug</label>
+                <input type="text" name="slug" placeholder="Slug" value="<?php echo $flash->old('slug'); ?>" class="form-control" />
             </div>
             <!-- /.form-group -->
 
@@ -37,6 +44,10 @@ jQuery(document).ready(function(){
             <div class="form-group">
                 <label for="parent">Parent</label>
                 <select id="parent" name="parent" class="form-control ui-select2">
+                    <optgroup label="No Parent">
+                        <option data-tree="<?php echo $item->id; ?>" value="null" <?php if (null == $flash->old('parent')) { echo "selected='selected'"; } ?>>Menu Root</option>
+                    </optgroup>
+                    
                     <?php foreach ($all as $one) { ?>
                         <?php
                         if (strpos($one->path, $item->path) !== false) {

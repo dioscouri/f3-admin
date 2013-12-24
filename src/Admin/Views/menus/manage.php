@@ -39,7 +39,7 @@
         <h3 class="clearfix">
             <?php echo $item->title; ?>
             <a href="./admin/menu/<?php echo $selected; ?>/edit">
-                <small>Rename</small>
+                <small>Edit</small>
             </a>
             <a href="./admin/menu/<?php echo $selected; ?>/delete" class="btn btn-xs btn-danger pull-right" data-bootbox="confirm">Delete Menu</a>
         </h3>
