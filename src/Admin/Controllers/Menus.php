@@ -20,6 +20,7 @@ class Menus extends BaseAuth
         
         $id = $this->inputfilter->clean( $f3->get('PARAMS.id'), 'alnum' );
         $f3->set('selected', $id );
+        $f3->set('tree', $id );
         
         $list = array();
         if ($id) {
@@ -37,6 +38,7 @@ class Menus extends BaseAuth
         
         $event = new \Joomla\Event\Event( 'onAdminNavigationGetQuickAddItems' );
         $event->addArgument('items', array());
+        $event->addArgument('tree', $id);
         $quickadd = \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
         $f3->set('quickadd', $quickadd);
         

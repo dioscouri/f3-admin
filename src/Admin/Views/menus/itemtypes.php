@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-8">
                             <button type="submit" class="btn btn-default">Add to Menu</button>
-                            <input type="hidden" name="tree" value="<?php echo $PARAMS['id']; ?>" />
+                            <input type="hidden" name="tree" value="<?php echo $tree; ?>" />
                         </div>
                     </div>
                 </form>

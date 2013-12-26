@@ -192,10 +192,13 @@ class Menus extends \Dsc\Models\Nested
     {
         $path = null;
     
-        //$root = $this->getMapper()->getRoot( $values['tree'] );
-        
         if (empty($values['parent']) || $values['parent'] == 'null') {
-            $path = "/" . $values['slug'];            
+            if (empty($values['is_root'])) {
+                if ($root = $this->getMapper()->getRoot( $values['tree'] )) {
+                    $path .= $root->path;
+                }
+            }
+            $path .= "/" . $values['slug'];            
             return $path;
         }
     
