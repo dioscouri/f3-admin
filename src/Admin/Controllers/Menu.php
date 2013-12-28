@@ -176,13 +176,4 @@ class Menu extends BaseAuth
     
     protected function displayRead() {}
     
-    public function quickadd() 
-    {
-    	$model = $this->getModel();
-    	$categories = $model->getList();
-    	\Base::instance()->set('categories', $categories );
-    	
-    	$view = new \Dsc\Template;
-    	echo $view->renderLayout('Admin/Views::menus/quickadd.php');
-    }
 }

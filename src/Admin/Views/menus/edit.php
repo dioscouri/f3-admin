@@ -83,6 +83,11 @@ jQuery(document).ready(function(){
             <!-- /.form-group -->
             <?php } ?>
             
+            <?php 
+            $event = new \Joomla\Event\Event( 'onDisplayAdminMenusEdit' );
+            $event->addArgument('flash', $flash)->addArgument('item', $item);
+            \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
+            ?>
             
             <div class="form-actions">
 
