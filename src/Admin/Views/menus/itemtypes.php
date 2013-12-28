@@ -28,6 +28,7 @@
                         <div class="col-sm-offset-4 col-sm-8">
                             <button type="submit" class="btn btn-default">Add to Menu</button>
                             <input type="hidden" name="tree" value="<?php echo $tree; ?>" />
+                            <input type="hidden" name="details[type]" value="link" />
                         </div>
                     </div>
                 </form>

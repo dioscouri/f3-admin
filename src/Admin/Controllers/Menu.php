@@ -160,6 +160,8 @@ class Menu extends BaseAuth
         $f3->set('all', $all );
         
         $view = new \Dsc\Template;
+        $view->event = $view->trigger( 'onDisplayAdminMenusEdit', array( 'item' => $this->getItem(), 'tabs' => array(), 'content' => array() ) );
+
         echo $view->render('Admin/Views::menus/edit.php');
     }
     

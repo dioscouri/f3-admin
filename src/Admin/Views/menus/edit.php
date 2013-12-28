@@ -14,84 +14,10 @@ jQuery(document).ready(function(){
 <form id="detail-form" action="./admin/menu/<?php echo $item->get( $model->getItemKey() ); ?>" class="form" method="post">
     <div class="row">
         <div class="col-md-12">
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" name="title" placeholder="Title" value="<?php echo $flash->old('title'); ?>" class="form-control" /> 
-                <input id="tree" name="tree" value="<?php echo $flash->old('tree'); ?>" type="hidden">
-            </div>
-            <!-- /.form-group -->
-            
-            <div class="form-group">
-                <label for="slug">Slug</label>
-                <input type="text" name="slug" placeholder="Slug" value="<?php echo $flash->old('slug'); ?>" class="form-control" />
-            </div>
-            <!-- /.form-group -->
+        
+            <div class="form-actions clearfix">
 
-            <div class="form-group">
-                <label>Published</label>
-                <div class="form-group">
-                <label class="radio-inline">
-                    <input type="radio" name="published" value="1" <?php if ($flash->old('published') == true) { echo 'checked'; } ?>> Yes
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="published" value="0" <?php if ($flash->old('published') != true) { echo 'checked'; } ?>> No
-                </label>
-                </div>
-            </div>
-            <!-- /.form-group -->
-            
-            <?php if (!empty($all)) { ?>
-            <div class="form-group">
-                <label for="parent">Parent</label>
-                <select id="parent" name="parent" class="form-control ui-select2">
-                    <optgroup label="No Parent">
-                        <option data-tree="<?php echo $item->id; ?>" value="null" <?php if (null == $flash->old('parent')) { echo "selected='selected'"; } ?>>Menu Root</option>
-                    </optgroup>
-                    
-                    <?php foreach ($all as $one) { ?>
-                        <?php
-                        if (strpos($one->path, $item->path) !== false) {
-                            // an item cannot be its own descendant
-                            continue;
-                        }
-                        
-                        // display the options grouped by tree 
-                        if (empty($current_tree) || $current_tree != $one->tree) {
-                            if (!empty($current_tree)) {
-                                ?></optgroup><?php
-                            }
-                            $current_tree = $one->tree;
-                            ?>
-                            <optgroup label="<?php echo $one->title; ?>">
-                            <?php
-                        }
-                        ?>
-                        
-                        <?php if ($one->id == $current_tree) { ?>
-                        <option data-tree="<?php echo $one->tree; ?>" value="<?php echo $one->id; ?>" <?php if ($one->id == $flash->old('parent')) { echo "selected='selected'"; } ?>>Top Level of <?php echo $one->title; ?></option>                        
-                        <?php } else { ?>
-                        <option data-tree="<?php echo $one->tree; ?>" value="<?php echo $one->id; ?>" <?php if ($one->id == $flash->old('parent')) { echo "selected='selected'"; } ?>><?php echo @str_repeat( "&ndash;", substr_count( @$one->path, "/" ) - 1 ) . " " . $one->title; ?></option>
-                        <?php } ?>
-                    <?php } ?>
-                    
-                    <?php if (!empty($all)) { ?>
-                    </optgroup>
-                    <?php } ?>
-                    
-                </select>
-            </div>
-            <!-- /.form-group -->
-            <?php } ?>
-            
-            <?php 
-            $event = new \Joomla\Event\Event( 'onDisplayAdminMenusEdit' );
-            $event->addArgument('flash', $flash)->addArgument('item', $item);
-            \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
-            ?>
-            
-            <div class="form-actions">
-
-                <div>
+                <div class="pull-right">
                     <div class="btn-group">
                         <button type="submit" class="btn btn-primary">Save</button>
                         <input id="primarySubmit" type="hidden" value="save_edit" name="submitType" />
@@ -110,7 +36,109 @@ jQuery(document).ready(function(){
                 </div>
 
             </div>
-            <!-- /.form-group -->
+            <!-- /.form-actions -->
+            
+            <hr />
+        
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab-basics" data-toggle="tab"> Basics </a>
+                </li>
+                <?php foreach ((array) $this->event->getArgument('tabs') as $key => $title ) { ?>
+                <li>
+                    <a href="#tab-<?php echo $key; ?>" data-toggle="tab"> <?php echo $title; ?> </a>
+                </li>
+                <?php } ?>
+            </ul>
+            
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="tab-basics">
+                
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" placeholder="Title" value="<?php echo $flash->old('title'); ?>" class="form-control" /> 
+                        <input id="tree" name="tree" value="<?php echo $flash->old('tree'); ?>" type="hidden">
+                        <input name="details[type]" value="<?php echo $flash->old('details.type'); ?>" type="hidden">
+                    </div>
+                    <!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label for="slug">URL</label>
+                        <input type="text" name="details[url]" placeholder="URL" value="<?php echo $flash->old('details.url'); ?>" class="form-control" />
+                    </div>
+                    <!-- /.form-group -->
+                    
+                    <div class="form-group">
+                        <label for="slug">Slug</label>
+                        <input type="text" name="slug" placeholder="Slug" value="<?php echo $flash->old('slug'); ?>" class="form-control" />
+                    </div>
+                    <!-- /.form-group -->
+        
+                    <div class="form-group">
+                        <label>Published</label>
+                        <div class="form-group">
+                        <label class="radio-inline">
+                            <input type="radio" name="published" value="1" <?php if ($flash->old('published') == true) { echo 'checked'; } ?>> Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="published" value="0" <?php if ($flash->old('published') != true) { echo 'checked'; } ?>> No
+                        </label>
+                        </div>
+                    </div>
+                    <!-- /.form-group -->
+                    
+                    <?php if (!empty($all)) { ?>
+                    <div class="form-group">
+                        <label for="parent">Parent</label>
+                        <select id="parent" name="parent" class="form-control ui-select2">
+                            <optgroup label="No Parent">
+                                <option data-tree="<?php echo $item->id; ?>" value="null" <?php if (null == $flash->old('parent')) { echo "selected='selected'"; } ?>>Menu Root</option>
+                            </optgroup>
+                            
+                            <?php foreach ($all as $one) { ?>
+                                <?php
+                                if (strpos($one->path, $item->path) !== false) {
+                                    // an item cannot be its own descendant
+                                    continue;
+                                }
+                                
+                                // display the options grouped by tree 
+                                if (empty($current_tree) || $current_tree != $one->tree) {
+                                    if (!empty($current_tree)) {
+                                        ?></optgroup><?php
+                                    }
+                                    $current_tree = $one->tree;
+                                    ?>
+                                    <optgroup label="<?php echo $one->title; ?>">
+                                    <?php
+                                }
+                                ?>
+                                
+                                <?php if ($one->id == $current_tree) { ?>
+                                <option data-tree="<?php echo $one->tree; ?>" value="<?php echo $one->id; ?>" <?php if ($one->id == $flash->old('parent')) { echo "selected='selected'"; } ?>>Top Level of <?php echo $one->title; ?></option>                        
+                                <?php } else { ?>
+                                <option data-tree="<?php echo $one->tree; ?>" value="<?php echo $one->id; ?>" <?php if ($one->id == $flash->old('parent')) { echo "selected='selected'"; } ?>><?php echo @str_repeat( "&ndash;", substr_count( @$one->path, "/" ) - 1 ) . " " . $one->title; ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                            
+                            <?php if (!empty($all)) { ?>
+                            </optgroup>
+                            <?php } ?>
+                            
+                        </select>
+                    </div>
+                    <!-- /.form-group -->
+                    <?php } ?>
+                
+                </div>
+                
+                <?php foreach ((array) $this->event->getArgument('content') as $key => $content ) { ?>
+                <div class="tab-pane" id="tab-<?php echo $key; ?>">
+                    <?php echo $content; ?>
+                </div>
+                <?php } ?>
+            </div>
 
         </div>
 
