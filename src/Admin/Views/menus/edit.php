@@ -164,6 +164,19 @@ jQuery(document).ready(function(){
                     </div>
                     <!-- /.form-group -->
                     
+                     <!-- /.form-group -->
+                    <div class="form-group">
+                        <label for="class">Style Classes</label>
+                        <input type="text" name="class" placeholder="classes" value="<?php echo $flash->old('class'); ?>" class="form-control" />
+                    </div>
+                    <!-- /.form-group -->
+                     <!-- /.form-group -->
+                    <div class="form-group">
+                        <label for="class">Icon</label>
+                        <input type="text" name="icon" placeholder="fa " value="<?php echo $flash->old('icon'); ?>" class="form-control" />
+                    </div>
+                    
+
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <label>Megamenu Options</label>
