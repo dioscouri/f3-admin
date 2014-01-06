@@ -65,6 +65,12 @@ jQuery(document).ready(function(){
                         <input name="details[type]" value="<?php echo $flash->old('details.type'); ?>" type="hidden">
                     </div>
                     <!-- /.form-group -->
+                    
+                    <div class="form-group">
+                        <label>Subtitle</label>
+                        <input type="text" name="details[subtitle]" placeholder="Subtitle" value="<?php echo $flash->old('details.subtitle'); ?>" class="form-control" />
+                    </div>
+                    <!-- /.form-group -->
 
                     <div class="form-group">
                         <label>URL</label>
@@ -139,6 +145,15 @@ jQuery(document).ready(function(){
                 <div class="tab-pane" id="tab-display">
                 
                     <div class="form-group">
+                        <label>Display Type</label>
+                        <select name="display_type" class="form-control">
+                            <option value="normal" <?php if ($flash->old('display_type') == 'normal') { echo "selected='selected'"; } ?>>Normal</option>
+                            <option value="title" <?php if ($flash->old('display_type') == 'title') { echo "selected='selected'"; } ?>>Title</option>
+                        </select>      
+                    </div>
+                    <!-- /.form-group -->
+                
+                    <div class="form-group">
                         <label>Display Title</label>
                         <div class="form-group">
                         <label class="radio-inline">
@@ -152,50 +167,37 @@ jQuery(document).ready(function(){
                     <!-- /.form-group -->
                     
                     <div class="form-group">
-                        <label>Display Type</label>
+                        <label>Display Subtitle</label>
                         <div class="form-group">
                         <label class="radio-inline">
-                            <input type="radio" name="display_type" value="megamenu" <?php if ($flash->old('display_type') == 'megamenu') { echo 'checked'; } ?>> Megamenu
+                            <input type="radio" name="display_subtitle" value="1" <?php if (is_null($flash->old('display_subtitle')) || $flash->old('display_subtitle') == '1') { echo 'checked'; } ?>> Yes
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="display_type" value="dropdown" <?php if (!$flash->old('display_type') || $flash->old('display_type') == 'dropdown') { echo 'checked'; } ?>> Dropdown
+                            <input type="radio" name="display_subtitle" value="0" <?php if ($flash->old('display_subtitle') == '0') { echo 'checked'; } ?>> No
                         </label>
                         </div>
                     </div>
                     <!-- /.form-group -->
                     
-                     <!-- /.form-group -->
+                    <!-- /.form-group -->
                     <div class="form-group">
                         <label for="class">Style Classes</label>
                         <input type="text" name="class" placeholder="classes" value="<?php echo $flash->old('class'); ?>" class="form-control" />
                     </div>
                     <!-- /.form-group -->
-                     <!-- /.form-group -->
+                    
+                    <!-- /.form-group -->
                     <div class="form-group">
                         <label for="class">Icon</label>
                         <input type="text" name="icon" placeholder="fa " value="<?php echo $flash->old('icon'); ?>" class="form-control" />
                     </div>
-                    
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <label>Megamenu Options</label>
-                            <p class="help-block"><small>These options only apply 1) when the 'Display Type' above is set to "megamenu" and 2) if this is a first-level menu item</small></p>
+                            <label>Megamenu Options for Top Level Items</label>
+                            <p class="help-block"><small>The following options only apply if this is a first-level menu item</small></p>
                         </div>
                         <div class="panel-body">
-                        
-                            <div class="form-group row">
-                                <label class="col-md-2">Width</label>
-                                <div class="col-md-2">
-                                <select name="megamenu[width]" class="form-control">
-                                    <option value="25" <?php if ($flash->old('megamenu.width') == 25 || is_null($flash->old('megamenu.width')) ) { echo "selected='selected'"; } ?>>25% of the entire menu</option>
-                                    <option value="50" <?php if ($flash->old('megamenu.width') == 50) { echo "selected='selected'"; } ?>>50%</option>
-                                    <option value="100" <?php if ($flash->old('megamenu.width') == 100) { echo "selected='selected'"; } ?>>100%</option>
-                                </select>
-                                <p class="help-block">This is the width of the <i>entire</i> Megamenu.  This option only applies to first-level menu items.
-                                </div>
-                            </div>
-                            <!-- /.form-group -->
                         
                             <div class="form-group row">
                                 <label class="col-md-2">Columns</label>
@@ -209,6 +211,34 @@ jQuery(document).ready(function(){
                                     <option value="6" <?php if ($flash->old('megamenu.columns') == 6) { echo "selected='selected'"; } ?>>6</option>
                                 </select>
                                 </div>
+                                <p class="help-block">How many columns should this Megamenu contain? This will also determine the starting width of the megamenu, though you can adjust it with CSS.</p>
+                                <p class="help-block">After setting the number of columns here, assign a width to each this menu item's children.</p>
+                            </div>
+                            <!-- /.form-group -->
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <label>Megamenu Options for Items Below the Top Level</label>
+                            <p class="help-block"><small>The following options only apply to menu items that are not on the first level.</small></p>
+                        </div>
+                        <div class="panel-body">
+                        
+                            <div class="form-group row">
+                                <label class="col-md-2">Width</label>
+                                <div class="col-md-2">
+                                <select name="megamenu[width]" class="form-control">
+                                    <option value="1" <?php if ($flash->old('megamenu.width') == 1) { echo "selected='selected'"; } ?>>1</option>
+                                    <option value="2" <?php if ($flash->old('megamenu.width') == 2) { echo "selected='selected'"; } ?>>2</option>
+                                    <option value="3" <?php if ($flash->old('megamenu.width') == 3) { echo "selected='selected'"; } ?>>3</option>
+                                    <option value="4" <?php if ($flash->old('megamenu.width') == 4) { echo "selected='selected'"; } ?>>4</option>
+                                    <option value="5" <?php if ($flash->old('megamenu.width') == 5) { echo "selected='selected'"; } ?>>5</option>
+                                    <option value="6" <?php if ($flash->old('megamenu.width') == 6) { echo "selected='selected'"; } ?>>6</option>
+                                </select>
+                                </div>
+                                <p class="help-block">How many columns should this menu item span?</p>
                             </div>
                             <!-- /.form-group -->
                             
@@ -221,11 +251,11 @@ jQuery(document).ready(function(){
                                 <label class="radio-inline">
                                     <input type="radio" name="megamenu[group_children]" value="0" <?php if ($flash->old('megamenu.group_children') == '0') { echo 'checked'; } ?>> No
                                 </label>
-                                <p class="help-block">If set to YES, this item's children will be displayed in a grouped list with their children. 
+                                <p class="help-block">If set to YES, this item's children will be displayed grouped as an unordered list rather than as dropdowns. 
                                 </div>
                             </div>
                             <!-- /.form-group -->
-                            
+                        
                         </div>
                     </div>
                     

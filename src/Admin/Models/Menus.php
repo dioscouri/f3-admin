@@ -48,6 +48,15 @@ class Menus extends \Dsc\Models\Nested
         if (!empty($filter_parent)) {
             $this->filters['parent'] = new \MongoId((string) $filter_parent );
         }
+        
+        $filter_published = $this->getState('filter.published');
+        if ($filter_published || (int) $filter_published == 1) {
+            // only published items, using both publication dates and published field
+            $this->filters['published'] = true;
+        } elseif ((is_bool($filter_published) && !$filter_published) || (strlen($filter_published) && (int) $filter_published == 0)) {
+            // only unpublished items
+            $this->filters['published'] = array( '$ne' => true );
+        }
     
         return $this->filters;
     }
