@@ -10,10 +10,10 @@ class Menus extends \Dsc\Models\Nested
     public function __construct($config=array())
     {
         parent::__construct($config);
-    
-        $this->filter_fields = $this->filter_fields + array(
-                        'ordering', 'path'
-        );
+
+        $this->filter_fields = array_merge( $this->filter_fields, array(
+            'ordering', 'path'
+        ) );
     }
     
     /**

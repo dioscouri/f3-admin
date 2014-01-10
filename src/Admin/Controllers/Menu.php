@@ -141,7 +141,7 @@ class Menu extends BaseAuth
     protected function displayCreate() 
     {
         $f3 = \Base::instance();
-        $f3->set('pagetitle', 'Create Menu');
+        $f3->set('pagetitle', 'Create Menu Item');
         
         $view = new \Dsc\Template;
         echo $view->render('Admin/Views::menus/create.php');        
@@ -150,7 +150,7 @@ class Menu extends BaseAuth
     protected function displayEdit()
     {
         $f3 = \Base::instance();
-        $f3->set('pagetitle', 'Edit Menu');
+        $f3->set('pagetitle', 'Edit Menu Item');
         
         $model = $this->getModel();
         $roots = $model->getRoots();
