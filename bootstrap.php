@@ -21,6 +21,7 @@ switch ($global_app_name)
         $f3->route('GET /admin/menus/all [ajax]','\Admin\Controllers\Menus->getAll');
         $f3->route('GET|POST /admin/menus', '\Admin\Controllers\Menus->display');
         $f3->route('GET|POST /admin/menus/@id', '\Admin\Controllers\Menus->display');
+        $f3->route('GET|POST /admin/menus/@id/page/@page', '\Admin\Controllers\Menus->display');
         
         $f3->route('GET /admin/menu', '\Admin\Controllers\Menu->create');
         $f3->route('POST /admin/menu', '\Admin\Controllers\Menu->add');
