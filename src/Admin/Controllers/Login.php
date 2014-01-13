@@ -21,7 +21,14 @@ class Login extends Base
     public function auth()
     {
         $username_input = $this->input->getAlnum('login-username');
-        $password_input = $this->input->getAlnum('login-password');
+        $password_input = $this->input->getString('login-password');
+        
+        if (empty($username_input) || empty($password_input)) 
+        {
+            \Dsc\System::instance()->addMessage('Login failed - Incomplete Form', 'error');
+            \Base::instance()->reroute("/admin/login");
+            return;
+        }
         
         // check if safemode is being used
         $safemode_enabled = \Base::instance()->get('safemode.enabled');
@@ -42,15 +49,15 @@ class Login extends Base
                 $user->email = "safemode@localhost";
                 
                 \Base::instance()->set('SESSION.user', $user);
-
                 \Base::instance()->reroute("/admin");
                 return;
             }
         }
         
-        /*
-        $model = new \Admin\Models\Users;
-        $model->setState('filter.id', $id);
+        // TODO Fire the authentication Listeners, or let an auth model handle that?
+        
+        $model = new \Users\Admin\Models\Users;
+        $model->setState('filter.username', $username_input);
 
         try {
             $item = $model->getItem();
@@ -59,15 +66,18 @@ class Login extends Base
             \Base::instance()->reroute("/admin/users");
             return;
         }
-        */
-        // TODO attempt authorization
-        // TODO set session user if success
-        // TODO redirect to /admin
         
-        // TODO otherwise, reroute to login with error message
+        if ($simple->verify($password_input, $item->password))
+        {
+            \Base::instance()->set('SESSION.user', $item);
+            \Base::instance()->reroute("/admin");
+            return;            
+        }
+        
         \Dsc\System::instance()->addMessage('Login failed', 'error');
-        
+        \Dsc\System::instance()->addMessage('Invalid Password', 'error');
         \Base::instance()->reroute("/admin/login");
+        return;            
     }
     
     public function logout()
