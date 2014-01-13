@@ -5,7 +5,7 @@ class Login extends Base
 {
     public function login()
     {
-        $user = \Base::instance()->get('SESSION.user');
+        $user = \Base::instance()->get('SESSION.admin.user');
         if(!empty($user)){
             \Base::instance()->reroute('/admin');
         }
@@ -48,7 +48,7 @@ class Login extends Base
                 $user->password = $safemode_password;
                 $user->email = "safemode@localhost";
                 
-                \Base::instance()->set('SESSION.user', $user);
+                \Base::instance()->set('SESSION.admin.user', $user);
                 \Base::instance()->reroute("/admin");
                 return;
             }
@@ -69,7 +69,7 @@ class Login extends Base
         
         if ($simple->verify($password_input, $item->password))
         {
-            \Base::instance()->set('SESSION.user', $item);
+            \Base::instance()->set('SESSION.admin.user', $item);
             \Base::instance()->reroute("/admin");
             return;            
         }
