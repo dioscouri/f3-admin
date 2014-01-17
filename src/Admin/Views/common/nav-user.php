@@ -2,7 +2,7 @@
     <li class="dropdown">
 		<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
 			<i class="fa fa-user"></i>
-        	<?php echo $this->app->get('SESSION.user')->username; ?> 
+        	<?php echo $this->app->get('SESSION.admin.user')->username; ?> 
         	<span class="caret"></span>
     	</a>
     	
