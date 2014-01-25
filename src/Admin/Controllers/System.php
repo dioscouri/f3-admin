@@ -16,6 +16,7 @@ class System extends BaseAuth
         \Dsc\System::instance()->getDispatcher()->triggerEvent($event); 
 
         $mapper->reset();
+        $mapper->priority = 99;
         $mapper->title = 'Navigation';
         $mapper->route = '';
         $mapper->icon = 'fa fa-tasks';
@@ -28,6 +29,7 @@ class System extends BaseAuth
         $mapper->save();
         
         $mapper->reset();
+        $mapper->priority = 100;
         $mapper->title = 'System';
         $mapper->route = '';
         $mapper->icon = 'fa fa-cogs';

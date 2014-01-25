@@ -1,7 +1,6 @@
 <?php 
 $current = str_replace( $BASE, '', $URI );
-$menu = new \Admin\Models\Nav\Primary;
-$items = $menu->getList();
+$items = (new \Admin\Models\Nav\Primary)->setState('order_clause', 'priority SORT_ASC, title, SORT_ASC')->getList();
 $active_has_been_found = false;
 ?>
 
