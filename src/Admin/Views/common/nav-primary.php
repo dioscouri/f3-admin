@@ -13,7 +13,7 @@ $active_has_been_found = false;
 	</li>
 	
 	<?php if ($items) { foreach ($items as $item) { ?>
-	<li  <?php if (!empty($item->id)) {echo 'id="'.$item->id.'"';}?>   class="<?php if ($current == $item->route || \Dsc\String::inStrings(\Joomla\Utilities\ArrayHelper::getColumn($item->children, 'route'), $current ) ) { echo 'active'; } ?> <?php echo !empty($item->children) ? 'dropdown' : null; ?> ">
+	<li  <?php if (!empty($item->id)) {echo 'id="'.$item->id.'"';}?>   class="<?php if ($current == $item->route || (!empty($item->base) && strpos($current, $item->base) !== false) || \Dsc\String::inStrings(\Joomla\Utilities\ArrayHelper::getColumn($item->children, 'route'), $current ) ) { echo 'active'; } ?> <?php echo !empty($item->children) ? 'dropdown' : null; ?> ">
 		<a href="<?php echo !empty($item->children) ? 'javascript:;' : '.' . $item->route; ?>">
 			<?php if (!empty($item->icon)) { ?><i class="<?php echo $item->icon; ?>"></i><?php } ?>
 			<?php if (!empty($item->title)) { ?><span class="title"><?php echo $item->title; ?></span> <?php } ?>
