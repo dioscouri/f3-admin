@@ -5,6 +5,8 @@ $global_app_name = $f3->get('APP_NAME');
 switch ($global_app_name) 
 {
     case "admin":
+        // TODO if the assets haven't ben copied to the public folder, do it
+        
         // register all the routes
     	$f3->route('GET /admin', '\Admin\Controllers\Home->display');
     	$f3->route('GET /admin/login', '\Admin\Controllers\Login->login');
