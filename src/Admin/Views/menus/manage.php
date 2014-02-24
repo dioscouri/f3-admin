@@ -10,7 +10,7 @@
             <div class="col-sm-6">
                 <?php if (!empty($roots)) { ?>
                 <form class="form-inline" role="form" action="./admin/menus" method="get">
-                    <div class="form-group">Select a menu to edit:</div>
+                    <div><label>Select a menu to edit:</label></div>
                     <div class="form-group" id="parents">
                         <?php echo $this->renderLayout('Admin/Views::menus/list_parents.php'); ?>
                     </div>
@@ -19,13 +19,13 @@
             </div>
             <div class="col-sm-6">
                 <form class="pull-right form-inline" action="./admin/menu" method="post">
-                    <div class="form-group">Create a new menu:</div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="new_menu_title" placeholder="New Menu Title" name="title">
-                    </div>
-                    <div class="form-group form-actions">
+                    <label>or create a new menu:</label>
+                    <div class="input-group">
                         <input type="hidden" name="is_root" value="1">
-                        <button type="submit" class="btn btn-default">Create</button>
+                        <input type="text" class="form-control" id="new_menu_title" placeholder="New Menu Title" name="title">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default">Create</button>
+                        </span>                        
                     </div>
                     <!-- /.form-group -->
                 </form>
@@ -53,7 +53,7 @@
     <div class="col-md-3">
         <div class="portlet portlet-plain">
             <div class="portlet-header">
-                <h3 class="pull-left">Quick-Add to Menu</h3>
+                <h3>Quick-Add to Menu</h3>
                 <?php /* ?>
                 <span class="pull-right"> <a class="label label-default" href="javascript:void(0);">Advanced Add</a>
                 */ ?>

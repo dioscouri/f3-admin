@@ -42,8 +42,7 @@ class Menus extends BaseAuth
         $quickadd = \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
         $f3->set('quickadd', $quickadd);
         
-        $view = new \Dsc\Template;
-        echo $view->render('Admin/Views::menus/manage.php');
+        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::menus/manage.php');
     }
     
     public function getAll()
@@ -53,9 +52,8 @@ class Menus extends BaseAuth
         \Base::instance()->set('roots', $roots );
     
         \Base::instance()->set('selected', 'null' );
-    
-        $view = new \Dsc\Template;
-        $html = $view->renderLayout('Admin/Views::menus/list_parents.php');
+
+        echo \Dsc\System::instance()->get('theme')->renderView('Admin/Views::menus/list_parents.php');
     
         return $this->outputJson( $this->getJsonResponse( array(
                         'result' => $html

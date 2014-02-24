@@ -33,7 +33,9 @@ switch ($global_app_name)
         $f3->route('GET /admin/menu/@id/moveup', '\Admin\Controllers\Menu->moveUp');
         $f3->route('GET /admin/menu/@id/movedown', '\Admin\Controllers\Menu->moveDown');
         
-        // TODO set some app-specific settings, if desired
+        // new way
+        \Dsc\System::instance()->get('theme')->setTheme('AdminTheme', $f3->get('PATH_ROOT') . 'vendor/dioscouri/f3-admin/src/Admin/Theme/' );
+        \Dsc\System::instance()->get('theme')->registerViewPath( $f3->get('PATH_ROOT') . 'vendor/dioscouri/f3-admin/src/Admin/Views/', 'Admin/Views' );
         
         // append this app's UI folder to the path
         $ui = $f3->get('UI');

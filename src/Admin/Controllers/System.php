@@ -49,8 +49,7 @@ class System extends BaseAuth
         \Base::instance()->set('pagetitle', 'System');
         \Base::instance()->set('subtitle', 'Rebuild Menu');
         
-        $view = new \Dsc\Template;
-        echo $view->render('home/default.php');
+        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::home/default.php');
     }
     
     public function diagnostics()
@@ -62,7 +61,6 @@ class System extends BaseAuth
     	\Base::instance()->set('subtitle', 'Diagnostics');
     	\Base::instance()->set('result', $result);
     	
-    	$view = new \Dsc\Template;
-    	echo $view->render('Admin/Views::system/diagnostics.php');
+    	echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::system/diagnostics.php');
     }
 }

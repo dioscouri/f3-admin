@@ -18,7 +18,6 @@ class Logs extends BaseAuth
         $pagination = new \Dsc\Pagination($list['total'], $list['limit']);
         \Base::instance()->set('pagination', $pagination );
         
-        $view = new \Dsc\Template;
-        echo $view->render('logs/list.php');
+        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::logs/list.php');
     }
 }

@@ -5,11 +5,7 @@ class Home extends BaseAuth
 {
     public function display()
     {
-        \Base::instance()->set('pagetitle', 'Dashboard');
-        \Base::instance()->set('subtitle', '');
-                
-        $view = new \Dsc\Template;
-        echo $view->render('home/default.php');
+        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::home/default.php');
     }
 }
 ?> 

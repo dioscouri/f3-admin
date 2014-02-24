@@ -9,13 +9,8 @@ class Login extends Base
         if(!empty($user)){
             \Base::instance()->reroute('/admin');
         }
-                
-        \Base::instance()->set('pagetitle', 'Login');
-        \Base::instance()->set('subtitle', '');
-
-        $view = new \Dsc\Template;
-        $view->setLayout('login.php');
-        echo $view->render('common/login.php');
+        
+        echo \Dsc\System::instance()->get('theme')->setVariant('login')->renderTheme('Admin/Views::common/login.php');
     }
     
     public function auth()

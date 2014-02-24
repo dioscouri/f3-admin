@@ -142,9 +142,8 @@ class Menu extends BaseAuth
     {
         $f3 = \Base::instance();
         $f3->set('pagetitle', 'Create Menu Item');
-        
-        $view = new \Dsc\Template;
-        echo $view->render('Admin/Views::menus/create.php');        
+
+        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::menus/create.php');
     }
     
     protected function displayEdit()
@@ -159,10 +158,9 @@ class Menu extends BaseAuth
         $all = $model->emptyState()->setState('order_clause', array( 'tree'=> 1, 'lft' => 1 ))->getList();
         $f3->set('all', $all );
         
-        $view = new \Dsc\Template;
+        $view = \Dsc\System::instance()->get('theme');
         $view->event = $view->trigger( 'onDisplayAdminMenusEdit', array( 'item' => $this->getItem(), 'tabs' => array(), 'content' => array() ) );
-
-        echo $view->render('Admin/Views::menus/edit.php');
+        echo $view->renderTheme('Admin/Views::menus/edit.php');
     }
     
     /**

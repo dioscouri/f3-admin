@@ -5,11 +5,7 @@ class Settings extends BaseAuth
 {
     public function display()
     {
-        \Base::instance()->set('pagetitle', 'Settings');
-        \Base::instance()->set('subtitle', '');
-        
-        $view = new \Dsc\Template;
-        echo $view->render('settings/default.php');
+        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::settings/default.php');
     }
     
     public function save()

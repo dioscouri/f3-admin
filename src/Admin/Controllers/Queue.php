@@ -17,8 +17,7 @@ class Queue extends BaseAuth
     
         $pagination = new \Dsc\Pagination($list['total'], $list['limit']);
         \Base::instance()->set('pagination', $pagination );
-        
-        $view = new \Dsc\Template;
-        echo $view->render('queue/list.php');
+
+        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::queue/list.php');
     }
 }
