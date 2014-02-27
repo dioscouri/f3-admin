@@ -15160,15 +15160,15 @@ disabled look for disabled choices in the results dropdown
 html {
   margin: 0;
   padding: 0;
-  height: 100%;
+  /*height: 100%;*/
   overflow-x: hidden !important;
   background: url('../img/mybg.png') #ffffff;
 }
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
+  /*height: 100%;
+  overflow: hidden;*/
   background: url('../img/mybg.png') #ffffff;
   direction: ltr;
 }
