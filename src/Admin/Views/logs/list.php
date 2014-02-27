@@ -1,6 +1,3 @@
-<?php //echo \Dsc\Debug::dump( $state, false ); ?>
-<?php //echo \Dsc\Debug::dump( $list ); ?>
-
 <form id="list-form" action="./admin/logs" method="post">
 
     <div class="row datatable-header">
@@ -50,7 +47,7 @@
             <?php foreach ($list['subset'] as $item) { ?>
                 <tr>
                     <td class="">
-                        <a href="./admin/log/<?php echo $item->_id; ?>">
+                        <a href="./admin/log/edit/<?php echo $item->_id; ?>">
                             <?php echo $item->datetime; ?>
                         </a>
                     </td>

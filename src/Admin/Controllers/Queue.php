@@ -3,7 +3,7 @@ namespace Admin\Controllers;
 
 class Queue extends BaseAuth 
 {
-    public function display()
+    public function index()
     {
         \Base::instance()->set('pagetitle', 'Logs');
         \Base::instance()->set('subtitle', '');

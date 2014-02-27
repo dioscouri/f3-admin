@@ -1,6 +1,3 @@
-<?php //echo \Dsc\Debug::dump( $state, false ); ?>
-<?php //echo \Dsc\Debug::dump( $list ); ?>
-        
 <div class="row datatable-header">
     <div class="col-sm-6">
         <div class="row row-marginless">
@@ -62,7 +59,7 @@
                     </li>
                     <?php } ?>
                     <li>
-                        <a href="./admin/menu/<?php echo $item->_id; ?>/edit">
+                        <a href="./admin/menu/edit/<?php echo $item->_id; ?>">
                         <?php echo $item->title; ?>
                         </a>
                         <p class="help-block">
@@ -73,7 +70,7 @@
             </td>
             
             <td class="">
-                <a href="./admin/menu/<?php echo $item->_id; ?>/edit">
+                <a href="./admin/menu/edit/<?php echo $item->_id; ?>">
                 <?php echo $item->{'details.url'}; ?>
                 </a>
             </td>
@@ -89,21 +86,21 @@
             </td>
             
             <td class="text-center">
-                <a class="btn btn-xs btn-tertiary" href="./admin/menu/<?php echo $item->id; ?>/moveup">
+                <a class="btn btn-xs btn-tertiary" href="./admin/menu/moveup/<?php echo $item->id; ?>">
                     <i class="fa fa-chevron-up"></i>
                 </a>
                 &nbsp;
-                <a class="btn btn-xs btn-tertiary" href="./admin/menu/<?php echo $item->id; ?>/movedown">
+                <a class="btn btn-xs btn-tertiary" href="./admin/menu/movedown/<?php echo $item->id; ?>">
                     <i class="fa fa-chevron-down"></i>
                 </a>
             </td>
                             
             <td class="text-center">
-                <a class="btn btn-xs btn-secondary" href="./admin/menu/<?php echo $item->_id; ?>/edit">
+                <a class="btn btn-xs btn-secondary" href="./admin/menu/edit/<?php echo $item->_id; ?>">
                     <i class="fa fa-pencil"></i>
                 </a>
                 &nbsp;
-                <a class="btn btn-xs btn-danger" data-bootbox="confirm" href="./admin/menu/<?php echo $item->_id; ?>/delete">
+                <a class="btn btn-xs btn-danger" data-bootbox="confirm" href="./admin/menu/delete/<?php echo $item->_id; ?>">
                     <i class="fa fa-times"></i>
                 </a>
             </td>

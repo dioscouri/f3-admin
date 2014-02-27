@@ -9,7 +9,7 @@ class Menus extends BaseAuth
         return $model;
     }
     
-    public function display()
+    public function index()
     {
         $f3 = \Base::instance();
         $f3->set('pagetitle', 'Edit Menus');
