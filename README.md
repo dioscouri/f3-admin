@@ -5,5 +5,5 @@ Symlink the /AdminTheme folder into your project's /public folder so you have /p
 Don't copy it.  Symlinking is better.
 
 ```
-ln -s /your/project/public/AdminTheme /your/project/vendor/dioscouri/f3-admin/src/AdminTheme
+ln -s /your/project/vendor/dioscouri/f3-admin/src/AdminTheme /your/project/public/AdminTheme
 ```
