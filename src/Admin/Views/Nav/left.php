@@ -1,6 +1,6 @@
 <!-- Left panel : Navigation area -->
 <!-- Note: This width of the aside area can be adjusted through LESS variables -->
-<aside id="left-panel">
+<aside id="left-panel" class="">
 
     <!-- User info -->
     <div class="login-info">

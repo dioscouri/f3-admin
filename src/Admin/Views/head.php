@@ -8,6 +8,8 @@
 <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
 <link rel="stylesheet" type="text/css" media="screen" href="./AdminTheme/css/smartadmin-production.css">
 <link rel="stylesheet" type="text/css" media="screen" href="./AdminTheme/css/smartadmin-skins.css">
+<link rel="stylesheet" type="text/css" media="screen" href="./AdminTheme/js/plugin/icheck/skins/minimal/blue.css">
+
 <link rel="stylesheet" type="text/css" media="screen" href="./AdminTheme/css/custom_style.css">
 
 <!-- FAVICONS -->

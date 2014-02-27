@@ -77,7 +77,7 @@ $(document).ready(function() {
 	}
 
 	//TODO: was moved from window.load due to IE not firing consist
-	nav_page_height()
+	nav_page_height();
 
 	// INITIALIZE LEFT NAV
 	if (!null) {
@@ -364,29 +364,32 @@ $(document).ready(function() {
 
 // Fix page and nav height
 function nav_page_height() {
-	setHeight = $('#main').height();
-	menuHeight = $.left_panel.height();
-	windowHeight = $(window).height() - $.navbar_height;
-	//set height
-
-	if (setHeight > windowHeight) {// if content height exceedes actual window height and menuHeight
-		$.left_panel.css('min-height', setHeight + 'px');
-		$.root_.css('min-height', setHeight + $.navbar_height + 'px');
-
-	} else {
-		$.left_panel.css('min-height', windowHeight + 'px');
-		$.root_.css('min-height', windowHeight + 'px');
-	}
+    mainHeight = $('#main').outerHeight(true);
+    menuHeight = $('#left-panel').height();
+    windowHeight = $(window).height() - $.navbar_height;
+    //set height
+    
+    if (mainHeight > windowHeight) {// if content height exceedes actual window height and menuHeight
+        //$('#left-panel').css('min-height', mainHeight + 'px');
+        //$('body').css('min-height', mainHeight + $.navbar_height + 'px');
+    } else {
+        //$('#left-panel').css('min-height', windowHeight + 'px');
+        //$('body').css('min-height', windowHeight + 'px');
+    }    
 }
 
 $('#main').resize(function() {
 	nav_page_height();
 	check_if_mobile_width();
-})
+});
 
 $('nav').resize(function() {
 	nav_page_height();
-})
+});
+
+$(window).load(function(){
+
+});
 
 function check_if_mobile_width() {
 	if ($(window).width() < 979) {
@@ -395,6 +398,41 @@ function check_if_mobile_width() {
 		$.root_.removeClass('mobile-view-activated');
 	}
 }
+
+/*!
+ * Simple jQuery Equal Heights
+ *
+ * Copyright (c) 2013 Matt Banks
+ * Dual licensed under the MIT and GPL licenses.
+ * Uses the same license as jQuery, see:
+ * http://docs.jquery.com/License
+ *
+ * @version 1.5.1
+ */
+(function($) {
+
+    $.fn.equalHeights = function() {
+        var maxHeight = 0,
+            $this = $(this);
+
+        $this.each( function() {
+            var height = $(this).innerHeight();
+
+            if ( height > maxHeight ) { maxHeight = height; }
+        });
+
+        return $this.css('height', maxHeight);
+    };
+
+    // auto-initialize plugin
+    $('[data-equal]').each(function(){
+        var $this = $(this),
+            target = $this.data('equal');
+        $this.find(target).equalHeights();
+    });
+
+})(jQuery);
+
 
 /* ~ END: NAV OR #LEFT-BAR RESIZE DETECT */
 

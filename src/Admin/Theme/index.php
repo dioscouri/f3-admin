@@ -8,7 +8,7 @@
     <?php echo $this->renderView('Admin/Views::head.php'); ?>
 </head>
 
-<body class="<?php echo !empty($body_class) ? $body_class : ''; ?>">
+<body class="clearfix <?php echo !empty($body_class) ? $body_class : ''; ?>">
 
     <?php echo $this->renderView('Admin/Views::js_footer.php'); ?>
     
@@ -18,14 +18,14 @@
     
     <?php echo $this->renderView('Admin/Views::Nav/left.php'); ?>
 
-    <div id="main" role="main">
+    <div id="main" role="main" class="clearfix">
         
 		<div id="ribbon">
 		<?php // breadcrumb? ?>
 		</div>
 		<!-- #ribbon -->
 		
-    	<div id="content">		
+    	<div id="content" class="clearfix">		
     
             <tmpl type="system.messages" />
     
@@ -37,7 +37,6 @@
     <!-- #main -->
     
     <?php // echo $this->renderView('Admin/Views::footer.php'); ?>
-    
     
 </body>
 

@@ -17,8 +17,52 @@
  * - BODY
  * - CUSTOM STYLES
  */
- 
- /* All levels */
+body {
+    position: relative;
+}
+
+form .tab-content {
+    padding: 10px;
+}
+
 nav ul b {
   float: none;
+}
+
+.datatable .thumbnail img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.icheckbox_minimal-blue,
+.iradio_minimal-blue {
+  display: inline-block;
+  margin-bottom: -4px;
+  margin-right: 4px;
+}
+.form-group .icheckbox_minimal-blue,
+.form-group .iradio_minimal-blue {
+  display: inline-block;
+  top: 4px;
+  margin-right: .5em;
+  margin-left: -20px;
+}
+.checkbox-inline,
+.radio-inline {
+  margin-right: 20px;
+}
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+  margin-left: 0;
+}
+.form-control.select2-container {
+  height: auto;
+  padding: 0;
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.ui-datepicker {
+    display: inline-block;
 }
