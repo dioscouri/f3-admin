@@ -25,53 +25,23 @@ class Login extends Base
             return;
         }
         
-        // check if safemode is being used
-        $safemode_enabled = \Base::instance()->get('safemode.enabled');
-        $safemode_user = \Base::instance()->get('safemode.user');
-        $safemode_salt = \Base::instance()->get('safemode.salt');
-        $safemode_password = \Base::instance()->get('safemode.password');
-
-        $simple = new \Joomla\Crypt\Password\Simple;
-        if ($safemode_enabled && $username_input === $safemode_user) 
-        {
-            if ($simple->verify($password_input, $safemode_password)) 
-            {
-                $user = new \Users\Objects\SafemodeUser;
-                $user->id = 'safemode';
-                $user->name = $safemode_user;
-                $user->username = $safemode_user;
-                $user->password = $safemode_password;
-                $user->email = "safemode@localhost";
-                
-                \Base::instance()->set('SESSION.admin.user', $user);
-                \Base::instance()->reroute("/admin");
-                return;
-            }
-        }
+        // TODO Push this to the \Users\Lib\Auth class, and let it run through any Auth listeners
+        $input = $this->input->getArray();
         
-        // TODO Fire the authentication Listeners, or let an auth model handle that?
-        
-        $model = new \Users\Admin\Models\Users;
-        $model->setState('filter.username', $username_input);
-
         try {
-            $item = $model->getItem();
-        } catch ( \Exception $e ) {
-            \Dsc\System::instance()->addMessage("Invalid User: " . $e->getMessage(), 'error');
+            
+            $this->auth->check($input);
+            \Base::instance()->reroute("/admin");
+            return;
+            
+        } catch (\Exception $e) {
+            \Dsc\System::instance()->addMessage('Login failed', 'error');
+            \Dsc\System::instance()->addMessage($e->getMessage(), 'error');
             \Base::instance()->reroute("/admin/users");
             return;
         }
-        
-        if ($simple->verify($password_input, $item->password))
-        {
-            \Base::instance()->set('SESSION.admin.user', $item);
-            \Base::instance()->reroute("/admin");
-            return;            
-        }
-        
-        \Dsc\System::instance()->addMessage('Login failed', 'error');
-        \Dsc\System::instance()->addMessage('Invalid Password', 'error');
-        \Base::instance()->reroute("/admin/login");
+
+        \Base::instance()->reroute("/admin");
         return;            
     }
     

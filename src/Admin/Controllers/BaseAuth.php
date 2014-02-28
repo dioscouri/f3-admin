@@ -3,9 +3,11 @@ namespace Admin\Controllers;
 
 class BaseAuth extends Base 
 {
-    public function beforeRoute($f3){
-        $user = $f3->get('SESSION.admin.user');
-        if(empty($user)){
+    public function beforeRoute($f3)
+    {
+        $identity = $this->getIdentity();
+        if (empty($identity->id))
+        {
             $f3->reroute('/admin/login');
         }
     }    
