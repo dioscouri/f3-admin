@@ -50,7 +50,7 @@
             <?php foreach ($list['subset'] as $item) { ?>
                 <tr>
                     <td class="">
-                        <a href="./admin/queueitem/<?php echo $item->_id; ?>">
+                        <a href="./admin/queueitem/edit/<?php echo $item->_id; ?>">
                             <?php echo $item->datetime; ?>
                         </a>
                     </td>

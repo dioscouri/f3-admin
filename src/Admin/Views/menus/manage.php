@@ -18,7 +18,7 @@
                 <?php } ?>
             </div>
             <div class="col-sm-6">
-                <form class="pull-right form-inline" action="./admin/menu" method="post">
+                <form class="pull-right form-inline" action="./admin/menu/create" method="post">
                     <label>or create a new menu:</label>
                     <div class="input-group">
                         <input type="hidden" name="is_root" value="1">
@@ -38,10 +38,10 @@
     <div class="col-md-12">
         <h3 class="clearfix">
             <?php echo $item->title; ?>
-            <a href="./admin/menu/<?php echo $selected; ?>/edit">
+            <a href="./admin/menu/edit/<?php echo $selected; ?>">
                 <small>Edit</small>
             </a>
-            <a href="./admin/menu/<?php echo $selected; ?>/delete" class="btn btn-xs btn-danger pull-right" data-bootbox="confirm">Delete Menu</a>
+            <a href="./admin/menu/delete/<?php echo $selected; ?>" class="btn btn-xs btn-danger pull-right" data-bootbox="confirm">Delete Menu</a>
         </h3>
 
         <hr />

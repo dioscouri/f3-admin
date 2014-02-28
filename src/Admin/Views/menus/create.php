@@ -1,6 +1,4 @@
-<?php // echo \Dsc\Debug::dump( $flash->get('old'), false ); ?>
-
-<form id="detail-form" action="./admin/menu" class="form" method="post">
+<form id="detail-form" class="form" method="post">
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">

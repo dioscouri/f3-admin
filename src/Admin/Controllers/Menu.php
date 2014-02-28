@@ -13,8 +13,8 @@ class Menu extends BaseAuth
     
     protected $list_route = '/admin/menus/{menu}';
     protected $create_item_route = '/admin/menus/{menu}';
-    protected $get_item_route = '/admin/menu/{id}';
-    protected $edit_item_route = '/admin/menu/{id}/edit';
+    protected $get_item_route = '/admin/menu/read/{id}';
+    protected $edit_item_route = '/admin/menu/edit/{id}';
         
     protected function doAdd($data)
     {
