@@ -8,7 +8,7 @@ switch ($global_app_name)
         // TODO if the assets haven't ben copied to the public folder, do it
         
     	// register all the routes
-    	\Dsc\System::instance()->get('router')->mount( new \Admin\Routes );
+    	\Dsc\System::instance()->get('router')->mount( new \Admin\Routes, 'admin' );
     	 
         // new way
         \Dsc\System::instance()->get('theme')->setTheme('AdminTheme', $f3->get('PATH_ROOT') . 'vendor/dioscouri/f3-admin/src/Admin/Theme/' );
