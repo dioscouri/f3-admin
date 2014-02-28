@@ -2,7 +2,7 @@
     <li class="dropdown">
 		<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
 			<i class="fa fa-user"></i>
-        	<?php echo $this->app->get('SESSION.admin.user')->username; ?> 
+        	<?php echo \Base::instance()->get('SESSION.auth-identity.admin')->username; ?> 
         	<span class="caret"></span>
     	</a>
     	
