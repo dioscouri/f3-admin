@@ -1,6 +1,6 @@
 <?php 
 
-class AdminBootstrap extends \Dsc\BaseBootstrap{
+class AdminBootstrap extends \Dsc\Bootstrap{
 	protected $dir = __DIR__;
 	protected $namespace = 'Admin';
 
