@@ -47,7 +47,7 @@ class Login extends Base
     
     public function logout()
     {
-        \Base::instance()->clear('SESSION');
+        \Dsc\System::instance()->get('auth')->logout();
         \Base::instance()->reroute('/admin/login');
     }
 
