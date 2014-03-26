@@ -4,8 +4,8 @@
 
     <!-- User info -->
     <div class="login-info">
-	    <?php //$identity = $this->auth->getIdentity(); ?>
-		<span> <a href="javascript:void(0);" id="show-shortcut"> <?php //echo \Dsc\Lib\ArrayHelper::get($identity, 'name'); ?> </a>
+	    <?php // $identity = $this->auth->getIdentity(); ?>
+		<span> <a href="javascript:void(0);" id="show-shortcut"> <?php // echo \Dsc\ArrayHelper::get($identity, 'username'); ?> </a>
         </span>
     </div>
     <!-- end user info -->
