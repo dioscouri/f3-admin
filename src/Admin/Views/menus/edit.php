@@ -9,11 +9,13 @@ jQuery(document).ready(function(){
 });
 </script>
 
+<div class="well">
+
 <form id="detail-form" class="form" method="post">
     <div class="row">
         <div class="col-md-12">
         
-            <div class="form-actions clearfix">
+            <div class="clearfix">
 
                 <div class="pull-right">
                     <div class="btn-group">
@@ -203,3 +205,5 @@ jQuery(document).ready(function(){
 
     </div>
 </form>
+
+</div>
