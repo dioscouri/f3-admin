@@ -27,6 +27,13 @@ var CustomApp = function () {
     function initSelect2 () {
         if ($.fn.select2) {
             $('.ui-select2').select2({ allowClear: true, placeholder: "Select..." });
+            $('.ui-select2-data').each(function(){
+                var el = $(this);
+                var data = new Array;
+                var multiple = el.attr('data-multiple');
+                jQuery.merge( data, JSON.parse(el.attr('data-data')) );
+                el.select2({ allowClear: true, placeholder: "Select...", data: data, multiple: multiple });
+            });
             $('.ui-select2-tags').each(function(){
                 var el = $(this);
                 var tags_data = new Array;

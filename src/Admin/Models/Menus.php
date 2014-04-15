@@ -141,6 +141,26 @@ class Menus extends \Dsc\Models\Nested
         return parent::save( $values, $options, $mapper );
     }
     
+    /**
+     * Clone an item.  Data from $values takes precedence of data from cloned object.
+     *
+     * @param unknown_type $mapper
+     * @param unknown_type $values
+     * @param unknown_type $options
+     */
+    public function saveAs( $mapper, $values, $options=array() )
+    {
+        $item_data = $mapper->cast();
+        $new_values = array_merge( $values, array_diff_key( $item_data, $values ) );
+        unset($new_values[$this->getItemKey()]);
+        unset($new_values['path']);
+        if ($new_values['slug'] == $item_data['slug']) {
+            unset($new_values['slug']);
+        }
+            
+        return $this->save( $new_values, $options );
+    }
+    
     public function update( $mapper, $values, $options=array() )
     {
     	$update_children = isset($options['update_children']) ? $options['update_children'] : false;

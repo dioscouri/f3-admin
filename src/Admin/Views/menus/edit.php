@@ -28,6 +28,9 @@ jQuery(document).ready(function(){
                             <li>
                                 <a onclick="document.getElementById('primarySubmit').value='save_close'; document.getElementById('detail-form').submit();" href="javascript:void(0);">Save & Close</a>
                             </li>
+                            <li>
+                                <a onclick="document.getElementById('primarySubmit').value='save_as'; document.getElementById('detail-form').submit();" href="javascript:void(0);">Save As</a>
+                            </li>
                         </ul>
                     </div>
 
