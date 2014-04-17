@@ -9,6 +9,10 @@
 </head>
 
 <body id="login" class="">
+
+    <?php echo $this->renderView('Admin/Views::js_footer.php'); ?>
+    
+    <?php echo $this->renderView('Admin/Views::js_custom.php'); ?>
     
 	<div id="app" role="main">
 
