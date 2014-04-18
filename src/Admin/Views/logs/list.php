@@ -79,11 +79,11 @@
         <table class="table table-striped table-bordered table-hover table-highlight table-checkable">
 		<thead>
 			<tr>
-                <th data-sortable="datetime">Datetime</th>
-                <th data-sortable="priority">Priority</th>
-                <th data-sortable="category">Category</th>
+                <th data-sortable="created.microtime" class="col-md-1">Datetime</th>
+                <th data-sortable="priority" class="col-md-1">Priority</th>
+                <th data-sortable="category" class="col-md-2">Category</th>
                 <th data-sortable="message">Message</th>
-                <th></th>
+                <th class="col-md-1"></th>
             </tr>
 		</thead>
 		<tbody>    
@@ -94,7 +94,7 @@
                 <tr>
                     <td class="">
                         <a href="./admin/log/edit/<?php echo $item->_id; ?>">
-                            <?php echo $item->datetime; ?>
+                            <?php echo $item->{'created.local'}; ?>
                         </a>
                     </td>
                     <td class="">
