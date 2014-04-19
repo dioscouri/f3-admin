@@ -8,15 +8,12 @@ class Logs extends BaseAuth
         \Base::instance()->set('pagetitle', 'Logs');
         \Base::instance()->set('subtitle', '');
 
-        $model = new \Admin\Models\Logs;
+        $model = new \Dsc\Mongo\Collections\Logs;
         $state = $model->populateState()->getState();
         \Base::instance()->set('state', $state );
     
-        $list = $model->paginate();
-        \Base::instance()->set('list', $list );
-    
-        $pagination = new \Dsc\Pagination($list['total'], $list['limit']);
-        \Base::instance()->set('pagination', $pagination );
+        $paginated = $model->paginate();
+        \Base::instance()->set('paginated', $paginated);
         
         echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::logs/list.php');
     }
