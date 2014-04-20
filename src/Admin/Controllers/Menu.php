@@ -3,7 +3,7 @@ namespace Admin\Controllers;
 
 class Menu extends BaseAuth 
 {
-    use \Dsc\Traits\Controllers\OrderableItem {
+    use \Dsc\Traits\Controllers\OrderableItemCollection {
         doAdd as doAddCrudItem;
         doUpdate as doUpdateCrudItem;
         doDelete as doDeleteCrudItem;
@@ -116,7 +116,7 @@ class Menu extends BaseAuth
     
     protected function getModel() 
     {
-        $model = new \Admin\Models\Menus;
+        $model = new \Admin\Models\Navigation;
         return $model; 
     }
     
@@ -152,7 +152,7 @@ class Menu extends BaseAuth
         $f3->set('pagetitle', 'Edit Menu Item');
         
         $model = $this->getModel();
-        $roots = $model->getRoots();
+        $roots = $model->roots();
         $f3->set('roots', $roots );
         
         $all = $model->emptyState()->setState('order_clause', array( 'tree'=> 1, 'lft' => 1 ))->getList();
