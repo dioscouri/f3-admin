@@ -1,5 +1,3 @@
-<?php //echo \Dsc\Debug::dump( $quickadd, false ); ?>
-
 <?php if (empty($roots)) { ?>
     <div class="alert alert-warning">Please create a menu to begin</div>
 <?php } ?>
@@ -33,7 +31,7 @@
         </div>
     </div>
 </div>
-<?php if (!empty($list)) { ?>
+<?php if (!empty($paginated->items)) { ?>
 <div class="row">
     <div class="col-md-12">
         <h3 class="clearfix">
