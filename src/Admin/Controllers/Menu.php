@@ -86,7 +86,7 @@ class Menu extends BaseAuth
     
         if ($return = $this->doMoveUpCrudItem($data, $key))
         {
-            if (!empty($this->item->is_root)) {} else {
+            if (!empty($this->item->is_root)) {} elseif (empty($tree) && !empty($this->item->tree)) {
                 $tree = (string) $this->item->tree;
             }
         }
@@ -155,7 +155,7 @@ class Menu extends BaseAuth
         $roots = $model->roots();
         $f3->set('roots', $roots );
         
-        $all = $model->emptyState()->setState('order_clause', array( 'tree'=> 1, 'lft' => 1 ))->getList();
+        $all = $model->emptyState()->setState('list.sort', array( 'tree'=> 1, 'lft' => 1 ))->getList();
         $f3->set('all', $all );
         
         $view = \Dsc\System::instance()->get('theme');

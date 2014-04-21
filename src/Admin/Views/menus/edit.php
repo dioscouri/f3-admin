@@ -100,7 +100,6 @@ jQuery(document).ready(function(){
                     </div>
                     <!-- /.form-group -->
                     
-                    <?php if (!empty($all)) { ?>
                     <div class="form-group">
                         <label for="parent">Parent</label>
                         <select id="parent" name="parent" class="form-control ui-select2">
@@ -108,7 +107,7 @@ jQuery(document).ready(function(){
                                 <option data-tree="<?php echo $item->id; ?>" value="null" <?php if (null == $flash->old('parent')) { echo "selected='selected'"; } ?>>Menu Root</option>
                             </optgroup>
                             
-                            <?php foreach ($all as $one) { ?>
+                            <?php if (!empty($all)) { foreach ($all as $one) { ?>
                                 <?php
                                 if (strpos($one->path, $item->path) !== false) {
                                     // an item cannot be its own descendant
@@ -132,7 +131,7 @@ jQuery(document).ready(function(){
                                 <?php } else { ?>
                                 <option data-tree="<?php echo $one->tree; ?>" value="<?php echo $one->id; ?>" <?php if ($one->id == $flash->old('parent')) { echo "selected='selected'"; } ?>><?php echo @str_repeat( "&ndash;", substr_count( @$one->path, "/" ) - 1 ) . " " . $one->title; ?></option>
                                 <?php } ?>
-                            <?php } ?>
+                            <?php } } ?>
                             
                             <?php if (!empty($all)) { ?>
                             </optgroup>
@@ -141,7 +140,7 @@ jQuery(document).ready(function(){
                         </select>
                     </div>
                     <!-- /.form-group -->
-                    <?php } ?>
+                    
                 
                 </div>
                 

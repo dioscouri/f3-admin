@@ -28,7 +28,7 @@ class Menus extends BaseAuth
             $item = (new \Admin\Models\Navigation)->emptyState()->setState('filter.root', true)->setState('filter.id', $id)->getItem();
             $f3->set('item', $item );
 
-            $paginated = $model->emptyState()->populateState()->setState('filter.root', false)->setState('filter.id', null)->setState('filter.tree', $id)->setState('order_clause', array( 'tree'=> 1, 'lft' => 1 ))->paginate();
+            $paginated = $model->emptyState()->populateState()->setState('filter.root', false)->setState('filter.id', null)->setState('filter.tree', $id)->setState('list.sort', array( 'tree'=> 1, 'lft' => 1 ))->paginate();
             $f3->set('state', $model->getState() );
             $f3->set('paginated', $paginated );
         }
