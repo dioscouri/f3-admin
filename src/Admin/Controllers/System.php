@@ -38,9 +38,6 @@ class System extends BaseAuth
                 ,json_decode(json_encode(array( 'title'=>'Rebuild Admin Menu', 'route'=>'/admin/system/rebuildAdminMenu', 'icon'=>'fa fa-retweet' )))
         		,json_decode(json_encode(array( 'title'=>'Diagnostics', 'route'=>'/admin/system/diagnostics', 'icon'=>'fa fa-heart' )))
                 ,json_decode(json_encode(array( 'title'=>'Logs', 'route'=>'/admin/logs', 'icon'=>'fa fa-list' )))
-                ,json_decode(json_encode(array( 'title'=>'Log Detail', 'route'=>'/admin/log', 'hidden'=>true )))
-                ,json_decode(json_encode(array( 'title'=>'Queue', 'route'=>'/admin/queue', 'icon'=>'fa fa-refresh' )))
-                ,json_decode(json_encode(array( 'title'=>'Queue Detail', 'route'=>'/admin/queueitem', 'hidden'=>true )))
         );
         $mapper->save();
         
