@@ -25,23 +25,27 @@ class Login extends Base
             return;
         }
         
-        // TODO Push this to the \Users\Lib\Auth class, and let it run through any Auth listeners
         $input = $this->input->getArray();
         
         try {
             
             $this->auth->check($input);
-            \Base::instance()->reroute("/admin");
-            return;
             
         } catch (\Exception $e) {
             \Dsc\System::instance()->addMessage('Login failed', 'error');
             \Dsc\System::instance()->addMessage($e->getMessage(), 'error');
-            \Base::instance()->reroute("/admin/users");
+            \Base::instance()->reroute("/admin/login");
             return;
         }
 
-        \Base::instance()->reroute("/admin");
+        $redirect = '/admin';
+        if ($custom_redirect = \Dsc\System::instance()->get( 'session' )->get( 'admin.login.redirect' ))
+        {
+            $redirect = $custom_redirect;
+            \Dsc\System::instance()->get( 'session' )->set( 'admin.login.redirect', null );
+        }
+        \Base::instance()->reroute($redirect);
+        
         return;            
     }
     
