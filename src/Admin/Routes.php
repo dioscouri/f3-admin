@@ -44,7 +44,9 @@ class Routes extends \Dsc\Routes\Group
         ) );
         
         $this->addSettingsRoutes();
-        $this->addCrudList( 'Logs' );
+        
+        $this->addCrudGroup( 'Logs', 'Log' );
+        
         $this->addCrudList( 'Queue' );
         $this->addCrudList( 'Menus' );
         
