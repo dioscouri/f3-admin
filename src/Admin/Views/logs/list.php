@@ -19,19 +19,16 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-                <?php /* ?>
                 <ul class="list-filters list-unstyled list-inline">
                     <li>
-                        <a class="btn btn-link">Advanced Filtering</a>
-                    </li>                
-                    <li>
-                        <a class="btn btn-link">Quicklink Filter</a>
+                        <select name="filter[category]" class="form-control" onchange="this.form.submit();">
+                            <option value="">All Types</option>
+                            <?php foreach (\Dsc\Mongo\Collections\Logs::distinctCategories() as $type) { ?>
+                            	<option value="<?php echo $type; ?>" <?php if ($state->get('filter.category') == $type) { echo "selected='selected'"; } ?>><?php echo $type; ?></option>
+                            <?php } ?>                            
+                        </select>
                     </li>
-                    <li>
-                        <a class="btn btn-link">Quicklink Filter</a>
-                    </li>                    
                 </ul>    
-                */ ?>        
             </div>
             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
                 <div class="form-group">
