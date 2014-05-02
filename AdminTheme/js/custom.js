@@ -26,20 +26,28 @@ var CustomApp = function () {
     
     function initSelect2 () {
         if ($.fn.select2) {
-            $('.ui-select2').select2({ allowClear: true, placeholder: "Select..." });
+            $('.ui-select2').each(function(){
+                var el = $(this);
+                var multiple = el.attr('data-multiple');
+                var maximumSelectionSize = el.attr('data-maximum');
+                el.select2({ allowClear: true, placeholder: "Select...", multiple: multiple, maximumSelectionSize: maximumSelectionSize });
+            });
+            
             $('.ui-select2-data').each(function(){
                 var el = $(this);
                 var data = new Array;
                 var multiple = el.attr('data-multiple');
+                var maximumSelectionSize = el.attr('data-maximum');
                 jQuery.merge( data, JSON.parse(el.attr('data-data')) );
-                el.select2({ allowClear: true, placeholder: "Select...", data: data, multiple: multiple });
+                el.select2({ allowClear: true, placeholder: "Select...", data: data, multiple: multiple, maximumSelectionSize: maximumSelectionSize });
             });
             $('.ui-select2-tags').each(function(){
                 var el = $(this);
                 var tags_data = new Array;
                 jQuery.merge( tags_data, JSON.parse(el.attr('data-tags')) );                
-
-                el.select2({ allowClear: true, placeholder: "Select...", tokenSeparators: [",", ";"], tags: tags_data });
+                var maximumSelectionSize = el.attr('data-maximum');
+                
+                el.select2({ allowClear: true, placeholder: "Select...", tokenSeparators: [",", ";"], tags: tags_data, maximumSelectionSize: maximumSelectionSize });
             });
         }
     }
