@@ -89,7 +89,7 @@
                     </li>
                     <?php } ?>
                     <li>
-                        <a href="./admin/menu/edit/<?php echo $item->_id; ?>">
+                        <a href="/admin/menu/edit/<?php echo $item->_id; ?>">
                         <?php echo $item->title; ?>
                         </a>
                         <p class="help-block">
@@ -100,7 +100,7 @@
             </td>
             
             <td class="">
-                <a href="./admin/menu/edit/<?php echo $item->_id; ?>">
+                <a href="/admin/menu/edit/<?php echo $item->_id; ?>">
                 <?php echo $item->{'details.url'}; ?>
                 </a>
             </td>
@@ -116,21 +116,21 @@
             </td>
             
             <td class="text-center">
-                <a class="btn btn-xs btn-tertiary" href="./admin/menu/moveup/<?php echo $item->id; ?>">
+                <a class="btn btn-xs btn-tertiary" href="/admin/menu/moveup/<?php echo $item->id; ?>">
                     <i class="fa fa-chevron-up"></i>
                 </a>
                 &nbsp;
-                <a class="btn btn-xs btn-tertiary" href="./admin/menu/movedown/<?php echo $item->id; ?>">
+                <a class="btn btn-xs btn-tertiary" href="/admin/menu/movedown/<?php echo $item->id; ?>">
                     <i class="fa fa-chevron-down"></i>
                 </a>
             </td>
                             
             <td class="text-center">
-                <a class="btn btn-xs btn-secondary" href="./admin/menu/edit/<?php echo $item->_id; ?>">
+                <a class="btn btn-xs btn-secondary" href="/admin/menu/edit/<?php echo $item->_id; ?>">
                     <i class="fa fa-pencil"></i>
                 </a>
                 &nbsp;
-                <a class="btn btn-xs btn-danger" data-bootbox="confirm" href="./admin/menu/delete/<?php echo $item->_id; ?>">
+                <a class="btn btn-xs btn-danger" data-bootbox="confirm" href="/admin/menu/delete/<?php echo $item->_id; ?>">
                     <i class="fa fa-times"></i>
                 </a>
             </td>

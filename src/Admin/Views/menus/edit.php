@@ -35,7 +35,7 @@ jQuery(document).ready(function(){
                     </div>
 
                     &nbsp;
-                    <a class="btn btn-default" href="./admin/menus/<?php echo $item->tree; ?>">Cancel</a>
+                    <a class="btn btn-default" href="/admin/menus/<?php echo $item->tree; ?>">Cancel</a>
                 </div>
 
             </div>

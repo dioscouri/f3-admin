@@ -92,7 +92,7 @@
             <?php foreach($paginated->items as $item) { ?>
                 <tr>
                     <td class="">
-                        <a href="./admin/log/edit/<?php echo $item->_id; ?>">
+                        <a href="/admin/log/edit/<?php echo $item->_id; ?>">
                             <?php echo $item->{'created.local'}; ?>
                         </a>
                     </td>
@@ -106,7 +106,7 @@
                         <?php echo $item->message; ?>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-xs btn-secondary" href="./admin/log/edit/<?php echo $item->_id; ?>">
+                        <a class="btn btn-xs btn-secondary" href="/admin/log/edit/<?php echo $item->_id; ?>">
                             <i class="fa fa-pencil"></i>
                         </a>
                     </td>

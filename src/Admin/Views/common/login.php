@@ -1,5 +1,5 @@
 <div class="well no-padding">
-	<form action="./admin/login" id="login-form" class="smart-form client-form" method="post">
+	<form action="/admin/login" id="login-form" class="smart-form client-form" method="post">
 		<header>
 			Sign In
 		</header>
