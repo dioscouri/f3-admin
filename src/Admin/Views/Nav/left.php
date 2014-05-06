@@ -33,7 +33,7 @@
             
         	<?php if ($items) { foreach ($items as $item) { ?>
         	<li <?php if (!empty($item->id)) {echo 'id="'.$item->id.'"';}?>   class="<?php if ($current == $item->route || (!empty($item->base) && strpos($current, $item->base) !== false) || \Dsc\String::inStrings(\Joomla\Utilities\ArrayHelper::getColumn($item->children, 'route'), $current ) ) { echo 'active'; } ?> <?php echo !empty($item->children) ? 'dropdown' : null; ?> ">
-        		<a href="<?php echo !empty($item->children) ? 'javascript:;' : $item->route; ?>" title="<?php echo $item->title; ?>">
+        		<a href="<?php echo !empty($item->children) ? 'javascript:;' : '.' . $item->route; ?>" title="<?php echo $item->title; ?>">
         			<?php if (!empty($item->icon)) { ?><i class="fa fa-lg fa-fw <?php echo $item->icon; ?>"></i><?php } ?> <?php if (!empty($item->title)) { ?><span class="menu-item-parent"><?php echo $item->title; ?></span> <?php } ?>
         		</a>
         		<?php if (!empty($item->children)) { ?>
@@ -41,7 +41,7 @@
         		    <?php foreach ($item->children as $child_array) { $child = \Joomla\Utilities\ArrayHelper::toObject($child_array); ?>
         		    <?php if (empty($child->hidden)) { ?>
         			<li class="<?php if (strpos($current, $child->route) !== false && !$active_has_been_found && substr_count($current, '/') == substr_count($child->route, '/')) { echo 'active'; $active_has_been_found = true; } ?>">
-        			    <a href="<?php echo $child->route; ?>">
+        			    <a href=".<?php echo $child->route; ?>">
             			<?php if (!empty($child->icon)) { ?><i class="<?php echo $child->icon; ?>"></i><?php } ?>
             			<?php if (!empty($child->title)) { ?><span class="title"><?php echo $child->title; ?></span> <?php } ?>
             			</a>
