@@ -2,7 +2,7 @@
 jQuery(document).ready(function(){
     jQuery('#selected-menu').change(function(){
         var val = jQuery(this).val();
-        var url = '/admin/menus/' + val;
+        var url = './admin/menus/' + val;
         window.location = url;         
     });
 });

@@ -27,7 +27,7 @@
                     </div>
 
                     &nbsp;
-                    <a class="btn btn-default" href="/admin/menus">Cancel</a>
+                    <a class="btn btn-default" href="./admin/menus">Cancel</a>
                 </div>
 
             </div>

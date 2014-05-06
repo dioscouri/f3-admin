@@ -3,7 +3,7 @@
     <div class="clearfix">
 
         <div class="pull-right">
-            <a class="btn btn-default" href="/admin/logs">Close</a>
+            <a class="btn btn-default" href="./admin/logs">Close</a>
         </div>
 
     </div>

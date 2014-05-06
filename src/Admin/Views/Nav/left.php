@@ -28,7 +28,7 @@
         ?>
         <ul>
             <li>
-                <a href="/admin" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+                <a href="./admin" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
             </li>
             
         	<?php if ($items) { foreach ($items as $item) { ?>

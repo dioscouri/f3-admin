@@ -1,7 +1,7 @@
 <header id="header">
 
 	<h1 id="site-logo">
-		<a href="/index.html">
+		<a href="./index.html">
 			
 		</a>
 	</h1>	

@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav pull-left">
 	<li class="">
-		<a href="/admin">
+		<a href="./admin">
 			<i class="fa fa-home"></i> 
 			Home
 		</a>

@@ -8,7 +8,7 @@
     	
     	<ul class="dropdown-menu" role="menu">
 	        <li>
-	        	<a href="/admin/logout">
+	        	<a href="./admin/logout">
 	        		<i class="fa fa-sign-out"></i> 
 	        		&nbsp;&nbsp;Logout
 	        	</a>
@@ -28,26 +28,26 @@
 
     	<ul class="dropdown-menu" role="menu">
 	        <li>
-	        	<a href="/page-profile.html">
+	        	<a href="./page-profile.html">
 	        		<i class="fa fa-user"></i> 
 	        		&nbsp;&nbsp;My Profile
 	        	</a>
 	        </li>
 	        <li>
-	        	<a href="/page-calendar.html">
+	        	<a href="./page-calendar.html">
 	        		<i class="fa fa-calendar"></i> 
 	        		&nbsp;&nbsp;My Calendar
 	        	</a>
 	        </li>
 	        <li>
-	        	<a href="/page-settings.html">
+	        	<a href="./page-settings.html">
 	        		<i class="fa fa-cogs"></i> 
 	        		&nbsp;&nbsp;Settings
 	        	</a>
 	        </li>
 	        <li class="divider"></li>
 	        <li>
-	        	<a href="/page-login.html">
+	        	<a href="./page-login.html">
 	        		<i class="fa fa-sign-out"></i> 
 	        		&nbsp;&nbsp;Logout
 	        	</a>
