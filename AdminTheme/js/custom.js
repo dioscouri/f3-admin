@@ -10,6 +10,7 @@ var CustomApp = function () {
         initSelect2();
         initDatepicker();
         initTimepicker();        
+        setupCheckAll();
     }
     
     function initICheck () {
@@ -72,6 +73,23 @@ var CustomApp = function () {
         }
     }
     
+    function setupCheckAll() {
+
+        $('th.checkbox-column').each(function(){
+        	
+        	$(this).on( 'ifToggled', ':checkbox', function(){
+        		$this = $(this);
+        		var  checked = $this.prop("checked");
+        		
+        		$( 'td.checkbox-column input.icheck-input', $this.closest( 'table' )  ).prop( 'checked', checked );
+        		if( checked ) {
+        			$( 'td.checkbox-column div.icheck-input', $this.closest( 'table' )  ).addClass( 'checked' );    			
+        		} else {
+        			$( 'td.checkbox-column div.icheck-input', $this.closest( 'table' )  ).removeClass( 'checked' );    			
+        		}
+        	});
+        });	
+    }    
 }();
 
 $(document).ready(function () {
