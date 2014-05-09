@@ -1,26 +1,75 @@
 <?php 
 namespace Admin\Models\Nav;
 
-class Primary extends \Admin\Models\Nav 
+class Primary extends \Admin\Models\Navigation
 {
     protected $filename = "admin.nav.primary";
     
-    protected $default_ordering_direction = 'SORT_ASC';
-    protected $default_ordering_field = 'priority';
+    protected $__config = array(
+    		'default_sort' => array(
+    				'priority' => 1,
+    				'lft' => 1,
+    		),
+    );
     
     public function __construct($config=array())
     {
         parent::__construct($config);
-    
-        $this->filter_fields = $this->filter_fields + array(
-                        'priority'
-        );
     }
     
-    public function getMapper()
-    {
-        $mapper = new \Admin\Mappers\Nav( $this->getDb(), $this->filename );
-        return $mapper;
+    public function fetchConditions(){
+    	parent::fetchConditions();
+    	
+    	$this->setCondition( 'type', 'admin.nav' );	
+    	
+    	$filter_tree = $this->getState( 'filter.tree' );
+    	if( strlen( $filter_tree ) ){
+    		$filter_tree = $this->inputfilter()->clean( $filter_tree, 'ALNUM' );
+    		$this->setCondition( 'tree', new \MongoId( $filter_tree ) );
+    	}
+    	
+    	return $this;
+    }
+    
+    public function getTreeMenu( $rootID ){
+    	$model = clone $this;
+    	$model->emptyState()->populateState()->setState( 'filter.tree', $rootID );
+    	
+    	$tree = array();
+		$items = $model->getItems();
+		if( !empty( $items ) ){
+			$idx = -1;
+			foreach( $items as $item ){
+				if( $item->is_root ) { // root nodes are just names of menus -> skip it
+					continue;
+				}
+
+				if( $idx == -1 || ((string)$item->parent == $rootID ) ){
+					$idx++;
+					$item->children = array();
+					$tree[$idx] = $item;
+				} else {
+					$tree[$idx]->children []= $item;
+				}
+			}
+		}
+		return $tree;
+    }
+    
+    public function addChildrenItems( $children, $tree, $model ){
+    	foreach( $children as $child ) {
+    		$child_model = clone $model;
+    		$child_model->insert(
+    				array(
+    						'type'	=> 'admin.nav',
+    						'is_root' => false,
+    						'tree'	=> $tree,
+    						'parent' => $this->id,
+    						'priority' => $this->priority,
+    				)
+    				+ $child
+    		);
+    	}
     }
 }
 ?>

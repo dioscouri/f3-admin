@@ -1,24 +1,10 @@
 <?php 
 namespace Admin\Models;
 
-class Settings extends Base 
+class Settings extends \Dsc\Mongo\Collections\Settings
 {
-    protected $db = null;
-    
-    public function __construct($config=array())
-    {
-        parent::__construct($config);
-    
-        $this->mapper = new \DB\Jig\Mapper( $this->getDb(), 'settings' );
-    }
-    
-    public function getDb()
-    {
-        if (empty($this->db))
-        {
-            $this->db = new \DB\Jig( $this->app->get('db.jig.dir'), \DB\Jig::FORMAT_JSON );
-        }
-    
-        return $this->db;
-    }
+	protected $__type = 'common.settings';
+	
+	public $sro_ssl = '0';
+	public $admin_menu_id = null;
 }
