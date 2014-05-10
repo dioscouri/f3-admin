@@ -31,12 +31,10 @@ class Primary extends \Admin\Models\Navigation
     	return $this;
     }
     
-    public function getTreeMenu( $rootID ){
-    	$model = clone $this;
-    	$model->emptyState()->populateState()->setState( 'filter.tree', $rootID );
-    	
+    public function getTreeMenu( $rootID )
+    {
     	$tree = array();
-		$items = $model->getItems();
+		$items = (new static)->setState('filter.tree', $rootID)->getItems();
 		if( !empty( $items ) ){
 			$idx = -1;
 			foreach( $items as $item ){
