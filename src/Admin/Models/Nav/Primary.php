@@ -33,9 +33,9 @@ class Primary extends \Admin\Models\Navigation
     {
         $tree = array();
         $items = (new static)->setState('filter.tree', $rootID)->getItems();
-        if (! empty($items))
+        if (!empty($items))
         {
-            $idx = - 1;
+            $idx = -1;
             foreach ($items as $item)
             {
                 if ($item->is_root)
@@ -44,7 +44,7 @@ class Primary extends \Admin\Models\Navigation
                     continue;
                 }
                 
-                if ($idx == - 1 || ((string) $item->parent == $rootID))
+                if ($idx == -1 || ((string) $item->parent == $rootID))
                 {
                     $idx ++;
                     $item->children = array();
