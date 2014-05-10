@@ -33,7 +33,7 @@ class Primary extends \Admin\Models\Navigation
     
     public function getTreeMenu( $rootID ){
     	$model = clone $this;
-    	$model->emptyState()->populateState()->setState( 'filter.tree', $rootID );
+    	$model->emptyState()->setState( 'filter.tree', $rootID );
     	
     	$tree = array();
 		$items = $model->getItems();

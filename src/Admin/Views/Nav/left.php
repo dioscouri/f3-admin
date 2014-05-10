@@ -25,6 +25,7 @@
         $current = str_replace( $BASE, '', $URI );
         $items = (new \Admin\Models\Nav\Primary)->getTreeMenu(\Admin\Models\Settings::fetch()->get('admin_menu_id') );
         $active_has_been_found = false;
+        
         ?>
         <ul>
             <li>
