@@ -29,10 +29,10 @@ class Primary extends \Admin\Models\Navigation
         return $this;
     }
 
-    public function getTreeMenu($rootID)
+    public static function getTreeMenu($rootID)
     {
         $tree = array();
-        $items = (new static)->setState('filter.tree', $rootID)->getItems();
+        $items = (new static())->setState('filter.tree', $rootID)->getItems();
         if (!empty($items))
         {
             $idx = -1;
@@ -46,7 +46,7 @@ class Primary extends \Admin\Models\Navigation
                 
                 if ($idx == -1 || ((string) $item->parent == $rootID))
                 {
-                    $idx ++;
+                    $idx++;
                     $item->children = array();
                     $tree[$idx] = $item;
                 }
