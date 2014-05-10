@@ -44,7 +44,7 @@ class System extends BaseAuth
         				array( 'title'=>'Menu Items', 'route'=>'/admin/menus/items', 'icon'=>'fa fa-sitemap', 'hidden'=>true ),
         				array( 'title'=>'Add New Menu Item', 'route'=>'/admin/menus/item', 'icon'=>'fa fa-plus', 'hidden'=>true ),
         );
-        $navigation->addChildrenItems( $children, $root->id, new \Admin\Models\Nav\Primary );
+        $navigation->addChildrenItems( $children, $root->id );
         
         $system = new \Admin\Models\Nav\Primary;
         $system->insert(
@@ -64,7 +64,7 @@ class System extends BaseAuth
         		array( 'title'=>'Diagnostics', 'route'=>'/admin/system/diagnostics', 'icon'=>'fa fa-heart' ),
                 array( 'title'=>'Logs', 'route'=>'/admin/logs', 'icon'=>'fa fa-list' ),
         	);
-        $system->addChildrenItems( $children, $root->id, new \Admin\Models\Nav\Primary );
+        $system->addChildrenItems( $children, $root->id );
 
         // save current admin menu id
         $settings->{'admin_menu_id'} = (string)$root->id;
