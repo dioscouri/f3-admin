@@ -22,12 +22,20 @@
                 <ul class="list-filters list-unstyled list-inline">
                     <li>
                         <select name="filter[category]" class="form-control" onchange="this.form.submit();">
-                            <option value="">All Types</option>
+                            <option value="">All Categories</option>
                             <?php foreach (\Dsc\Mongo\Collections\Logs::distinctCategories() as $type) { ?>
                             	<option value="<?php echo $type; ?>" <?php if ($state->get('filter.category') == $type) { echo "selected='selected'"; } ?>><?php echo $type; ?></option>
                             <?php } ?>                            
                         </select>
                     </li>
+                    <li>
+                        <select name="filter[priority]" class="form-control" onchange="this.form.submit();">
+                            <option value="">All Priorities</option>
+                            <?php foreach (\Dsc\Mongo\Collections\Logs::distinctPriorities() as $type) { ?>
+                            	<option value="<?php echo $type; ?>" <?php if ($state->get('filter.priority') == $type) { echo "selected='selected'"; } ?>><?php echo $type; ?></option>
+                            <?php } ?>                            
+                        </select>
+                    </li>                    
                 </ul>    
             </div>
             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
