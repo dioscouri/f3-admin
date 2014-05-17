@@ -4,8 +4,8 @@
 
     <!-- User info -->
     <div class="login-info">
-	    <?php // $identity = $this->auth->getIdentity(); ?>
-		<span> <a href="javascript:void(0);" id="show-shortcut"> <?php // echo \Dsc\ArrayHelper::get($identity, 'username'); ?> </a>
+	    <?php $identity = $this->auth->getIdentity(); ?>
+		<span> <a href="javascript:void(0);" id="show-shortcut"> <?php echo $identity->fullName(); ?> </a>
         </span>
     </div>
     <!-- end user info -->
@@ -16,48 +16,74 @@
 	(the reference to the nav > ul) after page load. Or the navigation
 	will not initialize.
 	-->
-    <nav>
+    <nav class="primary-nav">
         <!-- NOTE: Notice the gaps after each icon usage <i></i>..
 		Please note that these links work a bit different than
 		traditional hre="" links. See documentation for details.
 		-->
         <?php 
         $current = str_replace( $BASE, '', $URI );
-        $items = (new \Admin\Models\Nav\Primary)->getTreeMenu(\Admin\Models\Settings::fetch()->get('admin_menu_id') );
         $active_has_been_found = false;
-        
+        $list = (new \Admin\Models\Nav\Primary)->setState('filter.root', false)->setState('filter.tree', \Admin\Models\Settings::fetch()->get('admin_menu_id') )->setState('order_clause', array( 'tree'=> 1, 'lft' => 1 ))->getItems();
         ?>
+        
         <ul>
             <li>
                 <a href="./admin" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
             </li>
+        
+        <?php
+        foreach ($list as $key => $item) 
+        {
+            $class = !empty($item->class) ? $item->class : 'menu-item';
             
-        	<?php if ($items) { foreach ($items as $item) {
-        	$selected = $current == $item->route || (!empty($item->base) && strpos($current, $item->base) !== false) || \Dsc\String::inStrings(\Joomla\Utilities\ArrayHelper::getColumn($item->children, 'route'), $current );
-        		?>
-        	<li <?php if (!empty($item->id)) {echo 'id="'.$item->id.'"';}?>   class="<?php if ( $selected ) { echo 'active'; } ?> <?php echo !empty($item->children) ? 'dropdown' : null; ?> ">
-        		<a href="<?php echo !empty($item->children) ? 'javascript:;' : '.' . $item->route; ?>" title="<?php echo $item->title; ?>">
-        			<?php if (!empty($item->icon)) { ?><i class="fa fa-lg fa-fw <?php echo $item->icon; ?>"></i><?php } ?> <?php if (!empty($item->title)) { ?><span class="menu-item-parent"><?php echo $item->title; ?></span> <?php } ?>
-        		</a>
-        		<?php if (!empty($item->children)) { ?>
-        		<ul class="sub-nav">
-        		    <?php foreach ($item->children as $child) {
-        		    	$selected_child = strpos($current, $child->route) !== false && !$active_has_been_found && substr_count($current, '/') == substr_count($child->route, '/');
-        		    	?>
-        		    <?php if (empty($child->hidden)) { ?>
-        			<li class="<?php if ( $selected_child ) { echo 'active'; $active_has_been_found = true; } ?>">
-        			    <a href=".<?php echo $child->route; ?>">
-            			<?php if (!empty($child->icon)) { ?><i class="<?php echo $child->icon; ?>"></i><?php } ?>
-            			<?php if (!empty($child->title)) { ?><span class="title"><?php echo $child->title; ?></span> <?php } ?>
-            			</a>
-        			</li>
-        			<?php } ?>
-        			<?php } ?>
-                </ul>
-        		<?php } ?>		
-        	</li>
-        	<?php } } ?>
-        </ul>
+            $selected = ($current == $item->route) 
+                        || (!empty($item->base) && strpos($current, $item->base) !== false) 
+                        || (\Dsc\String::inStrings(\Joomla\Utilities\ArrayHelper::getColumn($item->getDescendants(), 'route'), $current ))
+                        ;
+            
+            if ($selected || (strpos($item->{'details.url'}, $PARAMS[0]) !== false && !$found)) {
+                $found = true;
+                $class .= " active open";
+            }
+            
+            if ($item->hasDescendants()) {
+            	$class .= " dropdown";
+            }
+            
+            if (empty($item->route)) {
+            	$item->route = 'javascript:void(0);';
+            }
+            
+        	echo '<li class="' . $class . '">';
+        	
+        	// is this a module?
+            // or just a regular link?
+            echo '<a href="' . $item->route . '" style="">';
+                if (!empty($item->icon)) {
+                	echo '<i class="fa fa-lg fa-fw ' . $item->icon . '"></i>';
+                }
+                echo ' <span class="menu-item-parent">';
+                echo $item->title;
+                echo '</span> ';
+            echo '</a>';
+        
+        	// The next item is deeper.
+        	if (isset($list[$key+1]) && $list[$key+1]->getDepth() > $item->getDepth()) {
+        	    echo '<ul>';	
+        	}
+        	// The next item is shallower.
+        	elseif (isset($list[$key+1]) && $item->getDepth() > $list[$key+1]->getDepth()) {
+        		echo '</li>';
+        		echo str_repeat('</ul></li>', $item->getDepth() - $list[$key+1]->getDepth());
+        	}
+        	// The next item is on the same level.
+        	else {
+        		echo '</li>';
+        	}
+        }
+        ?></ul>
+        
     </nav>
     <span class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i>
     </span>

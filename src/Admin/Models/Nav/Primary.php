@@ -3,8 +3,7 @@ namespace Admin\Models\Nav;
 
 class Primary extends \Admin\Models\Navigation
 {
-
-    protected $filename = "admin.nav.primary";
+    protected $__type = "admin.nav";
 
     protected $__config = array(
         'default_sort' => array(
@@ -17,14 +16,7 @@ class Primary extends \Admin\Models\Navigation
     {
         parent::fetchConditions();
         
-        $this->setCondition('type', 'admin.nav');
-        
-        $filter_tree = $this->getState('filter.tree');
-        if (strlen($filter_tree))
-        {
-            $filter_tree = $this->inputfilter()->clean($filter_tree, 'ALNUM');
-            $this->setCondition('tree', new \MongoId($filter_tree));
-        }
+        $this->setCondition('type', $this->type());
         
         return $this;
     }
@@ -59,18 +51,24 @@ class Primary extends \Admin\Models\Navigation
         return $tree;
     }
 
-    public function addChildrenItems($children, $tree)
+    /**
+     *
+     * @param unknown $children
+     */
+    public function addChildren( array $children )
     {
         foreach ($children as $child)
         {
-            (new static())->insert(array(
+            (new static)->insert(array(
                 'type' => 'admin.nav',
                 'is_root' => false,
-                'tree' => $tree,
+                'tree' => $this->tree,
                 'parent' => $this->id,
                 'priority' => $this->priority
             ) + $child);
         }
+        
+        return $this;
     }
 }
 ?>
