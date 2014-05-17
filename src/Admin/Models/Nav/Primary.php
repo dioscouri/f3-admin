@@ -21,39 +21,9 @@ class Primary extends \Admin\Models\Navigation
         return $this;
     }
 
-    public static function getTreeMenu($rootID)
-    {
-        $tree = array();
-        $items = (new static())->setState('filter.tree', $rootID)->getItems();
-        if (!empty($items))
-        {
-            $idx = -1;
-            foreach ($items as $item)
-            {
-                if ($item->is_root)
-                {
-                    // root nodes are just names of menus -> skip it
-                    continue;
-                }
-                
-                if ($idx == -1 || ((string) $item->parent == $rootID))
-                {
-                    $idx++;
-                    $item->children = array();
-                    $tree[$idx] = $item;
-                }
-                else
-                {
-                    $tree[$idx]->children[] = $item;
-                }
-            }
-        }
-        return $tree;
-    }
-
     /**
      *
-     * @param unknown $children
+     * @param array $children
      */
     public function addChildren( array $children )
     {
