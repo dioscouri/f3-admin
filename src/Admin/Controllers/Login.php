@@ -10,6 +10,8 @@ class Login extends Base
             \Base::instance()->reroute('/admin');
         }
         
+        $this->app->set('meta.title', 'Login');
+        
         echo \Dsc\System::instance()->get('theme')->setVariant('login')->renderTheme('Admin/Views::common/login.php');
     }
     

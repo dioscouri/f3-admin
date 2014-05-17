@@ -12,7 +12,6 @@ class Menus extends BaseAuth
     public function index()
     {
         $f3 = \Base::instance();
-        $f3->set('pagetitle', 'Edit Menus');
         
         $model = $this->getModel();
         
@@ -38,6 +37,8 @@ class Menus extends BaseAuth
         $event->addArgument('tree', $id);
         $quickadd = \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
         $f3->set('quickadd', $quickadd);
+        
+        $this->app->set('meta.title', 'Menus');
         
         echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::menus/manage.php');
     }

@@ -7,10 +7,10 @@ class System extends BaseAuth
     public function rebuildAdminMenu()
     {
         $this->rebuilAdminMenuCode();
-        \Base::instance()->set('pagetitle', 'System');
-        \Base::instance()->set('subtitle', 'Rebuild Menu');
         
-        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::home/default.php');
+        $this->app->set('meta.title', 'Rebuild Menu');
+        
+        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::message.php');
     }
 
     public function rebuilAdminMenuCode()
@@ -80,7 +80,7 @@ class System extends BaseAuth
                 'icon' => 'fa fa-cogs'
             ),
             array(
-                'title' => 'Rebuild Admin Menu',
+                'title' => 'Rebuild Menu',
                 'route' => '/admin/system/rebuildAdminMenu',
                 'icon' => 'fa fa-retweet'
             ),
@@ -105,9 +105,9 @@ class System extends BaseAuth
         $event = new \Joomla\Event\Event('onSystemDiagnostics');
         $result = \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
         
-        \Base::instance()->set('pagetitle', 'System');
-        \Base::instance()->set('subtitle', 'Diagnostics');
         \Base::instance()->set('result', $result);
+        
+        $this->app->set('meta.title', 'Diagnostics');
         
         echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::system/diagnostics.php');
     }

@@ -141,15 +141,14 @@ class Menu extends BaseAuth
     protected function displayCreate() 
     {
         $f3 = \Base::instance();
-        $f3->set('pagetitle', 'Create Menu Item');
 
+        $this->app->set('meta.title', 'Create Menu Item');
         echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::menus/create.php');
     }
     
     protected function displayEdit()
     {
         $f3 = \Base::instance();
-        $f3->set('pagetitle', 'Edit Menu Item');
         
         $model = $this->getModel();
         $roots = $model->roots();
@@ -160,6 +159,8 @@ class Menu extends BaseAuth
         
         $view = \Dsc\System::instance()->get('theme');
         $view->event = $view->trigger( 'onDisplayAdminMenusEdit', array( 'item' => $this->getItem(), 'tabs' => array(), 'content' => array() ) );
+        
+        $this->app->set('meta.title', 'Edit Menu Item');
         echo $view->renderTheme('Admin/Views::menus/edit.php');
     }
     

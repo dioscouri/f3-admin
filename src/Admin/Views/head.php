@@ -1,6 +1,14 @@
 <base href="<?php echo $SCHEME . "://" . $HOST . $BASE . "/"; ?>" />
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="icon" type="image/ico" href="site/images/favicon.ico" />
+
+<?php $global_settings = \Dsc\Mongo\Collections\Settings::fetch('admin.settings'); ?>
+<?php $title = trim( $this->app->get( 'meta.title' ) . ' | Admin ' . $global_settings->{'system.page_title_suffix'} ); ?>
+<title><?php echo $title; ?></title>
+
 <!-- Basic Styles -->
 <link rel="stylesheet" type="text/css" media="screen" href="./AdminTheme/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" media="screen" href="./AdminTheme/css/font-awesome.min.css">
