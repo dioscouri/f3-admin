@@ -2,7 +2,11 @@
 <hr />
 
 <div class="">
-    
+
+    <div class="form-group">
+        <label>Global Page Title Suffix</label>
+        <input name="system[page_title_suffix]" placeholder="| Your Site Name" value="<?php echo $flash->old('system.page_title_suffix'); ?>" class="form-control" type="text" />
+    </div>
     
     <div class="form-group">
         <label>Force SSL?</label>

@@ -8,6 +8,7 @@ class Settings extends \Dsc\Mongo\Collections\Settings
 	public $admin_menu_id = null;
 	
 	public $system = array(
-		'force_ssl' => 0
+		'force_ssl' => 0,
+	    'page_title_suffix' => null,
 	);
 }
