@@ -21,6 +21,10 @@ body {
     position: relative;
 }
 
+.fa-hdd:before{content:"\f0a0"}
+.fa-expand-o:before{content:"\f116"}
+.fa-collapse-o:before{content:"\f117"}
+
 .form .form-group:last-child, .form .form-group:last-child .note, .form fieldset .form-group:last-child, .form fieldset .form-group:last-child .note {
     margin-bottom: 15px;
 }
