@@ -59,24 +59,6 @@ class System extends BaseAuth
                 'route' => '/admin/menus',
                 'icon' => 'fa fa-list'
             ),
-            array(
-                'title' => 'Add New Menu',
-                'route' => '/admin/menu',
-                'icon' => 'fa fa-plus',
-                'hidden' => true
-            ),
-            array(
-                'title' => 'Menu Items',
-                'route' => '/admin/menus/items',
-                'icon' => 'fa fa-sitemap',
-                'hidden' => true
-            ),
-            array(
-                'title' => 'Add New Menu Item',
-                'route' => '/admin/menus/item',
-                'icon' => 'fa fa-plus',
-                'hidden' => true
-            )
         );
         
         $navigation->addChildren($children);
