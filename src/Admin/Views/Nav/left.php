@@ -25,26 +25,29 @@
         $current = str_replace( $BASE, '', $URI );
         $active_has_been_found = false;
         $list = (new \Admin\Models\Nav\Primary)->setState('filter.root', false)->setState('filter.tree', \Admin\Models\Settings::fetch()->get('admin_menu_id') )->setState('order_clause', array( 'tree'=> 1, 'lft' => 1 ))->getItems();
+        
+        // push the default to the beginning of the list
+        array_unshift( $list, new \Admin\Models\Nav\Primary(array(
+        	'route' => './admin',
+        	'title' => 'Dashboard',
+        	'icon' => 'fa-home',
+        	'depth' => 2
+        )) );        
         ?>
         
         <ul>
-            <li>
-                <a href="./admin" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
-            </li>
-        
         <?php
         foreach ($list as $key => $item) 
         {
-        	$found = false;
             $class = !empty($item->class) ? $item->class : 'menu-item';
             
             $selected = ($current == $item->route) 
                         || (!empty($item->base) && strpos($current, $item->base) !== false) 
                         || (\Dsc\String::inStrings(\Joomla\Utilities\ArrayHelper::getColumn($item->getDescendants(), 'route'), $current ))
                         ;
-            
-            if ($selected || (strpos($item->route, $PARAMS[0]) !== false && !$found)) {
-                $found = true;
+
+            if ($selected || (strpos($item->route, $PARAMS[0]) !== false && !$active_has_been_found)) {
+                $active_has_been_found = true;
                 $class .= " active open";
             }
             
@@ -58,7 +61,7 @@
             	$item->route = '.' . $item->route;
             } 
             
-        	echo '<li class="' . $class . '">';
+        	echo '<li data-depth="' . $item->getDepth() . '" class="' . $class . '">';
         	
         	// is this a module?
             // or just a regular link?
