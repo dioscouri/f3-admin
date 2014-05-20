@@ -56,7 +56,7 @@ class System extends BaseAuth
         $children = array(
             array(
                 'title' => 'Menus',
-                'route' => '/admin/menus',
+                'route' => './admin/menus',
                 'icon' => 'fa fa-list'
             ),
         );
@@ -76,22 +76,22 @@ class System extends BaseAuth
         $children = array(
             array(
                 'title' => 'Settings',
-                'route' => '/admin/settings',
+                'route' => './admin/settings',
                 'icon' => 'fa fa-cogs'
             ),
             array(
                 'title' => 'Rebuild Menu',
-                'route' => '/admin/system/rebuildAdminMenu',
+                'route' => './admin/system/rebuildAdminMenu',
                 'icon' => 'fa fa-retweet'
             ),
             array(
                 'title' => 'Diagnostics',
-                'route' => '/admin/system/diagnostics',
+                'route' => './admin/system/diagnostics',
                 'icon' => 'fa fa-heart'
             ),
             array(
                 'title' => 'Logs',
-                'route' => '/admin/logs',
+                'route' => './admin/logs',
                 'icon' => 'fa fa-list'
             )
         );

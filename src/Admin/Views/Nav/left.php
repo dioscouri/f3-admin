@@ -35,6 +35,7 @@
         <?php
         foreach ($list as $key => $item) 
         {
+        	$found = false;
             $class = !empty($item->class) ? $item->class : 'menu-item';
             
             $selected = ($current == $item->route) 
