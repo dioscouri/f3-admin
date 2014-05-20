@@ -53,9 +53,7 @@
             
             if (empty($item->route)) {
             	$item->route = 'javascript:void(0);';
-            } else {
-				$item->route = '.'.$item->route;
-			}
+            }
             
         	echo '<li class="' . $class . '">';
         	
