@@ -42,7 +42,7 @@
                         || (\Dsc\String::inStrings(\Joomla\Utilities\ArrayHelper::getColumn($item->getDescendants(), 'route'), $current ))
                         ;
             
-            if ($selected || (strpos($item->{'details.url'}, $PARAMS[0]) !== false && !$found)) {
+            if ($selected || (strpos($item->route, $PARAMS[0]) !== false && !$found)) {
                 $found = true;
                 $class .= " active open";
             }
