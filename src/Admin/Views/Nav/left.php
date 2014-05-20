@@ -46,7 +46,7 @@
                         || (\Dsc\String::inStrings(\Joomla\Utilities\ArrayHelper::getColumn($item->getDescendants(), 'route'), $current ))
                         ;
 
-            if ($selected || (strpos($item->route, $PARAMS[0]) !== false && !$active_has_been_found)) {
+            if ($selected || (!$active_has_been_found && strpos($item->route, $PARAMS[0]) !== false)) {
                 $active_has_been_found = true;
                 $class .= " active open";
             }
