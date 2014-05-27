@@ -21,6 +21,9 @@ jQuery(document).ready(function(){
                 <li class="active">
                     <a href="#tab-general" data-toggle="tab"> General Settings </a>
                 </li>
+                <li>
+                    <a href="#tab-integration" data-toggle="tab"> Integration </a>
+                </li>                                
                 <?php if (!empty($this->event)) { foreach ((array) $this->event->getArgument('tabs') as $key => $title ) { ?>
                 <li>
                     <a href="#tab-<?php echo $key; ?>" data-toggle="tab"> <?php echo $title; ?> </a>
@@ -36,6 +39,12 @@ jQuery(document).ready(function(){
                 <div class="tab-pane fade in active" id="tab-general">
                 
                     <?php echo $this->renderLayout('Admin/Views::settings/general.php'); ?>
+
+                </div>
+                
+                <div class="tab-pane fade in" id="tab-integration">
+                
+                    <?php echo $this->renderLayout('Admin/Views::settings/integration.php'); ?>
 
                 </div>
                 
