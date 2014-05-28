@@ -46,7 +46,7 @@ class System extends BaseAuth
         $navigation = new \Admin\Models\Nav\Primary();
         $navigation->insert(array(
             'type' => 'admin.nav',
-            'priority' => 110,
+            'priority' => 100,
             'title' => 'Navigation',
             'icon' => 'fa fa-tasks',
             'is_root' => false,
@@ -66,7 +66,7 @@ class System extends BaseAuth
         $system = new \Admin\Models\Nav\Primary();
         $system->insert(array(
             'type' => 'admin.nav',
-            'priority' => 120,
+            'priority' => 1000,
             'title' => 'System',
             'icon' => 'fa fa-cogs',
             'is_root' => false,
