@@ -3,7 +3,8 @@ namespace Admin\Controllers;
 
 class Menu extends BaseAuth 
 {
-    use \Dsc\Traits\Controllers\OrderableItemCollection {
+    use \Dsc\Traits\Controllers\CrudItemCollection,
+        \Dsc\Traits\Controllers\OrderableItemCollection {
         doAdd as doAddCrudItem;
         doUpdate as doUpdateCrudItem;
         doDelete as doDeleteCrudItem;
