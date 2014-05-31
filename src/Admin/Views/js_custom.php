@@ -19,4 +19,7 @@
 <script src="./colorbox/colorbox.js"></script>
 <link rel="stylesheet" href="./colorbox/colorbox.css" type="text/css" />
 
+<link href="./admin/minify/css" type="text/css" rel="stylesheet">
+<script src="./admin/minify/js"></script>
+
 <script src="./dsc/js/common.js"></script>
