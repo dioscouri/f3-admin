@@ -11,6 +11,7 @@ var CustomApp = function () {
         initDatepicker();
         initTimepicker();        
         setupCheckAll();
+        dropdownStaysOpenWithClick();
     }
     
     function initICheck () {
@@ -89,7 +90,15 @@ var CustomApp = function () {
         		}
         	});
         });	
-    }    
+    }
+    
+    function dropdownStaysOpenWithClick() {
+    	
+	    $(".dropdown-menu").on("click", "[data-stopPropagation]", function(e) {
+	        e.stopPropagation();
+	    });
+    	
+    }
 }();
 
 $(document).ready(function () {
