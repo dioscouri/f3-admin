@@ -18,15 +18,16 @@
  * - CUSTOM STYLES
  */
 body {
-    position: relative;
+  position: relative;
 }
 
-.form .form-group:last-child, .form .form-group:last-child .note, .form fieldset .form-group:last-child, .form fieldset .form-group:last-child .note {
-    margin-bottom: 15px;
+.form .form-group:last-child,.form .form-group:last-child .note,.form fieldset .form-group:last-child,.form fieldset .form-group:last-child .note
+  {
+  margin-bottom: 15px;
 }
 
 form .tab-content {
-    padding: 10px;
+  padding: 10px;
 }
 
 nav ul b {
@@ -34,31 +35,31 @@ nav ul b {
 }
 
 .datatable .thumbnail img {
-    max-width: 100px;
-    max-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
 }
 
-.icheckbox_minimal-blue,
-.iradio_minimal-blue {
+.icheckbox_minimal-blue,.iradio_minimal-blue {
   display: inline-block;
   margin-bottom: -4px;
   margin-right: 4px;
 }
-.form-group .icheckbox_minimal-blue,
-.form-group .iradio_minimal-blue {
+
+.form-group .icheckbox_minimal-blue,.form-group .iradio_minimal-blue {
   display: inline-block;
   top: 4px;
   margin-right: .5em;
   margin-left: -20px;
 }
-.checkbox-inline,
-.radio-inline {
+
+.checkbox-inline,.radio-inline {
   margin-right: 20px;
 }
-.radio-inline + .radio-inline,
-.checkbox-inline + .checkbox-inline {
+
+.radio-inline+.radio-inline,.checkbox-inline+.checkbox-inline {
   margin-left: 0;
 }
+
 .form-control.select2-container {
   height: auto;
   padding: 0;
@@ -67,14 +68,46 @@ nav ul b {
   -moz-box-shadow: none;
   box-shadow: none;
 }
+
 .ui-datepicker {
-    display: inline-block;
+  display: inline-block;
 }
 
-.select2-container{
-	min-width : 100%;
+.select2-container {
+  min-width: 100%;
 }
 
-nav.primary-nav li.open > ul {
-	display: block;
-} 
+nav.primary-nav li.open>ul {
+  display: block;
+}
+
+.sorting,
+.sorting_asc,
+.sorting_asc_disabled,
+.sorting_desc,
+.sorting_desc_disabled
+{
+  cursor: hand;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+.sorting {
+  background: url(../img/sort_both.png) no-repeat center right;
+}
+
+.sorting_asc {
+  background: url(../img/sort_asc.png) no-repeat center right;
+}
+
+.sorting_desc {
+  background: url(../img/sort_desc.png) no-repeat center right;
+}
+
+.sorting_asc_disabled {
+  background: url(../img/sort_asc_disabled.png) no-repeat center right;
+}
+
+.sorting_desc_disabled {
+  background: url(../img/sort_desc_disabled.png) no-repeat center right;
+}

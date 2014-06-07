@@ -76,17 +76,17 @@ var CustomApp = function () {
     
     function setupCheckAll() {
 
-        $('th.checkbox-column').each(function(){
+        $('.checkbox-column').each(function(){
         	
         	$(this).on( 'ifToggled', ':checkbox', function(){
         		$this = $(this);
         		var  checked = $this.prop("checked");
         		
-        		$( 'td.checkbox-column input.icheck-input', $this.closest( 'table' )  ).prop( 'checked', checked );
+        		$( '.checkbox-column .icheck-input' ).prop( 'checked', checked );
         		if( checked ) {
-        			$( 'td.checkbox-column div.icheck-input', $this.closest( 'table' )  ).addClass( 'checked' );    			
+        			$( '.checkbox-column .icheck-input' ).addClass( 'checked' );    			
         		} else {
-        			$( 'td.checkbox-column div.icheck-input', $this.closest( 'table' )  ).removeClass( 'checked' );    			
+        			$( '.checkbox-column .icheck-input' ).removeClass( 'checked' );    			
         		}
         	});
         });	
