@@ -11,7 +11,7 @@
 
 	<!-- pulled right: nav area -->
 	<div class="pull-right">
-
+        
 		<!-- collapse menu button -->
 		<div id="hide-menu" class="btn-header pull-right">
 			<span> <a href="javascript:void(0);" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
@@ -20,9 +20,22 @@
 
 		<!-- logout button -->
 		<div id="logout" class="btn-header transparent pull-right">
-			<span> <a href="./admin/logout" title="Sign Out"><i class="fa fa-sign-out"></i></a> </span>
+			<span> <a class="" href="./admin/logout" title="Sign Out">&nbsp;<i class="fa fa-sign-out"></i> <small class="hidden-xs hidden-sm">Logout</small> &nbsp;</a> </span>
 		</div>
 		<!-- end logout button -->
+		
+		<!-- preview button -->
+		<div id="preview" class="btn-header transparent pull-right">
+			<span> <a class="" href="./" title="Preview Site" target="_blank" >&nbsp;<i class="fa fa-circle-thin"></i> <small class="hidden-xs hidden-sm">Preview Site</small> &nbsp;</a> </span>
+		</div>
+		<!-- end preview button -->
+		
+        <h4 class="pull-right margin-top greeting">
+            <span class="">
+            <?php $identity = $this->auth->getIdentity(); ?>
+            Hello, <?php echo $identity->fullName(); ?>
+            </span>
+        </h4>
 
 		<?php /* ?>
 		<!-- search mobile button (this is hidden till mobile view port) -->

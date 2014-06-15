@@ -111,3 +111,7 @@ nav.primary-nav li.open>ul {
 .sorting_desc_disabled {
   background: url(../img/sort_desc_disabled.png) no-repeat center right;
 }
+
+header .margin-top {
+  margin-top: 13px;
+}

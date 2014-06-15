@@ -5,7 +5,7 @@
     <!-- User info -->
     <div class="login-info">
 	    <?php $identity = $this->auth->getIdentity(); ?>
-		<span> <a href="javascript:void(0);" id="show-shortcut"> <?php echo $identity->fullName(); ?> </a>
+		<span class="hidden"> <a href="javascript:void(0);" id="show-shortcut"> <?php echo $identity->fullName(); ?> </a>
         </span>
     </div>
     <!-- end user info -->
