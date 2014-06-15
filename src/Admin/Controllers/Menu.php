@@ -3,11 +3,12 @@ namespace Admin\Controllers;
 
 class Menu extends BaseAuth 
 {
-    use \Dsc\Traits\Controllers\CrudItemCollection,
-        \Dsc\Traits\Controllers\OrderableItemCollection {
+    use \Dsc\Traits\Controllers\CrudItemCollection {
         doAdd as doAddCrudItem;
         doUpdate as doUpdateCrudItem;
         doDelete as doDeleteCrudItem;
+    }
+    use \Dsc\Traits\Controllers\OrderableItemCollection {
         doMoveUp as doMoveUpCrudItem;
         doMoveDown as doMoveDownCrudItem;
     }
@@ -81,7 +82,7 @@ class Menu extends BaseAuth
         return $return;
     }
     
-    protected function doMoveUp(array $data, $key=null)
+    protected function doMoveUp($data, $key=null)
     {
         $tree = !empty($data['tree']) ? $data['tree'] : null;
     
@@ -98,7 +99,7 @@ class Menu extends BaseAuth
         return $return;
     }
     
-    protected function doMoveDown(array $data, $key=null)
+    protected function doMoveDown($data, $key=null)
     {
         $tree = !empty($data['tree']) ? $data['tree'] : null;
     
