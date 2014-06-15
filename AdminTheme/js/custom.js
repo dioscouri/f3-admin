@@ -30,9 +30,12 @@ var CustomApp = function () {
         if ($.fn.select2) {
             $('.ui-select2').each(function(){
                 var el = $(this);
-                var multiple = el.attr('data-multiple');
-                var maximumSelectionSize = el.attr('data-maximum');
-                el.select2({ allowClear: true, placeholder: "Select...", multiple: multiple, maximumSelectionSize: maximumSelectionSize });
+                var data = jQuery.extend({}, {
+                	allowClear: true,
+                	placeholder: "Select...", 
+                	maximumSelectionSize: el.attr('data-maximum')
+                }, el.data());
+                el.select2(data);
             });
             
             $('.ui-select2-data').each(function(){
