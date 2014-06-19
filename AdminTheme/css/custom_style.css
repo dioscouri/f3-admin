@@ -115,3 +115,7 @@ nav.primary-nav li.open>ul {
 header .margin-top {
   margin-top: 13px;
 }
+
+html.login {
+  background: none !important;
+}
