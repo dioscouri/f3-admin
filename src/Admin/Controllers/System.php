@@ -8,6 +8,11 @@ class System extends BaseAuth
     {
         $this->rebuilAdminMenuCode();
         
+        if ($custom_redirect = $this->session->get( 'rebuild-menu.redirect' )) 
+        {
+        	return $this->app->reroute( $custom_redirect );        	
+        }
+        
         $this->app->set('meta.title', 'Rebuild Menu');
         
         echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::message.php');
