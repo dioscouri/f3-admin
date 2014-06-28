@@ -20,7 +20,7 @@ class Home extends BaseAuth
     {
         $this->app->set('meta.title', 'Home');
         
-        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::home/default.php');
+        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::home/index.php');
     }
 }
 ?> 
