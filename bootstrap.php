@@ -19,6 +19,11 @@ class AdminBootstrap extends \Dsc\Bootstrap
         
         \Dsc\System::instance()->get('theme')->setTheme('AdminTheme', $this->dir . '/src/Admin/Theme/');
 
+        if (class_exists('\Modules\Factory')) 
+        {
+            \Modules\Factory::registerPositions( array( 'admin-dashboard') );
+        }
+        
         parent::runAdmin();
     }
 }
