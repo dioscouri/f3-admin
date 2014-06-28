@@ -14,3 +14,5 @@
         </div>        
     </div>
 <?php } ?>
+
+<tmpl type="modules" name="admin-dashboard" />
