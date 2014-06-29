@@ -4,7 +4,7 @@
             <div class="well well-sm search">
                 <form method="get" action="./admin/search" role="search">
                     <div class="input-group">
-                        <input name="q" type="text" class="form-control" placeholder="Search..." />
+                        <input name="q" type="text" class="form-control" placeholder="Global search..." />
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="submit" tabindex="3">Search</button>
                         </span>
