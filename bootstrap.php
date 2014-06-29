@@ -24,6 +24,15 @@ class AdminBootstrap extends \Dsc\Bootstrap
             \Modules\Factory::registerPositions( array( 'admin-dashboard') );
         }
         
+        if (class_exists('\Search\Factory'))
+        {
+            \Search\Factory::registerSource(new \Search\Models\Source(array(
+                'id' => 'navigation',
+                'title' => 'Navigation Items',
+                'class' => '\Admin\Models\Navigation'
+            )));
+        }        
+        
         parent::runAdmin();
     }
 }
