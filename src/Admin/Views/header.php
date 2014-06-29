@@ -39,7 +39,7 @@
     
     		<!-- input: search field -->
     		<form method="get" action="./admin/search" role="search" class="header-search pull-right">
-                <input name="q" type="text" class="form-control" placeholder="Search..." id="search-fld" />
+                <input name="q" type="text" class="form-control" placeholder="Global search..." id="search-fld" />
     			<button type="submit">
     				<i class="fa fa-search"></i>
     			</button>
