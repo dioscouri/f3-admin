@@ -38,23 +38,23 @@
     
     <div class="list-group">
         <div class="list-group-item">
-            Cras justo odio
+            Rafael broke this
         </div>
         
         <div class="list-group-item">
-            Dapibus ac facilisis in
+            Lukas broke that
         </div>
         
         <div class="list-group-item">
-            Morbi leo risus
+            Chris broke that other thing
         </div>
         
         <div class="list-group-item">
-            Porta ac consectetur ac
+            Someone viewed something
         </div>
         
         <div class="list-group-item">
-            Vestibulum at eros
+            Another user crashed that
         </div>
     </div>
     
