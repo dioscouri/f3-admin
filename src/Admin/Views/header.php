@@ -30,30 +30,29 @@
 		</div>
 		<!-- end preview button -->
 		
+        <?php if (class_exists('\Search\Factory')) { ?>
+    		<!-- search mobile button (this is hidden till mobile view port) -->
+    		<div id="search-mobile" class="btn-header transparent pull-right">
+    			<span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+    		</div>
+    		<!-- end search mobile button -->
+    
+    		<!-- input: search field -->
+    		<form method="get" action="./admin/search" role="search" class="header-search pull-right">
+                <input name="q" type="text" class="form-control" placeholder="Search..." id="search-fld" />
+    			<button type="submit">
+    				<i class="fa fa-search"></i>
+    			</button>
+    		</form>
+    		<!-- end input: search field -->
+        <?php } ?>
+        
         <h4 class="pull-right margin-top greeting">
             <span class="">
             <?php $identity = $this->auth->getIdentity(); ?>
             Hello, <?php echo $identity->fullName(); ?>
             </span>
-        </h4>
-
-		<?php /* ?>
-		<!-- search mobile button (this is hidden till mobile view port) -->
-		<div id="search-mobile" class="btn-header transparent pull-right">
-			<span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
-		</div>
-		<!-- end search mobile button -->
-
-		<!-- input: search field -->
-		<form action="#search.html" class="header-search pull-right">
-			<input type="text" placeholder="Search..." id="search-fld">
-			<button type="submit">
-				<i class="fa fa-search"></i>
-			</button>
-			<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
-		</form>
-		<!-- end input: search field -->
-		*/ ?>
+        </h4>        
 
 	</div>
 	<!-- end pulled right: nav area -->
