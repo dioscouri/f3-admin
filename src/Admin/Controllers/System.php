@@ -22,14 +22,11 @@ class System extends BaseAuth
     {
         $settings = \Admin\Models\Settings::fetch();
         $root = new \Admin\Models\Nav\Primary();
+        
         // delete all admin menu items, if there are any
-        if (!empty($settings->{'admin_menu_id'}))
-        {
-            \Admin\Models\Nav\Primary::collection()->remove(array(
-                'tree' => new \MongoId((string) $settings->{'admin_menu_id'})
-            ));
-            // delete tree
-        }
+        \Admin\Models\Nav\Primary::collection()->remove(array(
+            'type' => 'admin.nav'
+        ));
         
         $root->type = 'admin.nav';
         $root->{'is_root'} = true;
