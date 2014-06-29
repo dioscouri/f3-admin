@@ -19,9 +19,34 @@ class Routes extends \Dsc\Routes\Group
         ) );
         
         $this->add( '', 'GET', array(
-            'controller' => 'Home',
-            'action' => 'display' 
+            'controller' => 'Dashboard',
+            'action' => 'today' 
         ) );
+        
+        $this->add( '/dashboard/yesterday', 'GET', array(
+            'controller' => 'Dashboard',
+            'action' => 'yesterday'
+        ) );
+        
+        $this->add( '/dashboard/last-7', 'GET', array(
+            'controller' => 'Dashboard',
+            'action' => 'last7'
+        ) );
+
+        $this->add( '/dashboard/last-30', 'GET', array(
+            'controller' => 'Dashboard',
+            'action' => 'last30'
+        ) );        
+        
+        $this->add( '/dashboard/last-90', 'GET', array(
+            'controller' => 'Dashboard',
+            'action' => 'last90'
+        ) );        
+        
+        $this->add( '/dashboard/custom', 'GET', array(
+            'controller' => 'Dashboard',
+            'action' => 'custom'
+        ) );        
         
         $this->add( '/login', 'GET', array(
             'controller' => 'Login',
