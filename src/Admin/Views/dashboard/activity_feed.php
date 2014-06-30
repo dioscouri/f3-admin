@@ -1,4 +1,12 @@
 
+<?php 
+
+$list = (new \Activity\Models\Actions)->setParam('limit', 10)->getList();
+
+
+?>
+
+
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="clearfix">
@@ -36,29 +44,47 @@
         This does not change with the selected date range.  It always shows CURRENT activity
     </p>
     
-    <div class="list-group">
+    <div id="ActivitiesList" class="list-group">
+    <?php foreach ($list as $event) : ?>
         <div class="list-group-item">
-            Rafael broke this
+            <a href="/admin/activities/actor/<?php echo $event->actor_id; ?>"><?php echo $event->actor_id; ?></a> did an event: <?php echo $event->action; ?>
         </div>
-        
-        <div class="list-group-item">
-            Lukas broke that
-        </div>
-        
-        <div class="list-group-item">
-            Chris broke that other thing
-        </div>
-        
-        <div class="list-group-item">
-            Someone viewed something
-        </div>
-        
-        <div class="list-group-item">
-            Another user crashed that
-        </div>
+     <?php endforeach; ?>   
     </div>
+    
     
     <div class="panel-footer">
         <a class="" href="./admin/activities">View all activity</a>
     </div>        
 </div>
+<?php if(class_exists('\Pusher\Pusher')) : ?>
+<?php
+$settings = Pusher\Models\Settings::fetch(); 
+if($settings->{'pusher.key'}) : ?>
+<script src="//js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    // Enable pusher logging - don't include this in production
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
+
+	function addEvent(data) {
+	html = '<div class="list-group-item newEvent"><a href="/admin/activities/actor/'+ data.actor_id +'">'+data.actor_id +'</a> did an event: '+ data.action +'</div>';
+		$('#ActivitiesList').prepend(html);
+
+
+		$('.newEvent').fadeTo(1000, 0.5, function() { $('.newEvent').fadeTo(800, 1).removeClass('newEvent'); });
+		
+	}
+
+	
+    var pusher = new Pusher('<?php echo $settings->{'pusher.key'} ?>');
+    var channel = pusher.subscribe('dashboard');
+    channel.bind('event', function(data) {
+		addEvent(data);
+    });
+  </script>
+<?php endif; ?>
+<?php endif; ?>

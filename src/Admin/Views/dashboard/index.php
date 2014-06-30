@@ -125,8 +125,9 @@
         
     </div>
 </div>
-
-<?php echo $this->renderView('Admin/Views::dashboard/activity_feed.php'); ?>
+<?php if(class_exists('\Activity\Models\Actions')) { 
+ echo $this->renderView('Admin/Views::dashboard/activity_feed.php'); 
+} ?>
 
 <tmpl type="modules" name="admin-dashboard" />
 
