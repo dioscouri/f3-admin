@@ -125,16 +125,14 @@
         
     </div>
 </div>
-<?php if(class_exists('\Activity\Models\Actions')) { 
- echo $this->renderView('Admin/Views::dashboard/activity_feed.php'); 
-}
-?>
+
+<?php echo $this->renderView('Admin/Views::dashboard/activity_feed.php'); ?>
+
 <tmpl type="modules" name="admin-dashboard" />
+
 <style>
 .panel.panel-default.panel-dashboard {
     border-top: none;
     border-radius: 0px;
 }
 </style>
-
-

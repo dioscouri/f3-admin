@@ -20,7 +20,15 @@ class Dashboard extends BaseAuth
     {
         $this->app->set('meta.title', 'Home');
         
-        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::dashboard/index.php');
+        if ($this->app->get('DEBUG')) 
+        {
+            echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::dashboard/testing.php');
+        } 
+        else 
+        {
+            echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::dashboard/index.php');
+        }
+        
     }
     
     public function today()

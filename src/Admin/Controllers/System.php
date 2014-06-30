@@ -40,11 +40,6 @@ class System extends BaseAuth
         $settings->{'admin_menu_id'} = (string) $root->id;
         $settings->save();        
         
-        $event = new \Joomla\Event\Event('onSystemRebuildMenu');
-        $event->addArgument('model', new \Admin\Models\Nav\Primary());
-        $event->addArgument('root', $root->id);
-        \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
-        
         $navigation = new \Admin\Models\Nav\Primary();
         $navigation->insert(array(
             'type' => 'admin.nav',
@@ -98,14 +93,20 @@ class System extends BaseAuth
             )
         );
         $system->addChildren($children);
+        
+        \Dsc\System::instance()->addMessage('System added its admin menu items');
+
+        $result = \Dsc\System::instance()->trigger('onSystemRebuildMenu', array(
+            'model' => new \Admin\Models\Nav\Primary,
+            'root' => $root->id
+        ));
 
         \Dsc\System::instance()->addMessage('Menu rebuilt', 'notice');
     }
 
     public function diagnostics()
     {
-        $event = new \Joomla\Event\Event('onSystemDiagnostics');
-        $result = \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
+        $result = \Dsc\System::instance()->trigger('onSystemDiagnostics');
         
         \Base::instance()->set('result', $result);
         

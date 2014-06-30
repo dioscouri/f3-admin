@@ -29,7 +29,8 @@ class AdminBootstrap extends \Dsc\Bootstrap
             \Search\Factory::registerSource(new \Search\Models\Source(array(
                 'id' => 'navigation',
                 'title' => 'Navigation Items',
-                'class' => '\Admin\Models\Navigation'
+                'class' => '\Admin\Models\Navigation',
+                'priority' => 40,
             )));
         }        
         
