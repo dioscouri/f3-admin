@@ -72,7 +72,16 @@ class Routes extends \Dsc\Routes\Group
         
         $this->addCrudGroup( 'Logs', 'Log' );
         
-        $this->addCrudList( 'Queue' );
+        $this->addCrudGroup( 'QueueTasks', 'QueueTask', array(
+            'url_prefix' => '/queue/tasks',
+        ), array(
+            'url_prefix' => '/queue/task',
+        ) );
+        
+        $this->addCrudList( 'QueueArchives', array(
+            'url_prefix' => '/queue/archives'       
+        ) );
+        
         $this->addCrudList( 'Menus' );
         
         $this->add( '/menus/all', 'GET', array(

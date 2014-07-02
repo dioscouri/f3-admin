@@ -90,9 +90,40 @@ class System extends BaseAuth
                 'title' => 'Logs',
                 'route' => './admin/logs',
                 'icon' => 'fa fa-list'
-            )
+            ),
+            array(
+                'title' => 'Queue',
+                'route' => 'javascript:void(0);',
+                'icon' => 'fa fa-refresh'
+            ),            
         );
         $system->addChildren($children);
+        
+        // Find the Queue Item
+        $queue_item = (new \Admin\Models\Nav\Primary())->load(array(
+            'type' => 'admin.nav',
+            'parent' => $system->id,
+            'title' => 'Queue'
+        ));
+        
+        // add its children
+        if (!empty($queue_item->id))
+        {
+            $system_children = array(
+                array(
+                    'title' => 'Tasks',
+                    'route' => './admin/queue/tasks',
+                    'icon' => 'fa fa-link'
+                ),
+                array(
+                    'title' => 'Archive',
+                    'route' => './admin/queue/archives',
+                    'icon' => 'fa fa-gift'
+                )
+            );
+        
+            $queue_item->addChildren($system_children);
+        }        
         
         \Dsc\System::instance()->addMessage('System added its admin menu items');
 
