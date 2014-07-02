@@ -82,20 +82,20 @@ class System extends BaseAuth
                 'icon' => 'fa fa-retweet'
             ),
             array(
-                'title' => 'Diagnostics',
-                'route' => './admin/system/diagnostics',
-                'icon' => 'fa fa-heart'
+                'title' => 'Queue',
+                'route' => 'javascript:void(0);',
+                'icon' => 'fa fa-refresh'
             ),
             array(
                 'title' => 'Logs',
                 'route' => './admin/logs',
                 'icon' => 'fa fa-list'
-            ),
-            array(
-                'title' => 'Queue',
-                'route' => 'javascript:void(0);',
-                'icon' => 'fa fa-refresh'
             ),            
+            array(
+                'title' => 'Diagnostics',
+                'route' => './admin/system/diagnostics',
+                'icon' => 'fa fa-heart'
+            ),
         );
         $system->addChildren($children);
         
