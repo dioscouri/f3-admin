@@ -22,7 +22,7 @@ class Dashboard extends BaseAuth
         
         if ($this->app->get('DEBUG')) 
         {
-            echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::dashboard/testing.php');
+            echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::dashboard/index.php');
         } 
         else 
         {
