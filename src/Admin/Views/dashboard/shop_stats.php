@@ -13,10 +13,12 @@ $salesdata = $model->salesData();
 <div class="row">
     <div class="col-md-6">
         <h4 class="clearfix">
+            <a href="./admin/shop/orders">
             Total Sales
             <?php if (isset($total['total'])) { ?>
             <small class="pull-right"><?php echo \Shop\Models\Currency::format( $total['total'] ); ?> total (<?php echo $total['count']; ?>)</small>
             <?php } ?>
+            </a>
         </h4>
         <hr/>
         <div class="well well-sm">
