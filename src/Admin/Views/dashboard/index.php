@@ -61,12 +61,16 @@
         
         <?php // TODO Fire a listener event here ?>
         
+        <?php echo $this->renderView('Admin/Views::dashboard/activity_stats.php'); ?>
+        
         <?php echo $this->renderView('Admin/Views::dashboard/shop_stats.php'); ?>
         
         <tmpl type="modules" name="admin-dashboard-summary-panel" />
         
     </div>
 </div>
+
+<?php echo $this->renderView('Admin/Views::dashboard/activity_feed.php'); ?>
 
 <tmpl type="modules" name="admin-dashboard" />
 

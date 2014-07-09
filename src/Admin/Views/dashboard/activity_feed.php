@@ -1,9 +1,8 @@
+<?php // TODO Move this to a module or listener in f3-activity ?>
+<?php if (!class_exists('\Activity\Models\Actions')) { return; } ?>
 
 <?php 
-
 $list = (new \Activity\Models\Actions)->setParam('limit', 10)->getList();
-
-
 ?>
 
 
@@ -13,6 +12,7 @@ $list = (new \Activity\Models\Actions)->setParam('limit', 10)->getList();
             <div class="pull-left">
                 <h3 class="panel-title"><i class="fa fa-eye"></i> Activity Feed </h3>
             </div>
+            <?php /* ?>
             <div class="panel-toolbar widget-toolbar pull-right">
                 <div class="btn-group">
                 	<button class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
@@ -30,24 +30,24 @@ $list = (new \Activity\Models\Actions)->setParam('limit', 10)->getList();
                 		</li>
                 	</ul>
                 </div>                    
-            </div>        
+            </div>
+            */ ?>        
         </div>
         
     </div>
     
+    <?php /* ?>
     <div class="alert alert-danger">
         <p>[use pusher to update this realtime?]</p> 
         <p>[ajax call upon clicking dropdown to load filtered data and tell pusher what filter is in place]</p>        
     </div>
-    
-    <p class="alert alert-success">
-        This does not change with the selected date range.  It always shows CURRENT activity
-    </p>
+    */ ?>
     
     <div id="ActivitiesList" class="list-group">
     <?php foreach ($list as $event) : ?>
-        <div class="list-group-item">
-            <a href="/admin/activities/actor/<?php echo $event->actor_id; ?>"><?php echo $event->actor_id; ?></a> did an event: <?php echo $event->action; ?>
+        <div class="list-group-item clearfix">
+            <span class="text-success"><?php echo $event->actor_name; ?></span> did an event: <b class="text-success"><?php echo $event->action; ?></b>
+            <span class="pull-right"><?php echo date( 'Y-m-d g:i a', $event->created ); ?></span>
         </div>
      <?php endforeach; ?>   
     </div>

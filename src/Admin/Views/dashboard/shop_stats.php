@@ -1,5 +1,5 @@
 <?php // TODO Move this to a module or listener in f3-shop ?>
-
+<?php if (!class_exists('\Shop\Models\Dashboard')) { return; } ?>
 <?php
 $class = "\Shop\Models\Dashboard\\" . ucwords($active);
 $model = new $class;
@@ -22,7 +22,7 @@ $salesdata = $model->salesData();
         </h4>
         <hr/>
         <div class="well well-sm">
-            <div id="chart_div" style="width: 100%; height: 300px;"></div>
+            <div id="shop_stats_chart_div" style="width: 100%; height: 300px;"></div>
         </div>
     </div>
     <div class="col-md-3">
@@ -89,7 +89,7 @@ var data = google.visualization.arrayToDataTable(<?php echo json_encode($salesda
       hAxis: {title: '<?php echo $salesdata['haxis.title']; ?>', titleTextStyle: {color: 'red'}}
     };
 
-    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+    var chart = new google.visualization.ColumnChart(document.getElementById('shop_stats_chart_div'));
     chart.draw(data, options);
   }
 
