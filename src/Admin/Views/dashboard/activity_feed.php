@@ -54,7 +54,7 @@ $list = (new \Activity\Models\Actions)->setParam('limit', 10)->getList();
     
     
     <div class="panel-footer">
-        <a class="" href="./admin/activities">View all activity</a>
+        <a class="" href="./admin/activities/actions">View all activity</a>
     </div>        
 </div>
 <?php if(class_exists('\Pusher\Pusher')) : ?>
