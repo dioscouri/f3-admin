@@ -8,8 +8,8 @@ $class = "\Activity\Models\Dashboard\\" . ucwords($active);
 if (class_exists($class)) 
 {
     $model = new $class;
-    $total = $model->totalSales();
-    $salesdata = $model->salesData();    
+    $total = $model->total();
+    $chartdata = $model->chartData();    
 }
 
 ?>
@@ -87,9 +87,9 @@ if (class_exists($class))
   google.load("visualization", "1", {packages:["corechart"]});
   google.setOnLoadCallback(drawChart);
   function drawChart() {
-var data = google.visualization.arrayToDataTable(<?php echo json_encode($salesdata['results']); ?>);
+var data = google.visualization.arrayToDataTable(<?php echo json_encode($chartdata['results']); ?>);
     var options = {
-      hAxis: {title: '<?php echo $salesdata['haxis.title']; ?>', titleTextStyle: {color: 'red'}}
+      hAxis: {title: '<?php echo $chartdata['haxis.title']; ?>', titleTextStyle: {color: 'red'}}
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('activity_stats_chart_div'));

@@ -89,7 +89,7 @@ var data = google.visualization.arrayToDataTable(<?php echo json_encode($salesda
       hAxis: {title: '<?php echo $salesdata['haxis.title']; ?>', titleTextStyle: {color: 'red'}}
     };
 
-    var chart = new google.visualization.ColumnChart(document.getElementById('shop_stats_chart_div'));
+    var chart = new google.visualization.AreaChart(document.getElementById('shop_stats_chart_div'));
     chart.draw(data, options);
   }
 
