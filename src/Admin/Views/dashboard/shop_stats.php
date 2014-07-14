@@ -6,6 +6,7 @@ $model = new $class;
 $total = $model->totalSales();
 $topsellers = $model->topSellers();
 $salesdata = $model->salesData();
+$conversions = $model->conversions();
 ?>
 
 <hr/>
@@ -48,24 +49,15 @@ $salesdata = $model->salesData();
     <div class="col-md-3">
         <h4 class="clearfix">
             Conversions
-            <small>(coming soon)</small>
         </h4>
         <hr/>            
         <div class="list-group">
+            <?php foreach ($conversions as $title=>$data) { ?>
             <div class="list-group-item">
-                <small>Added to Cart</small>
-                15% (20)
+                <small><?php echo $title; ?></small>
+                <?php echo $data['perc']; ?> (<?php echo $data['count']; ?>)
             </div>
-            
-            <div class="list-group-item">
-                <small>Reached Checkout</small>
-                2% (2)
-            </div>
-            
-            <div class="list-group-item">
-                <small>Completed Checkout</small>
-                1% (1)
-            </div>
+            <?php } ?>
         </div>                
     </div>                
 </div>
