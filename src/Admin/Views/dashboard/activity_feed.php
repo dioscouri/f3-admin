@@ -43,7 +43,7 @@ $list = (new \Activity\Models\Actions)->setParam('limit', 10)->getList();
     </div>
     */ ?>
     
-    <div id="ActivitiesList" class="list-group">
+    <div id="activities-list" class="list-group">
     <?php foreach ($list as $event) : ?>
         <div class="list-group-item clearfix">
             <span class="text-success"><?php echo $event->actor_name; ?></span> did an event: <b class="text-success"><?php echo $event->action; ?></b>
@@ -88,3 +88,18 @@ if($settings->{'pusher.key'}) : ?>
   </script>
 <?php endif; ?>
 <?php endif; ?>
+
+<?php /* Coming soon ?>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	if ("WebSocket" in window) {                                         
+        ws = new WebSocket("ws://" + document.domain + ":8080");                
+        ws.onmessage = function (msg) {                                  
+            $("#activities-list").prepend(msg.data)                      
+        };                                                               
+    } else {                                                             
+        console.log("WebSocket not supported");                                
+    }
+});
+</script>
+*/ ?>
