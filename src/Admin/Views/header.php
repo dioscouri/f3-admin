@@ -20,7 +20,7 @@
 
 		<!-- logout button -->
 		<div id="logout" class="btn-header transparent pull-right">
-			<span> <a class="" href="./admin/logout" title="Sign Out">&nbsp;<i class="fa fa-sign-out"></i> <small class="hidden-xs hidden-sm">Logout</small> &nbsp;</a> </span>
+			<span> <a class="" href="<?php echo $SCHEME . "://" . $HOST . $BASE . "/"; ?>admin/logout" title="Sign Out">&nbsp;<i class="fa fa-sign-out"></i> <small class="hidden-xs hidden-sm">Logout</small> &nbsp;</a> </span>
 		</div>
 		<!-- end logout button -->
 		
