@@ -96,7 +96,7 @@
                         <?php } ?>                        
                     </td>
                     <td class="text-center">
-                        <?php echo date('Y-m-d', $item->{'when'} ); ?>
+                        <?php echo date('Y-m-d g:i a', $item->{'when'} ); ?>
                     </td>
                     <td class="text-center">
                         <a class="btn btn-xs btn-danger" data-bootbox="confirm" href="./admin/queue/task/delete/<?php echo $item->id; ?>">
