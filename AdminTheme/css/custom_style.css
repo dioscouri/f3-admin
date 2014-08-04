@@ -119,3 +119,9 @@ header .margin-top {
 html.login {
   background: none !important;
 }
+
+@media only screen {
+  #main {
+    border-top: 1px solid #cccccc;
+  }
+}

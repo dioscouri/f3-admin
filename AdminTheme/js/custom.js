@@ -110,6 +110,8 @@ $(document).ready(function () {
     $(function () {
         CustomApp.init();
     });
-    
-    jQuery('#main').css({ minHeight: jQuery('#left-panel').height() + 100 });
+});
+
+jQuery(window).load(function(){
+    jQuery('#main').css({ minHeight: jQuery(document).outerHeight() + 100 });    
 });
