@@ -19,11 +19,13 @@
     <?php echo $this->renderView('Admin/Views::Nav/left.php'); ?>
 
     <div id="main" role="main" class="clearfix">
-        
-		<div id="ribbon">
+    
+        <?php /* ?>
+		<div id="ribbon" class="hidden">
 		<?php // breadcrumb? ?>
 		</div>
 		<!-- #ribbon -->
+		*/ ?>
 		
     	<div id="content" class="clearfix">		
     

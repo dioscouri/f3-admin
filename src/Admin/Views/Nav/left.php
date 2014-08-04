@@ -2,13 +2,15 @@
 <!-- Note: This width of the aside area can be adjusted through LESS variables -->
 <aside id="left-panel" class="">
 
-    <!-- User info -->
-    <div class="login-info">
-	    <?php $identity = $this->auth->getIdentity(); ?>
-		<span class="hidden"> <a href="javascript:void(0);" id="show-shortcut"> <?php echo $identity->fullName(); ?> </a>
-        </span>
+    <div class="hidden">
+        <!-- User info -->
+        <div class="login-info">
+    	    <?php $identity = $this->auth->getIdentity(); ?>
+    		<span class="hidden"> <a href="javascript:void(0);" id="show-shortcut"> <?php echo $identity->fullName(); ?> </a>
+            </span>
+        </div>
+        <!-- end user info -->
     </div>
-    <!-- end user info -->
 
     <!-- NAVIGATION : This navigation is also responsive
 

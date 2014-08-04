@@ -111,4 +111,5 @@ $(document).ready(function () {
         CustomApp.init();
     });
     
+    jQuery('#main').css({ minHeight: jQuery('#left-panel').height() + 100 });
 });
