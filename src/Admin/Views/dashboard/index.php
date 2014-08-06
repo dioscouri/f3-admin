@@ -15,6 +15,10 @@
     </div>
 <?php } ?>
 
+<?php echo $this->renderView('Admin/Views::dashboard/online_stats.php'); ?>
+
+<hr/>
+
 <ul class="nav nav-tabs nav-justified" role="tablist">
     <li class="<?php if ($this->app->get('active') == 'today') { echo "active"; } ?>">
         <a href="./admin" class="">
