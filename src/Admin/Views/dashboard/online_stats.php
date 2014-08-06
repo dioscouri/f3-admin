@@ -31,10 +31,10 @@ $admin_users_count = $admin_users->count();
             <div class="panel-heading">
                 <div class="clearfix">
                     <div class="pull-left">
-                        <h3 class="panel-title"><i class="fa fa-users"></i> Online Users </h3>
+                        <h3 class="panel-title"><i class="fa fa-users"></i> Visitors Online </h3>
                     </div>
                     <div class="pull-right">
-                        <?php echo (int) $site_total_count ?> Total (<?php echo (int) $site_users_count; ?> users)
+                        <?php echo (int) $site_total_count ?> Total (<?php echo (int) $site_users_count; ?> logged in)
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ $admin_users_count = $admin_users->count();
                 </div>
              <?php } else { ?>
                 <div class="list-group-item clearfix">
-                    <?php echo (int) $site_total_count - $site_users_count; ?> unidentified
+                    <?php echo (int) $site_total_count - $site_users_count; ?> not logged in
                 </div>             
              <?php } ?>
             </div>
@@ -67,7 +67,7 @@ $admin_users_count = $admin_users->count();
             <div class="panel-heading">
                 <div class="clearfix">
                     <div class="pull-left">
-                        <h3 class="panel-title"><i class="fa fa-users"></i> Online Admins </h3>
+                        <h3 class="panel-title"><i class="fa fa-users"></i> Admins Online </h3>
                     </div>
                 </div>
             </div>
