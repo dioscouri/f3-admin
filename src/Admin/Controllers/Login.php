@@ -5,9 +5,10 @@ class Login extends Base
 {
     public function login()
     {
-        $user = \Base::instance()->get('SESSION.admin.user');
-        if(!empty($user)){
-            \Base::instance()->reroute('/admin');
+        $user = $this->getIdentity();
+        if (!empty($user->id))
+        {
+            $this->app->reroute('/admin');
         }
         
         $this->app->set('meta.title', 'Login');
