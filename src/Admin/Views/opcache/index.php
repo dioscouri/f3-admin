@@ -142,18 +142,18 @@ function getStringFromPropertyAndValue($property, $value)
                 
                     <h2 id="memory">
                         Memory: <?= size_for_humans($wastedMemory + $usedMemory) ?> of <?= size_for_humans($totalMemory) ?>
-                        <small class="text-warning">Used: <?= round(($usedMemory / $totalMemory) * 100, PHP_ROUND_HALF_UP) ?>%</small>
-                        <small class="text-danger">Wasted: <?= round(($wastedMemory / $totalMemory) * 100, PHP_ROUND_HALF_UP) ?>%</small>
+                        <small class="text-warning">Used: <?= round(($usedMemory / $totalMemory) * 100, 0) ?>%</small>
+                        <small class="text-danger">Wasted: <?= round(($wastedMemory / $totalMemory) * 100, 0) ?>%</small>
                     </h2>
                     
                     <div class="progress progress-striped">
-                        <div class="progress-bar progress-bar-warning" style="width: <?= round(($usedMemory / $totalMemory) * 100, PHP_ROUND_HALF_UP) ?>%">
+                        <div class="progress-bar progress-bar-warning" style="width: <?= round(($usedMemory / $totalMemory) * 100, 0) ?>%">
                             <span class="sr-only">Used memory</span>
                         </div>
-                        <div class="progress-bar progress-bar-danger" style="width: <?= round(($wastedMemory / $totalMemory) * 100, PHP_ROUND_HALF_UP) ?>%">
+                        <div class="progress-bar progress-bar-danger" style="width: <?= round(($wastedMemory / $totalMemory) * 100, 0) ?>%">
                             <span class="sr-only">Wasted memory</span>
                         </div>                    
-                        <div class="progress-bar progress-bar-success" style="width: <?= round(($freeMemory / $totalMemory) * 100, PHP_ROUND_HALF_UP) ?>%">
+                        <div class="progress-bar progress-bar-success" style="width: <?= round(($freeMemory / $totalMemory) * 100, 0) ?>%">
                             <span class="sr-only">Free memory</span>
                         </div>                    
                     </div>                
@@ -168,10 +168,10 @@ function getStringFromPropertyAndValue($property, $value)
                     </h2>
                     
                     <div class="progress progress-striped">
-                        <div class="progress-bar progress-bar-warning" style="width: <?= round(($usedKeys / $totalKeys) * 100, PHP_ROUND_HALF_UP) ?>%">
+                        <div class="progress-bar progress-bar-warning" style="width: <?= round(($usedKeys / $totalKeys) * 100, 0) ?>%">
                             <span class="sr-only">Used keys</span>
                         </div>
-                        <div class="progress-bar progress-bar-success" style="width: <?= round(($freeKeys / $totalKeys) * 100, PHP_ROUND_HALF_UP) ?>%">
+                        <div class="progress-bar progress-bar-success" style="width: <?= round(($freeKeys / $totalKeys) * 100, 0) ?>%">
                             <span class="sr-only">Free keys</span>
                         </div>
                     </div>
