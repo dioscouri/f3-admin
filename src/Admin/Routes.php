@@ -116,5 +116,20 @@ class Routes extends \Dsc\Routes\Group
             'controller' => 'Menu',
             'action' => 'moveDown' 
         ) );
+        
+        $this->add( '/opcache', 'GET', array(
+            'controller' => 'OpCache',
+            'action' => 'index'
+        ) );
+        
+        $this->add( '/opcache/reset', 'GET', array(
+            'controller' => 'OpCache',
+            'action' => 'reset'
+        ) );
+        
+        $this->add( '/opcache/invalidate', 'GET', array(
+            'controller' => 'OpCache',
+            'action' => 'invalidate'
+        ) );        
     }
 }

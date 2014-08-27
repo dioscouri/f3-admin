@@ -90,7 +90,12 @@ class System extends BaseAuth
                 'title' => 'Logs',
                 'route' => './admin/logs',
                 'icon' => 'fa fa-list'
-            ),            
+            ),
+            array(
+                'title' => 'OpCache',
+                'route' => './admin/opcache',
+                'icon' => 'fa fa-eraser'
+            ),                        
             array(
                 'title' => 'Diagnostics',
                 'route' => './admin/system/diagnostics',
