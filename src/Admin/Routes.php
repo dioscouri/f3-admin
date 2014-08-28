@@ -117,19 +117,46 @@ class Routes extends \Dsc\Routes\Group
             'action' => 'moveDown' 
         ) );
         
-        $this->add( '/opcache', 'GET', array(
+        $this->add( '/cache/opcache', 'GET', array(
+            'namespace' => '\Admin\Controllers\Cache',
             'controller' => 'OpCache',
             'action' => 'index'
         ) );
         
-        $this->add( '/opcache/reset', 'GET', array(
+        $this->add( '/cache/opcache/reset', 'GET', array(
+            'namespace' => '\Admin\Controllers\Cache',
             'controller' => 'OpCache',
             'action' => 'reset'
         ) );
         
-        $this->add( '/opcache/invalidate', 'GET', array(
+        $this->add( '/cache/opcache/invalidate', 'GET', array(
+            'namespace' => '\Admin\Controllers\Cache',
             'controller' => 'OpCache',
             'action' => 'invalidate'
-        ) );        
+        ) );
+
+        $this->add( '/cache/apcu', 'GET', array(
+            'namespace' => '\Admin\Controllers\Cache',
+            'controller' => 'Apcu',
+            'action' => 'index'
+        ) );
+
+        $this->add( '/cache/apcu/reset', 'GET', array(
+            'namespace' => '\Admin\Controllers\Cache',
+            'controller' => 'Apcu',
+            'action' => 'reset'
+        ) );
+        
+        $this->add( '/cache/apcu/invalidate', 'GET', array(
+            'namespace' => '\Admin\Controllers\Cache',
+            'controller' => 'Apcu',
+            'action' => 'invalidate'
+        ) );
+
+        $this->add( '/cache/apcu/read', 'GET', array(
+            'namespace' => '\Admin\Controllers\Cache',
+            'controller' => 'Apcu',
+            'action' => 'read'
+        ) );
     }
 }

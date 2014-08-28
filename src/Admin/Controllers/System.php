@@ -92,9 +92,9 @@ class System extends BaseAuth
                 'icon' => 'fa fa-list'
             ),
             array(
-                'title' => 'OpCache',
-                'route' => './admin/opcache',
-                'icon' => 'fa fa-eraser'
+                'title' => 'Cache',
+                'route' => 'javascript:void(0);',
+                'icon' => 'fa fa-star'
             ),                        
             array(
                 'title' => 'Diagnostics',
@@ -128,6 +128,32 @@ class System extends BaseAuth
             );
         
             $queue_item->addChildren($system_children);
+        }
+
+        // Find the Cache Item
+        $cache_item = (new \Admin\Models\Nav\Primary())->load(array(
+            'type' => 'admin.nav',
+            'parent' => $system->id,
+            'title' => 'Cache'
+        ));
+        
+        // add its children
+        if (!empty($cache_item->id))
+        {
+            $system_children = array(
+                array(
+                    'title' => 'OpCache',
+                    'route' => './admin/cache/opcache',
+                    'icon' => 'fa fa-forward'
+                ),
+                array(
+                    'title' => 'APCu',
+                    'route' => './admin/cache/apcu',
+                    'icon' => 'fa fa-eraser'
+                )
+            );
+        
+            $cache_item->addChildren($system_children);
         }        
         
         \Dsc\System::instance()->addMessage('System added its admin menu items');

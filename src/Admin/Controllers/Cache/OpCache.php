@@ -1,13 +1,13 @@
 <?php 
-namespace Admin\Controllers;
+namespace Admin\Controllers\Cache;
 
-class OpCache extends BaseAuth 
+class OpCache extends \Admin\Controllers\BaseAuth 
 {
     public function index()
     {
         $this->app->set('meta.title', 'OpCache');
         
-        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::opcache/index.php');
+        echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::cache/opcache.php');
     }
     
     public function reset()
@@ -19,7 +19,7 @@ class OpCache extends BaseAuth
             \Dsc\System::addMessage($e->getMessage(), 'error');
         }
         
-        $this->app->reroute('/admin/opcache');
+        $this->app->reroute('/admin/cache/opcache');
     
     }
     
@@ -36,6 +36,6 @@ class OpCache extends BaseAuth
             \Dsc\System::addMessage($e->getMessage(), 'error');
         }
                 
-        $this->app->reroute('/admin/opcache');
+        $this->app->reroute('/admin/cache/opcache');
     }
 }

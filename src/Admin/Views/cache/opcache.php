@@ -100,7 +100,7 @@ function getStringFromPropertyAndValue($property, $value)
         <div class="col-md-9 col-sm-8">
             
             <div class="well well-sm">
-                <a class="btn btn-info pull-right" href="./admin/opcache">Refresh</a>
+                <a class="btn btn-info pull-right" href="./admin/cache/opcache">Refresh</a>
         		<h1 class="page-title txt-color-blueDark">
         			<i class="fa fa-table fa-fw "></i> 
         				OPcache
@@ -227,7 +227,7 @@ function getStringFromPropertyAndValue($property, $value)
                 
                 <div class="tab-pane fade in" id="tab-scripts">
                     <h2 id="scripts">Scripts (<?= count($status["scripts"]) ?>) 
-                    <a type="button" class="btn btn-success pull-right" href="./admin/opcache/reset">Reset all</a>
+                    <a type="button" class="btn btn-success pull-right" href="./admin/cache/opcache/reset">Reset all</a>
                     </h2>
                     <table class="table table-striped">
                         <tr>
@@ -255,7 +255,7 @@ function getStringFromPropertyAndValue($property, $value)
                         foreach ($status['scripts'] as $key => $data) {
                             ?>
                             <tr>
-                                <td><a class="btn btn-sm btn-warning" href="./admin/opcache/invalidate?script=<?= $data['full_path'] ?>">Invalidate</a></td>
+                                <td><a class="btn btn-sm btn-warning" href="./admin/cache/opcache/invalidate?script=<?= $data['full_path'] ?>">Invalidate</a></td>
                                 <td><?= $data['hits'] ?></td>
                                 <td><?= size_for_humans($data['memory_consumption']) ?></td>
                                 <td><?= substr($data['full_path'], $offset - 1) ?></td>
