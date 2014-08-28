@@ -104,15 +104,10 @@ function size_for_humans($bytes)
                             <span class="sr-only">Free keys</span>
                         </div>
                     </div>      
-
-                    <h2>
-                        Inserts: <?php echo $info['ninserts']; ?>
-                    </h2>
-                    
-                    <h2>
-                        Expunges: <?php echo $info['nexpunges']; ?>
-                    </h2>
-                    
+                </div>
+                <div class="panel-footer">
+                    Inserts: <?php echo $info['ninserts']; ?>
+                    <small class="text-danger">Expunges: <?php echo $info['nexpunges']; ?></small>                
                 </div>
             </div>
                 
