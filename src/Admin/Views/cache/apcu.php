@@ -124,7 +124,7 @@ function size_for_humans($bytes)
                 </div>                    
 
                     <?php
-                    // TODO Enable this 
+                    // TODO Enable sorting and searching, using usort  
                     $search = $this->input->get('q');
                     $apc = new \APCIterator('user', '/'.$search.'/', APC_ITER_KEY|APC_ITER_MEM_SIZE|APC_ITER_CTIME|APC_ITER_MTIME|APC_ITER_ATIME|APC_ITER_NUM_HITS|APC_ITER_TTL, null);
                     ?>
