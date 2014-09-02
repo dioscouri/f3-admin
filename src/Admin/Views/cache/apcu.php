@@ -46,7 +46,7 @@ function size_for_humans($bytes)
                     // hits and misses
                     //----------------------------------------------------------------------
                     $totalHits = $info['nhits'] + $info['nmisses'];
-                    $hitRate = round($info['nhits'] / $totalHits * 100, 2);
+                    $hitRate = empty($totalHits) ? 0 : round($info['nhits'] / $totalHits * 100, 2);
                     ?>                         
 
                     <h2 id="hits">
