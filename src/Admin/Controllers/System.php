@@ -87,6 +87,11 @@ class System extends BaseAuth
                 'icon' => 'fa fa-refresh'
             ),
             array(
+                'title' => 'Cron',
+                'route' => './admin/cron',
+                'icon' => 'fa fa-clock-o'
+            ),            
+            array(
                 'title' => 'Logs',
                 'route' => './admin/logs',
                 'icon' => 'fa fa-list'

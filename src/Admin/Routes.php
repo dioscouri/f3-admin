@@ -158,5 +158,20 @@ class Routes extends \Dsc\Routes\Group
             'controller' => 'Apcu',
             'action' => 'read'
         ) );
+        
+        $this->add( '/cron', 'GET', array(
+            'controller' => 'Cron',
+            'action' => 'index'
+        ) );
+        
+        $this->add( '/cron/disable/@hash', 'GET', array(
+            'controller' => 'Cron',
+            'action' => 'disable'
+        ) );
+        
+        $this->add( '/cron/delete/@hash', 'GET', array(
+            'controller' => 'Cron',
+            'action' => 'delete'
+        ) );
     }
 }
