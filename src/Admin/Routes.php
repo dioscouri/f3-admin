@@ -173,5 +173,20 @@ class Routes extends \Dsc\Routes\Group
             'controller' => 'Cron',
             'action' => 'delete'
         ) );
+        
+        $this->add( '/cron/edit/@hash', 'GET', array(
+            'controller' => 'Cron',
+            'action' => 'edit'
+        ) );
+        
+        $this->add( '/cron/edit/@hash', 'POST', array(
+            'controller' => 'Cron',
+            'action' => 'save'
+        ) );
+        
+        $this->add( '/cron/create', 'GET', array(
+            'controller' => 'Cron',
+            'action' => 'create'
+        ) );
     }
 }

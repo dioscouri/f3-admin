@@ -9,7 +9,7 @@
 		</h1>
 	</div>
 	<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-
+        <a class="btn btn-success pull-right" href="./admin/cron/create">Create New</a>
 	</div>
 </div>
 
@@ -28,7 +28,10 @@
                     <div class="col-xs-11 col-sm-11 col-md-11">
                         <div class="row">
                             <div class="col-xs-12 col-sm-8 col-md-10">
-                                <?php echo $item->getCommand(); ?>
+                                <a href="./admin/cron/edit/<?php echo $hash; ?>">
+                                    <?php echo $item->getCommand(); ?>
+                                </a>
+                                
                                 <?php if ($item->getComments()) { ?>
                                 <p class="help-block"><?php echo $item->getComments(); ?></p>
                                 <?php } ?>
