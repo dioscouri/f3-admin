@@ -164,6 +164,11 @@ class Routes extends \Dsc\Routes\Group
             'action' => 'index'
         ) );
         
+        $this->add( '/cron/enable/@hash', 'GET', array(
+            'controller' => 'Cron',
+            'action' => 'enable'
+        ) );
+        
         $this->add( '/cron/disable/@hash', 'GET', array(
             'controller' => 'Cron',
             'action' => 'disable'

@@ -49,14 +49,6 @@ class QueueTask extends BaseAuth
         echo $view->render('Admin/Views::queuetasks/create.php');
     }
     
-    /**
-     * This method returns array with list user who can be blog post authors
-     */
-    private function getListAuthors(){
-    	$list = (new \Users\Models\Users)->populateState()->getItems();
-    	return $list;
-    }
-    
     protected function displayEdit()
     {
         $item = $this->getItem();

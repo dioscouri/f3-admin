@@ -17,6 +17,26 @@ class Cron extends BaseAuth
         echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::cron/index.php');
     }
     
+    public function enable()
+    {
+        $hash = $this->app->get('PARAMS.hash');
+    
+        $crontab = new \Dsc\Cron\Crontab;
+        $jobs = $crontab->getJobs();
+    
+        try {
+            $crontab->enableJobByHash($hash);
+            $crontab->write();
+    
+            \Dsc\System::addMessage( 'Cron job enabled', 'success' );
+        }
+        catch(\Exception $e) {
+            \Dsc\System::addMessage( $e->getMessage(), 'error' );
+        }
+    
+        $this->app->reroute('/admin/cron');
+    }    
+    
     public function disable()
     {
         $hash = $this->app->get('PARAMS.hash');

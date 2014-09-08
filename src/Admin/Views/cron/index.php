@@ -38,7 +38,11 @@
                                 <p class="help-block">Hash: <?php echo $hash; ?></p>                                
                             </div>
                             <div class="col-xs-12 col-sm-2 col-md-1">
+                                <?php if ($item->getActive()) { ?>
                                 <a class="btn btn-sm btn-warning" href="./admin/cron/disable/<?php echo $hash; ?>" data-bootbox="confirm">Disable</a>
+                                <?php } else { ?>
+                                <a class="btn btn-sm btn-success" href="./admin/cron/enable/<?php echo $hash; ?>" data-bootbox="confirm">Enable</a>
+                                <?php } ?>
                             </div>
                             <div class="col-xs-12 col-sm-2 col-md-1">
                                 <a class="btn btn-sm btn-danger" href="./admin/cron/delete/<?php echo $hash; ?>" data-bootbox="confirm">Delete</a>

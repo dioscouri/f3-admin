@@ -16,4 +16,9 @@ class QueueTasks extends BaseAuth
         
         echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::queuetasks/list.php');
     }
+    
+    public function process()
+    {
+        
+    }
 }
