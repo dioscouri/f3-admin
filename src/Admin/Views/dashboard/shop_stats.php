@@ -55,7 +55,9 @@ $conversions = $model->conversions();
             <?php foreach ($conversions as $title=>$data) { ?>
             <div class="list-group-item">
                 <a href="./admin/activities/actions?filter[keyword]=<?php echo urlencode($title); ?>"><small><?php echo $title; ?></small></a>:
-                <?php echo $data['perc']; ?> (<?php echo $data['count']; ?>)
+                <?php echo $data['perc']; ?><br/>
+                (<?php echo $data['count']; ?> total) 
+                <?php if (isset($data['guest_count'])) { ?>(<?php echo $data['guest_count']; ?> guest)<?php } ?>
             </div>
             <?php } ?>
         </div>                
