@@ -82,6 +82,11 @@ class Routes extends \Dsc\Routes\Group
             'url_prefix' => '/queue/archives'       
         ) );
         
+        $this->add( '/queue/task/process/@id', 'GET', array(
+            'controller' => 'QueueTask',
+            'action' => 'process'
+        ) );        
+        
         $this->addCrudList( 'Menus' );
         
         $this->add( '/menus/all', 'GET', array(
