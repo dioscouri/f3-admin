@@ -10,7 +10,7 @@
 <title><?php echo $title; ?></title>
 
 <!-- Basic Styles -->
-<link rel="stylesheet" type="text/css" media="screen" href="./AdminTheme/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="all" href="./AdminTheme/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" media="screen" href="./AdminTheme/css/font-awesome.min.css">
 
 <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->

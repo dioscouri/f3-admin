@@ -1,5 +1,5 @@
 <!-- HEADER -->
-<header id="header">
+<header id="header" class="hidden-print">
 	<div id="logo-group" class="hidden-xs hidden-sm">
 
 		<!-- PLACE YOUR LOGO HERE -->
