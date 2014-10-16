@@ -43,7 +43,7 @@
             $class = !empty($item->class) ? $item->class : 'menu-item';
             
             $selected = ($current == $item->route) 
-                        || (!empty($item->base) && strpos($current, $item->base) !== false) 
+                        || (!empty($item->base) && strpos($current, $item->base.'/') !== false) 
                         || (\Dsc\String::inStrings(\Joomla\Utilities\ArrayHelper::getColumn($item->getDescendants(), 'route'), $current ))
                         ;
 
