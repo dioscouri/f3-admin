@@ -38,6 +38,14 @@ class Menus extends BaseAuth
         $quickadd = \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
         $f3->set('quickadd', $quickadd);
         
+        $model = $this->getModel();
+        $roots = $model->roots();
+        $this->app->set('roots', $roots );
+        
+        $all = $model->emptyState()->setState('list.sort', array( 'tree'=> 1, 'lft' => 1 ))->getList();
+        $this->app->set('all', $all );
+        
+        
         $this->app->set('meta.title', 'Menus');
         
         echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::menus/manage.php');

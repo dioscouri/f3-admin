@@ -24,6 +24,59 @@
                             <input type="text" class="form-control" id="link-title" placeholder="Title of Menu Item" name="title">
                         </div>
                     </div>
+                    
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                        <label for="link-text" class="col-sm-4 control-label">Published</label>
+                        <div class="col-sm-8">
+                        <select name="published" class="form-control ">
+                        <option  value="1">Published</option>
+                        <option  value="0">Not Published</option>
+                        </select>
+                    </div>
+                        <br><br>
+                    <div class="form-group">
+                    <label for="parent" class="col-sm-4 control-label">Parent</label>
+                       
+                        <div class="col-sm-8">
+                        <select id="parent" name="parent" class="form-control ui-select2">
+                            <optgroup label="No Parent">
+                                <option  value="null">Menu Root</option>
+                            </optgroup>
+                            
+                            <?php if (!empty($all)) { foreach ($all as $one) { ?>
+                                <?php
+                               
+                                
+                                // display the options grouped by tree 
+                                if (empty($current_tree) || $current_tree != $one->tree) {
+                                    if (!empty($current_tree)) {
+                                        ?></optgroup><?php
+                                    }
+                                    $current_tree = $one->tree;
+                                    ?>
+                                    <optgroup label="<?php echo $one->title; ?>">
+                                    <?php
+                                }
+                                ?>
+                                
+                                <?php if ($one->id == $current_tree) { ?>
+                                <option data-tree="<?php echo $one->tree; ?>" value="<?php echo $one->id; ?>" >Top Level of <?php echo $one->title; ?></option>                        
+                                <?php } else { ?>
+                                <option data-tree="<?php echo $one->tree; ?>" value="<?php echo $one->id; ?>" ><?php echo @str_repeat( "&ndash;", substr_count( @$one->path, "/" ) - 1 ) . " " . $one->title; ?></option>
+                                <?php } ?>
+                            <?php } } ?>
+                            
+                            <?php if (!empty($all)) { ?>
+                            </optgroup>
+                            <?php } ?>
+                            
+                        </select>
+                        </div>
+                    </div>    
+                        
+                    </div>
+                    <!-- /.form-group -->
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-8">
                             <button type="submit" class="btn btn-default">Add to Menu</button>
