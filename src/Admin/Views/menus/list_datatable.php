@@ -127,7 +127,7 @@ content: "UnPublished";
                 <?php } elseif ($item->published) { ?>
                 <span class="label label-success"> </span>
                 <?php } else { ?>
-                <span class="label label-secondary"> </span>
+                <span class="label label-danger"> </span>
                 <?php } ?>
             </td>
             
