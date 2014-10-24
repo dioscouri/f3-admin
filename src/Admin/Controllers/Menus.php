@@ -9,6 +9,8 @@ class Menus extends BaseAuth
         return $model;
     }
     
+    
+    
     public function index()
     {
         $f3 = \Base::instance();

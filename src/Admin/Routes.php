@@ -117,11 +117,17 @@ class Routes extends \Dsc\Routes\Group
             'action' => 'moveUp' 
         ) );
         
+       
+        
         $this->add( '/menu/movedown/@id', 'GET', array(
             'controller' => 'Menu',
             'action' => 'moveDown' 
         ) );
         
+        $this->add( '/menu/publishtoggle/@id', 'POST', array(
+        		'controller' => 'Menu',
+        		'action' => 'togglePublish'
+        ) );
         $this->add( '/cache/opcache', 'GET', array(
             'namespace' => '\Admin\Controllers\Cache',
             'controller' => 'OpCache',
