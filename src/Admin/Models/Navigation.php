@@ -2,7 +2,8 @@
 namespace Admin\Models;
 
 class Navigation extends \Dsc\Mongo\Collections\Navigation 
-{
+{	
+	use \Dsc\Traits\Models\Publishable;
     /**
      * Converts this to a search item, used in the search template when displaying each search result
      */

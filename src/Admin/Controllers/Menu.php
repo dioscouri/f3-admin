@@ -177,6 +177,32 @@ class Menu extends BaseAuth
         $f3->reroute( $route );
     }
     
+    public function togglePublish() {
+    	$item = $this->getItem();
+
+    	if($item->published == true) {
+    		$item->set('published', false);
+    		$label = 'label-danger';
+    	} else {
+    		$item->set('published', true);
+    		$label = 'label-success';
+    	}
+    	$item->store();
+    	return $this->outputJson($this->getJsonResponse(array(
+    			'result' => $label
+    	)));
+    	
+    	
+    	//TODO when navigation is using publishabletrait use this
+    	/*
+    		return $this->outputJson($this->getJsonResponse(array(
+    				'result' => $this->getItem()->publishableToggle()
+    		)));
+    	*/
+    	
+    	
+    }
+    
     protected function displayRead() {}
     
 }

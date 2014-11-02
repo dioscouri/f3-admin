@@ -72,9 +72,9 @@
 			<tr>
                 <th data-sortable="created.time" class="col-md-2 text-center">Created</th>
                 <th class="col-md-1 text-center">Priority</th>
-                <th class="col-md-3">Title</th>
+                <th class="col-md-5">Title</th>
                 <th data-sortable="when" class="col-md-2 text-center">Scheduled</th>
-                <th class="col-md-1"></th>
+                <th class="col-md-2"></th>
             </tr>
 		</thead>
 		<tbody>    
@@ -102,6 +102,10 @@
                         <a class="btn btn-xs btn-danger" data-bootbox="confirm" href="./admin/queue/task/delete/<?php echo $item->id; ?>">
                             <i class="fa fa-times"></i>
                         </a>
+                        <a class="btn btn-xs btn-success" data-bootbox="confirm" href="./admin/queue/task/process/<?php echo $item->id; ?>">
+                            <i class="fa fa-arrow-circle-o-right "></i>
+                            Process Now
+                        </a>                        
                     </td>
                 </tr>
             <?php } ?>

@@ -82,6 +82,11 @@ class Routes extends \Dsc\Routes\Group
             'url_prefix' => '/queue/archives'       
         ) );
         
+        $this->add( '/queue/task/process/@id', 'GET', array(
+            'controller' => 'QueueTask',
+            'action' => 'process'
+        ) );        
+        
         $this->addCrudList( 'Menus' );
         
         $this->add( '/menus/all', 'GET', array(
@@ -112,11 +117,17 @@ class Routes extends \Dsc\Routes\Group
             'action' => 'moveUp' 
         ) );
         
+       
+        
         $this->add( '/menu/movedown/@id', 'GET', array(
             'controller' => 'Menu',
             'action' => 'moveDown' 
         ) );
         
+        $this->add( '/menu/publishtoggle/@id', 'POST', array(
+        		'controller' => 'Menu',
+        		'action' => 'togglePublish'
+        ) );
         $this->add( '/cache/opcache', 'GET', array(
             'namespace' => '\Admin\Controllers\Cache',
             'controller' => 'OpCache',

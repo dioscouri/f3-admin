@@ -72,4 +72,40 @@ class QueueTask extends BaseAuth
     }
     
     protected function displayRead() {}
+    
+    public function process()
+    {
+        try 
+        {
+            $item = $this->getItem();
+            
+            if (empty($item->id)) {
+                throw new \Exception('Invalid ID');
+            }
+            
+            // if the task is already locked by another process, fail
+            if (!empty($item->locked_by)) {
+                throw new \Exception('Task locked by another process');
+            }
+            
+            // lock the task to this process
+            $mongo_id = (string) new \MongoId;
+            $item->locked_by = $mongo_id;
+            $item->locked_at = time();
+            $item->store();
+            
+            // run the task
+            $this->app->call( $item->task, $item->parameters );
+            $task = $item->complete();
+            
+            \Dsc\System::addMessage( 'Task completed', 'success' );
+            
+        }
+        catch (\Exception $e) 
+        {
+            \Dsc\System::addMessage( $e->getMessage(), 'error' );
+        }
+
+        $this->app->reroute( $this->list_route );
+    }
 }

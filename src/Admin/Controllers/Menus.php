@@ -9,6 +9,8 @@ class Menus extends BaseAuth
         return $model;
     }
     
+    
+    
     public function index()
     {
         $f3 = \Base::instance();
@@ -37,6 +39,14 @@ class Menus extends BaseAuth
         $event->addArgument('tree', $id);
         $quickadd = \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
         $f3->set('quickadd', $quickadd);
+        
+        $model = $this->getModel();
+        $roots = $model->roots();
+        $this->app->set('roots', $roots );
+        
+        $all = $model->emptyState()->setState('list.sort', array( 'tree'=> 1, 'lft' => 1 ))->getList();
+        $this->app->set('all', $all );
+        
         
         $this->app->set('meta.title', 'Menus');
         

@@ -1,6 +1,6 @@
 <!-- Left panel : Navigation area -->
 <!-- Note: This width of the aside area can be adjusted through LESS variables -->
-<aside id="left-panel" class="">
+<aside id="left-panel" class="hidden-print">
 
     <div class="hidden">
         <!-- User info -->
@@ -50,7 +50,7 @@
             $class = !empty($item->class) ? $item->class : 'menu-item';
             
             $selected = ($current == $item->route) 
-                        || (!empty($item->base) && strpos($current, $item->base) !== false) 
+                        || (!empty($item->base) && strpos($current, $item->base.'/') !== false) 
                         || (\Dsc\String::inStrings(\Joomla\Utilities\ArrayHelper::getColumn($item->getDescendants(), 'route'), $current ))
                         ;
 

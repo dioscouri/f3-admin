@@ -1,3 +1,19 @@
+<style>
+.publication .label {
+cursor:pointer;
+}
+.publication .label-success:before {
+content: "Published";
+}
+.publication .label-default:before {
+content: "Undefined";
+}
+.publication .label-secondary:before, .publication .label-danger:before {
+content: "UnPublished";
+}
+</style>
+
+
 <div class="no-padding">
 
 <div class="row">
@@ -75,7 +91,7 @@
     <?php if (!empty($paginated->items)) { ?>
             
         <?php foreach($paginated->items as $item) { ?>
-        <tr>
+        <tr data-id="<?php echo $item->_id; ?>">
             <td class="checkbox-column">
                 <input type="checkbox" class="icheck-input" name="ids[]" value="<?php echo $item->_id; ?>">
             </td>
@@ -105,13 +121,13 @@
                 </a>
             </td>
             
-            <td class="text-center">
+            <td class="text-center publication">
                 <?php if (!isset($item->published)) { ?>
-                <span class="label label-default">Undefined</span>
+                <span class="label label-default"> </span>
                 <?php } elseif ($item->published) { ?>
-                <span class="label label-success">Published</span>
+                <span class="label label-success"> </span>
                 <?php } else { ?>
-                <span class="label label-secondary">Unpublished</span>
+                <span class="label label-danger"> </span>
                 <?php } ?>
             </td>
             
@@ -169,3 +185,18 @@
 
 </div>
 <!-- /.no-padding --> 
+<!--  SNIPPET FOR PUBLISH UNPUBLISH --> 
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+	jQuery('.publication span.label').click(function(){
+		id = jQuery(this).closest('tr').data('id');
+		url = 	'/admin/menu/publishtoggle/' + id;
+		el = jQuery(this);
+		$.post( url, function( data ) {
+			el.removeClass().addClass('label ' + data.result);
+			});
+		});
+});
+</script>
+
