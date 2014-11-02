@@ -40,6 +40,13 @@
         <?php
         foreach ($list as $key => $item) 
         {
+        	
+        	if (!$hasAccess = \Dsc\System::instance()->get('acl')->isAllowed($identity->role, $item->route, '*'))
+        	{
+        	continue;
+        	}
+        	
+        	
             $class = !empty($item->class) ? $item->class : 'menu-item';
             
             $selected = ($current == $item->route) 
