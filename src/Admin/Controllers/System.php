@@ -106,6 +106,11 @@ class System extends BaseAuth
                 'route' => './admin/system/diagnostics',
                 'icon' => 'fa fa-heart'
             ),
+        	array(
+        				'title' => 'Trash',
+        				'route' => './admin/trash/items',
+        				'icon' => 'fa fa-heart'
+        		),
         );
         $system->addChildren($children);
         
