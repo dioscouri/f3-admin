@@ -109,7 +109,7 @@ class System extends BaseAuth
         	array(
         				'title' => 'Trash',
         				'route' => './admin/trash/items',
-        				'icon' => 'fa fa-heart'
+        				'icon' => 'fa fa-trash'
         		),
         );
         $system->addChildren($children);
