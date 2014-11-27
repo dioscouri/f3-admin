@@ -36,5 +36,10 @@ class AdminBootstrap extends \Dsc\Bootstrap
         
         parent::runAdmin();
     }
+    
+    protected function runSite() 
+    {
+        // do nothing
+    }
 }
 $app = new AdminBootstrap();
