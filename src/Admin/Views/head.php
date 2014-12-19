@@ -9,9 +9,13 @@
 <?php $title = trim( $this->app->get( 'meta.title' ) . ' | Admin ' . $global_settings->{'system.page_title_suffix'} ); ?>
 <title><?php echo $title; ?></title>
 
-<!-- Basic Styles -->
-<link rel="stylesheet" type="text/css" media="all" href="./AdminTheme/css/bootstrap.min.css">
+<!-- Font Awesome -->
 <link rel="stylesheet" type="text/css" media="screen" href="./AdminTheme/css/font-awesome.min.css">
+
+<!-- BOOTSTRAP CSS -->
+<?php /* ?><link rel="stylesheet" type="text/css" media="all" href="./AdminTheme/css/bootstrap.min.css"> */ ?>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
 <link rel="stylesheet" type="text/css" media="screen" href="./AdminTheme/css/smartadmin-production.css">
