@@ -71,8 +71,13 @@ $(document).ready(function() {
 	
 	pageSetUp();
 	
+	$('.xeditable').editable({
+		success: function(response, newValue) {
+		    if(!response.success) return response.msg;
+		}
+	});
 	
-
+	
 	
 
 

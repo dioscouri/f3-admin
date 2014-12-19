@@ -9,6 +9,12 @@
 <script src="./AdminTheme/js/plugin/timepicker/bootstrap-timepicker.js"></script>
 <link rel="stylesheet" href="./AdminTheme/js/plugin/timepicker/bootstrap-timepicker.css" type="text/css" />
 
+
+<!-- x-editable -->
+<script src="./AdminTheme/js/plugin/x-editable/js/bootstrap-editable.min.js"></script>
+<link rel="stylesheet" href="./AdminTheme/js/plugin/x-editable/css/bootstrap-editable.css" type="text/css" />
+
+
 <script src="./AdminTheme/js/custom.js"></script>
 
 <script src="./bootbox/bootbox.js"></script>
