@@ -38,6 +38,7 @@ class BaseAuth extends Base
         	\Dsc\System::addMessage('Not Authorized');
         	$this->app->reroute('/admin/login');
         }
+
     }    
 }
 ?>
