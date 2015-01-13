@@ -17,12 +17,7 @@
 <script src="./AdminTheme/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
 
 <!-- BOOTSTRAP JS -->
-<?php /* ?>
 <script src="./AdminTheme/js/bootstrap/bootstrap.min.js"></script>
-*/ ?>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
 
 <!-- CUSTOM NOTIFICATION -->
 <script src="./AdminTheme/js/notification/SmartNotification.min.js"></script>
@@ -78,7 +73,19 @@ $(document).ready(function() {
 	
 	$('.xeditable').editable({
 		success: function(response, newValue) {
-		    if(!response.success) return response.msg;
+			 
+			console.log(response);
+		    if(!response.success) return response.msg; 
+		}
+	});
+
+	$('.xeditableSelect').editable({
+		success: function(response, newValue) {
+			$(this).removeClass(response.original); 
+			$(this).addClass(newValue); 
+			 
+			
+		    if(!response.success) return response.msg; 
 		}
 	});
 	
