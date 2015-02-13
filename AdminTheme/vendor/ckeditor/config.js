@@ -40,4 +40,8 @@ CKEDITOR.editorConfig = function( config ) {
 	config.extraPlugins = 'enterkey';
 
 	config.height = '450px';
+	
+	// allow i tags to be empty (for font awesome)
+    config.protectedSource.push(/<i[^>]><\/i>/g);
+    CKEDITOR.dtd.$removeEmpty['i'] = false;	
 };
