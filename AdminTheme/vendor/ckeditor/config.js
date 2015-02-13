@@ -43,5 +43,8 @@ CKEDITOR.editorConfig = function( config ) {
 	
 	// allow i tags to be empty (for font awesome)
     config.protectedSource.push(/<i[^>]><\/i>/g);
-    CKEDITOR.dtd.$removeEmpty['i'] = false;	
+    CKEDITOR.dtd.$removeEmpty['i'] = false;
+    
+    // default to the Source view 
+    config.startupMode = 'source';
 };
