@@ -9,17 +9,22 @@
 <script src="./AdminTheme/js/plugin/timepicker/bootstrap-timepicker.js"></script>
 <link rel="stylesheet" href="./AdminTheme/js/plugin/timepicker/bootstrap-timepicker.css" type="text/css" />
 
+
+<!-- x-editable -->
+<script src="./AdminTheme/js/plugin/x-editable/js/bootstrap-editable.min.js"></script>
+<link rel="stylesheet" href="./AdminTheme/js/plugin/x-editable/css/bootstrap-editable.css" type="text/css" />
+
+
 <script src="./AdminTheme/js/custom.js"></script>
 
-<script src="./bootbox/bootbox.js"></script>
+<script src="./AdminTheme/vendor/bootbox/bootbox.js"></script>
 
-<script src="./fineuploader/all.fineuploader.js"></script>
-<link rel="stylesheet" href="./fineuploader/fineuploader.css" type="text/css" />
+<script src="./AdminTheme/vendor/ckeditor/ckeditor.js"></script>
 
-<script src="./colorbox/colorbox.js"></script>
-<link rel="stylesheet" href="./colorbox/colorbox.css" type="text/css" />
+<script src="./AdminTheme/vendor/colorbox/colorbox.js"></script>
+<link rel="stylesheet" href="./AdminTheme/vendor/colorbox/colorbox.css" type="text/css" />
 
 <link href="./admin/minify/css" type="text/css" rel="stylesheet">
 <script src="./admin/minify/js"></script>
 
-<script src="./dsc/js/common.js"></script>
+<script src="./DscAssets/js/common.js"></script>

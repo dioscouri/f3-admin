@@ -204,5 +204,20 @@ class Routes extends \Dsc\Routes\Group
             'controller' => 'Cron',
             'action' => 'create'
         ) );
+        
+        $this->add( '/trash/items', 'GET', array(
+        		'controller' => 'TrashItems',
+        		'action' => 'index'
+        ) );
+        $this->add( '/trash/item/delete/@id', 'GET|POST', array(
+        		'controller' => 'TrashItem',
+        		'action' => 'delete'
+        ) );
+        
+        $this->add( '/trash/item/restore/@id', 'GET|POST', array(
+        		'controller' => 'TrashItem',
+        		'action' => 'restore'
+        ) );
+        
     }
 }

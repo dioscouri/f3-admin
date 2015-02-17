@@ -71,8 +71,25 @@ $(document).ready(function() {
 	
 	pageSetUp();
 	
-	
+	$('.xeditable').editable({
+		success: function(response, newValue) {
+			 
+			console.log(response);
+		    if(!response.success) return response.msg; 
+		}
+	});
 
+	$('.xeditableSelect').editable({
+		success: function(response, newValue) {
+			$(this).removeClass(response.original); 
+			$(this).addClass(newValue); 
+			 
+			
+		    if(!response.success) return response.msg; 
+		}
+	});
+	
+	
 	
 
 

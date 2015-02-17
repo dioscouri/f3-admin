@@ -110,8 +110,20 @@ $(document).ready(function () {
     $(function () {
         CustomApp.init();
     });
+  //Javascript to enable link to tab
+    var hash = document.location.hash;
+    var prefix = "tab_";
+    if (hash) {
+        $('.nav-tabs a[href='+hash.replace(prefix,"")+']').tab('show');
+    } 
+
+    // Change hash for page-reload
+    $('.nav-tabs a').on('shown.bs.tab', function (e) {
+        window.location.hash = e.target.hash.replace("#", "#" + prefix);
+    });
 });
 
 jQuery(window).load(function(){
     jQuery('#main').css({ minHeight: jQuery(document).outerHeight() + 100 });    
 });
+
