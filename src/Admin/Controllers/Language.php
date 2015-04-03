@@ -95,9 +95,9 @@ class Language extends \Admin\Controllers\BaseAuth
 
             // get the strings for the selected language
             // and add this new key/value pair to it
-            $strings = (new \Translations\Models\Strings)->setState('filter.lang_id', $language->id)->getItem();
+            $strings = (new \Dsc\Mongo\Collections\Translations\Strings)->setState('filter.lang_id', $language->id)->getItem();
             if (empty($strings->id)) {
-                $strings = new \Translations\Models\Strings;
+                $strings = new \Dsc\Mongo\Collections\Translations\Strings;
                 $strings->language_code = $language->code;
                 $strings->language_id = $language->id;
             }
@@ -126,16 +126,16 @@ class Language extends \Admin\Controllers\BaseAuth
             // does the key already exist in the system?
             $title = $this->app->get('REQUEST.title');
             $slug = \Web::instance()->slug( $title );
-            $key = (new \Translations\Models\Keys)->set('title', $title)->set('slug', $slug)->save();
+            $key = (new \Dsc\Mongo\Collections\Translations\Keys)->set('title', $title)->set('slug', $slug)->save();
             if (empty($key->id)) {
                 throw new \Exception('Unable to save Key');
             }
             
             // get the strings for the selected language
             // and add this new key/value pair to it
-            $strings = (new \Translations\Models\Strings)->setState('filter.lang_id', $language->id)->getItem();
+            $strings = (new \Dsc\Mongo\Collections\Translations\Strings)->setState('filter.lang_id', $language->id)->getItem();
             if (empty($strings->id)) {
-                $strings = new \Translations\Models\Strings;
+                $strings = new \Dsc\Mongo\Collections\Translations\Strings;
                 $strings->language_code = $language->code;
                 $strings->language_id = $language->id;
             }

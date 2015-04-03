@@ -3,7 +3,7 @@
         
         <div id="form-validation"></div>
         
-        <form id="new-strings-form" action="./admin/translations/language/<?php echo $item->id; ?>/keys/create" method="post">
+        <form id="new-strings-form" action="./admin/language/<?php echo $item->id; ?>/keys/create" method="post">
             <div class="row">
                 <div class="col-sm-5">
                     <div class="form-group">

@@ -167,18 +167,13 @@
                     <div class="col-xs-11 col-sm-11 col-md-11">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-6">
-                                <h5>
+                                <h5 class="clearfix">
                                     <a href="./admin/language/edit/<?php echo $item->id; ?>">
                                     <?php echo $item->title; ?>
                                     </a>
+                                    <a class="btn btn-sm btn-info pull-right" href="./admin/language/<?php echo $item->id; ?>/strings">Edit Language Strings</a>
                                 </h5>
-                    			<?php $categories = \Joomla\Utilities\ArrayHelper::getColumn( (array) $item->categories, 'title' ); ?>
-                    			<?php if ($categories) { ?>
-                    			<div>			                        			
-                    				<label>Categories:</label>
-									<span class='label label-warning'><?php echo implode("</span> <span class='label label-warning'>", (array) $categories ); ?></span>
-                    			</div>
-                    			<?php } ?>
+                    			
                     			<hr class="visible-sm visible-xs" />                                
                             </div>
 	                    	<div class="col-xs-4 col-sm-4 col-md-2">
