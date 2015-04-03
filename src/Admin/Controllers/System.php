@@ -40,6 +40,34 @@ class System extends BaseAuth
         $settings->{'admin_menu_id'} = (string) $root->id;
         $settings->save();        
         
+        /**
+         * Languages Menu Items
+         */
+        $parent = new \Admin\Models\Nav\Primary();
+        $parent->insert(array(
+            'type' => 'admin.nav',
+            'priority' => 90,
+            'title' => 'Translations',
+            'icon' => 'fa fa-language',
+            'is_root' => false,
+            'tree' => $root->id,
+            'base' => '/admin/language'
+        ));
+        
+        $children = array(
+            array(
+                'title' => 'Languages',
+                'route' => './admin/languages',
+                'icon' => 'fa fa-list'
+            )
+        );
+        $parent->addChildren($children, $root);
+        
+        \Dsc\System::addMessage('Translations added its admin menu items.');
+        
+        /**
+         * System Nav
+         */
         $navigation = new \Admin\Models\Nav\Primary();
         $navigation->insert(array(
             'type' => 'admin.nav',
@@ -107,10 +135,10 @@ class System extends BaseAuth
                 'icon' => 'fa fa-heart'
             ),
         	array(
-        				'title' => 'Trash',
-        				'route' => './admin/trash/items',
-        				'icon' => 'fa fa-trash'
-        		),
+				'title' => 'Trash',
+				'route' => './admin/trash/items',
+				'icon' => 'fa fa-trash'
+    		),
         );
         $system->addChildren($children);
         
