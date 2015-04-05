@@ -10,6 +10,7 @@ if (!function_exists('apcu_cache_info')) {
  * Fetch configuration and status information
  */
 $info = apcu_cache_info();
+//echo \Dsc\Debug::dump(array_keys($info));
 $mem = apcu_sma_info();
 
 /**
@@ -45,8 +46,8 @@ function size_for_humans($bytes)
                     <?php
                     // hits and misses
                     //----------------------------------------------------------------------
-                    $totalHits = $info['nhits'] + $info['nmisses'];
-                    $hitRate = empty($totalHits) ? 0 : round($info['nhits'] / $totalHits * 100, 2);
+                    $totalHits = $info['num_hits'] + $info['num_misses'];
+                    $hitRate = empty($totalHits) ? 0 : round($info['num_hits'] / $totalHits * 100, 2);
                     ?>                         
 
                     <h2 id="hits">
@@ -88,8 +89,8 @@ function size_for_humans($bytes)
                     </div>                
                     
                     <?php
-                    $totalKeys = $info['nslots'];
-                    $usedKeys = $info['nentries'];
+                    $totalKeys = $info['num_slots'];
+                    $usedKeys = $info['num_entries'];
                     $freeKeys = $totalKeys - $usedKeys;
                     ?>
                     <h2 id="keys">
@@ -106,14 +107,14 @@ function size_for_humans($bytes)
                     </div>      
                 </div>
                 <div class="panel-footer">
-                    Inserts: <?php echo $info['ninserts']; ?>
-                    <small class="text-danger">Expunges: <?php echo $info['nexpunges']; ?></small>                
+                    Inserts: <?php echo $info['num_inserts']; ?>
+                    <small class="text-danger">Expunges: <?php echo $info['num_expunges']; ?></small>                
                 </div>
             </div>
                 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3>Items (<?php echo $info['nentries']; ?>) 
+                    <h3>Items (<?php echo $info['num_entries']; ?>) 
                     <a type="button" class="btn btn-danger pull-right" href="./admin/cache/apcu/reset">Reset all</a>
                     </h3>
                 </div>                    
@@ -169,7 +170,7 @@ function size_for_humans($bytes)
                     </table>
                     
                 <div class="panel-footer">
-                    <?php echo $info['nentries']; ?> Entries <small class="text-danger"><?php echo $info['nentries']-$num; ?> inactive</small>
+                    <?php echo $info['num_entries']; ?> Entries <small class="text-danger"><?php echo $info['num_entries']-$num; ?> inactive</small>
                 </div>   
             </div>
 

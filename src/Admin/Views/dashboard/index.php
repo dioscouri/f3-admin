@@ -63,7 +63,8 @@
 <div class="panel panel-default panel-dashboard">
     <div class="panel-body">
         
-        <?php // TODO Fire a listener event here ?>
+        <?php // TODO Fire a listener event here, passing the $active value ?>
+        <?php // TODO Create a module/plugin in f3-admin with system stats re: queue tasks, cron jobs, diagnostics, updates, etc ?>
         
         <?php echo $this->renderView('Admin/Views::dashboard/activity_stats.php'); ?>
         

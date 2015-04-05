@@ -219,5 +219,33 @@ class Routes extends \Dsc\Routes\Group
         		'action' => 'restore'
         ) );
         
+        /**
+         * Languages
+         */
+        $this->addCrudGroup( 'Languages', 'Language' );
+        $this->add('/languages/moveUp/@id', 'GET', array(
+            'controller' => 'Languages',
+            'action' => 'MoveUp'
+        ));
+        $this->add('/languages/moveDown/@id', 'GET', array(
+            'controller' => 'Languages',
+            'action' => 'MoveDown'
+        ));
+        
+        /**
+         * Languages
+        */
+        $this->add('/language/@id/strings', 'GET', array(
+            'controller' => 'Language',
+            'action' => 'strings'
+        ));
+        $this->add('/language/@id/strings', 'POST', array(
+            'controller' => 'Language',
+            'action' => 'stringsUpdate'
+        ));
+        $this->add('/language/@id/keys/create [ajax]', 'POST', array(
+            'controller' => 'Language',
+            'action' => 'createKey'
+        ));
     }
 }
