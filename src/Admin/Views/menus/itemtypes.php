@@ -11,35 +11,28 @@
 
         <div id="collapse-links" class="panel-collapse in">
             <div class="panel-body">
-                <form class="form-horizontal" action="./admin/menu/create" method="post">
+                <form class="" action="./admin/menu/create" method="post">
                     <div class="form-group">
-                        <label for="link-url" class="col-sm-4 control-label">URL</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="link-url" placeholder="URL" name="details[url]">
-                        </div>
+                        <input type="text" class="form-control" id="link-url" placeholder="URL" name="details[url]">
                     </div>
+                    
                     <div class="form-group">
-                        <label for="link-text" class="col-sm-4 control-label">Link Text</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="link-title" placeholder="Title of Menu Item" name="title">
-                        </div>
+                        <input type="text" class="form-control" id="link-title" placeholder="Title of Menu Item" name="title">
                     </div>
                     
                     <!-- /.form-group -->
                     <div class="form-group">
-                        <label for="link-text" class="col-sm-4 control-label">Published</label>
-                        <div class="col-sm-8">
-                        <select name="published" class="form-control ">
-                        <option  value="1">Published</option>
-                        <option  value="0">Not Published</option>
+                        <select name="published" class="form-control">
+                            <option value="1">Published</option>
+                            <option value="0">Not Published</option>
                         </select>
                     </div>
-                        <br><br>
+                    
+
                     <div class="form-group">
-                    <label for="parent" class="col-sm-4 control-label">Parent</label>
-                       
-                        <div class="col-sm-8">
-                        <select id="parent" name="parent" class="form-control ui-select2">
+                        <label>Parent</label>
+
+                        <select id="parent" name="parent" class="form-control">
                             <optgroup label="No Parent">
                                 <option  value="null">Menu Root</option>
                             </optgroup>
@@ -72,17 +65,13 @@
                             <?php } ?>
                             
                         </select>
-                        </div>
                     </div>    
-                        
-                    </div>
+
                     <!-- /.form-group -->
                     <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
-                            <button type="submit" class="btn btn-default">Add to Menu</button>
-                            <input type="hidden" name="tree" value="<?php echo $tree; ?>" />
-                            <input type="hidden" name="details[type]" value="link" />
-                        </div>
+                        <button type="submit" class="btn btn-default">Add to Menu</button>
+                        <input type="hidden" name="tree" value="<?php echo $tree; ?>" />
+                        <input type="hidden" name="details[type]" value="link" />
                     </div>
                 </form>
             </div>

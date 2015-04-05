@@ -32,6 +32,9 @@ class Menus extends BaseAuth
             $paginated = $model->emptyState()->populateState()->setState('filter.root', false)->setState('filter.id', null)->setState('filter.tree', $id)->setState('list.sort', array( 'tree'=> 1, 'lft' => 1 ))->paginate();
             $f3->set('state', $model->getState() );
             $f3->set('paginated', $paginated );
+            
+            $all = $model->emptyState()->setState('filter.tree', $id)->setState('list.sort', array( 'tree'=> 1, 'lft' => 1 ))->getList();
+            $this->app->set('all', $all );
         }
         
         $event = new \Joomla\Event\Event( 'onAdminNavigationGetQuickAddItems' );
@@ -43,10 +46,6 @@ class Menus extends BaseAuth
         $model = $this->getModel();
         $roots = $model->roots();
         $this->app->set('roots', $roots );
-        
-        $all = $model->emptyState()->setState('list.sort', array( 'tree'=> 1, 'lft' => 1 ))->getList();
-        $this->app->set('all', $all );
-        
         
         $this->app->set('meta.title', 'Menus');
         
