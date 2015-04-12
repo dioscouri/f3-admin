@@ -24,7 +24,8 @@
 		traditional hre="" links. See documentation for details.
 		-->
         <?php 
-        $current = \Dsc\Pagination::checkRoute( str_replace( $BASE, '', $URI ) );
+        $pieces = explode('?', \Dsc\Pagination::checkRoute( str_replace( $BASE, '', $URI ) ) );
+        $current = $pieces[0];
         $list = (new \Admin\Models\Nav\Primary)->setState('filter.root', false)->setState('filter.tree', \Admin\Models\Settings::fetch()->get('admin_menu_id') )->setState('order_clause', array( 'tree'=> 1, 'lft' => 1 ))->getItems();
         
         // push the default to the beginning of the list
