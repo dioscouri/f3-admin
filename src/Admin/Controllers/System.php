@@ -214,4 +214,15 @@ class System extends BaseAuth
         
         echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::system/diagnostics.php');
     }
+    
+    public function registerEmails()
+    {
+    	$result = \Dsc\System::instance()->trigger('onSystemRegisterEmails');
+    
+    	\Base::instance()->set('result', $result);
+    
+    	$this->app->set('meta.title', 'Emails');
+    
+    	echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::system/emails.php');
+    }
 }
