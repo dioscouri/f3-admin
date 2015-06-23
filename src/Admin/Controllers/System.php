@@ -206,6 +206,33 @@ class System extends BaseAuth
 
     public function diagnostics()
     {
+    	/*
+    	 * TODO move all the Model finding code to the Apps Bootstraps.php files and than use the bootstapper to 
+    	 * load all the files calling them directly instead of this method
+    	 * 
+    	 * I was in too much of a hurry to edit all the apps and their bootstraps, this is big step forward the right direction though
+    	 */
+    	$classes = get_declared_classes();
+    	foreach($classes as $class) {
+    		if (strpos($class,'Models') !== false || strpos($class,'Dsc\Models\Collection') !== false && $class != '\Dsc\Models\Collection') {
+    			$model = (new $class);
+    			
+    			if(method_exists($model, 'DscAppCreateIndexes') && $model instanceof \Dsc\Mongo\Collection) {
+    				try {
+    				
+    					$model->DscAppCreateIndexes();
+    				} catch (\Exception $e) {
+    					echo $e->getMessage();
+    				}
+    				
+    			}
+    		}
+    	}
+    	
+    	
+    	
+    	
+    	
         $result = \Dsc\System::instance()->trigger('onSystemDiagnostics');
         
         \Base::instance()->set('result', $result);
