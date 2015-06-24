@@ -108,7 +108,7 @@ class System extends BaseAuth
                 'title' => 'Rebuild Menu',
                 'route' => './admin/system/rebuildAdminMenu',
                 'icon' => 'fa fa-retweet'
-            ),
+            ),            
             array(
                 'title' => 'Queue',
                 'route' => 'javascript:void(0);',
@@ -244,12 +244,15 @@ class System extends BaseAuth
     
     public function registerEmails()
     {
-    	$result = \Dsc\System::instance()->trigger('onSystemRegisterEmails');
-    
-    	\Base::instance()->set('result', $result);
-    
-    	$this->app->set('meta.title', 'Emails');
-    
-    	echo \Dsc\System::instance()->get('theme')->renderTheme('Admin/Views::system/emails.php');
+        if (class_exists('\Mailer\Factory')) 
+        {
+            $mailer_settings = \Mailer\Models\Settings::fetch();
+            $result = \Dsc\System::instance()->trigger('onSystemRegisterEmails');
+            
+            $mailer_settings->{'emails_registered'} = time();
+            $mailer_settings->save();
+        }
+                
+    	return $this->app->reroute( '/admin' );
     }
 }
