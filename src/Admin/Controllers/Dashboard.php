@@ -14,6 +14,17 @@ class Dashboard extends BaseAuth
              $this->session->set('rebuild-menu.redirect', '/admin');
              return $this->app->reroute( '/admin/system/rebuildAdminMenu' );
         }
+        
+        if (class_exists('\Mailer\Factory')) {
+            $mailer_settings = \Mailer\Models\Settings::fetch();
+            if (!$mailer_settings->emails_registered || (date('Y-m-d', time()) > date('Y-m-d', $mailer_settings->emails_registered))) 
+            {
+                $result = \Dsc\System::instance()->trigger('onSystemRegisterEmails');
+                
+                $mailer_settings->{'emails_registered'} = time();
+                $mailer_settings->save();
+            }
+        }
     }
         
     public function index()
