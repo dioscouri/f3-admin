@@ -203,6 +203,9 @@ class System extends BaseAuth
 
         \Dsc\System::instance()->addMessage('Menu rebuilt', 'notice');
     }
+    
+    
+    
 
     public function diagnostics()
     {
@@ -212,23 +215,43 @@ class System extends BaseAuth
     	 * 
     	 * I was in too much of a hurry to edit all the apps and their bootstraps, this is big step forward the right direction though
     	 */
+    	
+    	// bootstap each mini-app  these are in apps folder, as well as in vender/dioscouri
+    	$app = \Base::instance();
+    	$app->set('APP_NAME', 'site');
+    	$apps = \Dsc\Apps::instance()->bootstrap(null,[], false);
+    	
+    	var_dump($apps);
+    	$app = \Base::instance();
+    	$app->set('APP_NAME', 'admin');
+    	$apps = \Dsc\Apps::instance()->bootstrap(null,[], false);
+    	
+    	var_dump($apps);
+    	
+    	
+    	
+    	$test =  (new \Shop\Models\Coupons);
     	$classes = get_declared_classes();
+    
     	foreach($classes as $class) {
-    		if (strpos($class,'Models') !== false || strpos($class,'Dsc\Models\Collection') !== false && $class != '\Dsc\Models\Collection') {
+    		echo $class .'<br>';
+    		if (strpos($class,'Model') !== false && $class != '\Dsc\Models\Collection' || strpos($class,'Dsc\Models\Collection') !== false && $class != '\Dsc\Models\Collection') {
     			$model = (new $class);
-    			
+    		
     			if(method_exists($model, 'DscAppCreateIndexes') && $model instanceof \Dsc\Mongo\Collection) {
     				try {
     				
     					$model->DscAppCreateIndexes();
     				} catch (\Exception $e) {
-    					echo $e->getMessage();
+    					\Dsc\System::addMessage( $e->getMessage(), 'error');
+    					
     				}
     				
     			}
     		}
+    		
     	}
-    	
+    	die();
     	
     	
     	
