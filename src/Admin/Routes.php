@@ -87,6 +87,11 @@ class Routes extends \Dsc\Routes\Group
             'action' => 'process'
         ) );        
         
+        $this->add( '/queue/processes', 'GET|POST', array(
+        		'controller' => 'QueueTasks',
+        		'action' => 'processes'
+        ) );
+        
         $this->addCrudList( 'Menus' );
         
         $this->add( '/menus/all', 'GET', array(
