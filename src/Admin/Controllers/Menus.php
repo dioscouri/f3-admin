@@ -37,7 +37,7 @@ class Menus extends BaseAuth
             $this->app->set('all', $all );
         }
         
-        $event = new \Joomla\Event\Event( 'onAdminNavigationGetQuickAddItems' );
+        $event = new \Dsc\Event\Event( 'onAdminNavigationGetQuickAddItems' );
         $event->addArgument('items', array());
         $event->addArgument('tree', $id);
         $quickadd = \Dsc\System::instance()->getDispatcher()->triggerEvent($event);
