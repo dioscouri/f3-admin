@@ -52,7 +52,7 @@
             
             $selected = ($current == $item->route) 
                         || (!empty($item->base) && strpos($current, $item->base.'/') !== false) 
-                        || (\Dsc\String::inStrings(\DscArrayHelper::getColumn($item->getDescendants(), 'route'), $current ))
+                        || (\Dsc\String::inStrings(\Dsc\ArrayHelper::getColumn($item->getDescendants(), 'route'), $current ))
                         ;
 
             if ($selected || $current == str_replace( './', '/', $item->route )) {
