@@ -34,6 +34,11 @@ class Login extends Base
             
             $this->auth->check($input);
             
+            if(!empty($input['remember'])) {
+            	$user = $this->getIdentity();
+            	$this->auth->createRememberEnviroment($user);
+            }
+            
         } catch (\Exception $e) {
             \Dsc\System::instance()->addMessage('Login failed', 'error');
             \Dsc\System::instance()->addMessage($e->getMessage(), 'error');

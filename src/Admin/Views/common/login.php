@@ -19,13 +19,14 @@
 					<input type="password" name="login-password">
 					<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b> </label>
 			</section>
-            <?php /* ?>
+
+
 			<section>
 				<label class="checkbox">
 					<input type="checkbox" name="remember" checked="">
 					<i></i>Stay signed in</label>
 			</section>
-			*/ ?>
+
 		</fieldset>
 		<footer>
 			<button type="submit" id="login-btn" class="btn btn-primary btn-block">Sign in <i class="fa fa-play-circle"></i></button>
