@@ -1,5 +1,9 @@
-<base href="<?php echo $SCHEME . "://" . $HOST . $BASE . "/"; ?>" />
 
+<?php if( $PORT && ($PORT != 80 && $PORT != 443)){?>
+<base href="<?php echo $SCHEME . "://" . $HOST.':'.$PORT . $BASE . "/"; ?>" />
+<?php } else {?>
+<base href="<?php echo $SCHEME . "://" . $HOST . $BASE . "/"; ?>" />
+<?php } ?>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
