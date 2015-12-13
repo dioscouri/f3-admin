@@ -20,7 +20,13 @@
 
 		<!-- logout button -->
 		<div id="logout" class="btn-header transparent pull-right">
-			<span> <a class="" href="<?php echo $SCHEME . "://" . $HOST . $BASE . "/"; ?>admin/logout" title="Sign Out">&nbsp;<i class="fa fa-sign-out"></i> <small class="hidden-xs hidden-sm">Logout</small> &nbsp;</a> </span>
+<?php 
+	$link = $SCHEME . "://" . $HOST . $BASE . "/";
+	if( $PORT && ($PORT != 80 && $PORT != 443)){
+		$link = $SCHEME . "://" . $HOST.':'.$PORT . $BASE . "/";
+	}
+?>
+			<span> <a class="" href="<?php echo $link; ?>admin/logout" title="Sign Out">&nbsp;<i class="fa fa-sign-out"></i> <small class="hidden-xs hidden-sm">Logout</small> &nbsp;</a> </span>
 		</div>
 		<!-- end logout button -->
 		

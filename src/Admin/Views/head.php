@@ -1,4 +1,3 @@
-
 <?php if( $PORT && ($PORT != 80 && $PORT != 443)){?>
 <base href="<?php echo $SCHEME . "://" . $HOST.':'.$PORT . $BASE . "/"; ?>" />
 <?php } else {?>
