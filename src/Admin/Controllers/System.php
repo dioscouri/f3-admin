@@ -230,7 +230,6 @@ class System extends BaseAuth
     	
     	
     	
-    	$test =  (new \Shop\Models\Coupons);
     	$classes = get_declared_classes();
     
     	foreach($classes as $class) {
