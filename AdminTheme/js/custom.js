@@ -108,7 +108,7 @@ var CustomApp = function () {
 
 $(document).ready(function () {
 	
-	$("form").submit(function (e) {
+	$('form[data-noprocess!="1"]').submit(function (e) {
 
 		    $('#main').append('<div class="divMessageBox animated fadeIn fast" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false"><div class="MessageBoxContainer animated fadeIn fast" id="Msg1"><div class="MessageBoxMiddle"><span class="MsgTitle">Processing... </span><br/><div id="progressbar" class="ui-progressbar ui-widget ui-widget-content ui-corner-all ui-progressbar-indeterminate" role="progressbar" aria-valuemin="0" width="100%"><div class="ui-progressbar-value ui-widget-header"><div class="ui-progressbar-overlay" style="width:100%; height:30px;"></div></div></div></div></div></div>');
 		    $('#pleaseWaitDialog').modal('show');
