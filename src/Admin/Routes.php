@@ -209,6 +209,11 @@ class Routes extends \Dsc\Routes\Group
             'controller' => 'Cron',
             'action' => 'create'
         ) );
+
+	$this->add( '/cron/create', 'POST', array(
+	    'controller' => 'Cron',
+	    'action' => 'save'
+	) );
         
         $this->add( '/trash/items', 'GET', array(
         		'controller' => 'TrashItems',
